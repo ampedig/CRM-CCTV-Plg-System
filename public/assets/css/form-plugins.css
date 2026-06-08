@@ -1,0 +1,182 @@
+/* --- FORM PLUGINS OVERRIDES --- */
+
+/* WRAPPER FIX */
+/* FIX BUG SCROLL: Kunci html & body agar tidak bouncing/naik */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* FORM ELEMENTS FOCUS */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-brand-500);
+    box-shadow: 0 0 0 1px var(--color-brand-500);
+}
+
+/* --- SELECT2 CUSTOMIZATION (MODERN LOOK) --- */
+.select2-container {
+    width: 100% !important;
+}
+
+/* Single Select */
+.select2-container .select2-selection--single {
+    height: 38px !important;
+    /* Reduced from 46px */
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.5rem !important;
+    /* Reduced radius for smaller height */
+    /* rounded-lg */
+    display: flex !important;
+    align-items: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s;
+}
+
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #334155 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    padding-left: 10px !important;
+    /* Slightly reduced padding */
+    padding-right: 28px !important;
+    line-height: normal !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 36px !important;
+    /* Reduced to match container */
+    width: 20px !important;
+    right: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    top: 0 !important;
+}
+
+/* Multiple Select (Tagging) - Fixed Overlap */
+.select2-container--default .select2-selection--multiple {
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.75rem !important;
+    min-height: 46px !important;
+    padding: 4px 8px !important;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: var(--color-brand-500) !important;
+    box-shadow: 0 0 0 1px var(--color-brand-500);
+}
+
+/* Style Chip/Tag - Fixed Padding */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--color-brand-50) !important;
+    /* brand-50 */
+    border: 1px solid var(--color-brand-100) !important;
+    /* brand-100 */
+    border-radius: 0.5rem !important;
+    color: var(--color-brand-600) !important;
+    /* brand-600 */
+    padding: 2px 8px 2px 24px !important;
+    /* Padding kiri lebih besar untuk tombol X */
+    margin: 4px !important;
+    font-size: 0.85rem !important;
+    font-weight: 525 !important;
+    position: relative;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: var(--color-brand-600) !important;
+    border-right: none !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    font-size: 14px;
+    font-weight: 525;
+    border-top-left-radius: 0.5rem !important;
+    border-bottom-left-radius: 0.5rem !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    background-color: var(--color-brand-100) !important;
+    color: var(--color-brand-700) !important;
+}
+
+/* Dropdown Menu */
+.select2-dropdown {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.select2-results__option {
+    padding: 10px 16px !important;
+    font-size: 0.875rem;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--color-brand-500) !important;
+}
+
+/* --- NOUISLIDER CUSTOMIZATION (MODERN LOOK - ROUND HANDLE) --- */
+.noUi-target {
+    background: #e2e8f0;
+    /* slate-200 */
+    border: none;
+    border-radius: 99px;
+    box-shadow: none;
+    height: 6px;
+}
+
+.noUi-connect {
+    background: var(--color-brand-500);
+    /* brand-500 */
+}
+
+.noUi-handle {
+    background: #fff;
+    border: 2px solid var(--color-brand-500);
+    box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--color-brand-500), transparent 70%);
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50%;
+    right: -10px !important;
+    top: -8px !important;
+    cursor: grab;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.noUi-handle:before,
+.noUi-handle:after {
+    display: none;
+}
+
+.noUi-handle:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-brand-500), transparent 80%);
+}
+
+.noUi-horizontal {
+    height: 4px !important;
+}

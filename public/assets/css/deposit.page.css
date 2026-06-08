@@ -1,0 +1,72 @@
+/* Filter Panel Transitions */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.3s ease-out forwards;
+}
+
+/* Custom Scrollbar for Column Menu */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    /* slate-100 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    /* slate-300 */
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+    /* slate-400 */
+}
+
+/* Select2 Customization to match Input Height */
+.select2-container .select2-selection--single {
+    height: 42px !important;
+    /* Match standard input height */
+    padding: 6px 12px !important;
+    border-radius: 0.75rem !important;
+    /* rounded-xl */
+    border-color: #e2e8f0 !important;
+    /* border-slate-200 */
+    background-color: #ffffff !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    line-height: 28px !important;
+    padding-left: 0 !important;
+    color: #475569 !important;
+    /* text-slate-600 */
+    font-size: 0.875rem !important;
+    /* text-sm */
+}
+
+.select2-container .select2-selection--single .select2-selection__arrow {
+    height: 40px !important;
+    right: 8px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #94a3b8 transparent transparent transparent !important;
+}
+
+/* Ensure Button Matches Height */
+#filterPanel button {
+    height: 42px;
+}

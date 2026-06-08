@@ -1,0 +1,69 @@
+/* Fix SweetAlert Font to Match Theme */
+.swal2-popup {
+    font-family: inherit !important;
+    border-radius: 1rem !important;
+    padding: 1.5rem !important;
+}
+
+.swal2-title {
+    font-size: 1.25rem !important;
+    font-weight: 525 !important;
+    color: #1e293b !important;
+}
+
+.swal2-html-container {
+    font-size: 0.95rem !important;
+    color: #64748b !important;
+}
+
+/* Force Icon Colors to Brand Color */
+.swal2-icon {
+    border-color: var(--color-brand-200) !important;
+    color: var(--color-brand-600) !important;
+}
+
+.swal2-icon.swal2-warning,
+.swal2-icon.swal2-error,
+.swal2-icon.swal2-success,
+.swal2-icon.swal2-info,
+.swal2-icon.swal2-question {
+    color: var(--color-brand-600) !important;
+    border-color: var(--color-brand-200) !important;
+    /* Soft border matching icon */
+}
+
+/* Specific inner elements (like the line in error icon) */
+.swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+    background-color: var(--color-brand-600) !important;
+}
+
+.swal2-icon.swal2-warning {
+    color: var(--color-brand-600) !important;
+    border-color: var(--color-brand-200) !important;
+}
+
+
+/* Tombol Konfirmasi SweetAlert (Match Brand Color) */
+.swal2-styled.swal2-confirm {
+    background-color: var(--color-brand-600) !important;
+    /* Updated to brand-600 */
+    border-radius: 0.75rem !important;
+    /* Slightly more rounded */
+    padding: 10px 24px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--color-brand-600), transparent 70%) !important;
+}
+
+.swal2-styled.swal2-confirm:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-600), transparent 50%) !important;
+}
+
+/* Tombol Batal SweetAlert (Red/Danger) */
+.swal2-styled.swal2-cancel {
+    background-color: var(--color-danger) !important;
+    /* Dynamic Danger Color */
+    border-radius: 0.75rem !important;
+    padding: 10px 24px !important;
+    font-weight: 500 !important;
+    color: white !important;
+}
