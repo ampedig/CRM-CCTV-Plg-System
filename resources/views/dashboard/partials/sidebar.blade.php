@@ -45,7 +45,7 @@
                 <i class="fa-solid fa-receipt sb-icon"></i> <span>Transaksi</span>
             </a>
 
-            <a href="chat-history.html" class="sb-item t-sidebar">
+            <a href="{{ route('chat-histories.index') }}" class="sb-item t-sidebar">
                 <i class="fa-solid fa-message sb-icon"></i> <span>Riwayat Chat</span>
             </a>
 
