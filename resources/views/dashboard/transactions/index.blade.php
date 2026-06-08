@@ -47,8 +47,7 @@
                                 <div class="text-xs font-semibold text-slate-400 uppercase px-3 py-2">
                                     Tampilkan Kolom</div>
                                 <!-- Container for Dynamic Columns -->
-                                <div id="columnListContainer"
-                                    class="space-y-1 max-h-60 overflow-y-auto custom-scrollbar">
+                                <div id="columnListContainer" class="space-y-1 max-h-60 overflow-y-auto custom-scrollbar">
                                     <!-- Checkboxes will be injected here by JS -->
                                     <div class="px-3 py-2 text-xs text-slate-400">Loading kolom...</div>
                                 </div>
@@ -66,17 +65,23 @@
                     <table id="transaksiTable" class="w-full text-left border-collapse">
                         <thead class="bg-slate-50 text-slate-500 uppercase text-xs font-semibold tracking-wider">
                             <tr>
-                                <th class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
+                                <th
+                                    class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     #</th>
-                                <th class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
+                                <th
+                                    class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Tanggal</th>
-                                <th class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
+                                <th
+                                    class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Pelanggan</th>
-                                <th class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
+                                <th
+                                    class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Total</th>
-                                <th class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
+                                <th
+                                    class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Status Pembayaran</th>
-                                <th class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
+                                <th
+                                    class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Aksi
                                 </th>
                             </tr>
@@ -98,18 +103,19 @@
                                     </td>
                                     <td class="px-6 py-4 td-nowrap">
                                         @if ($transaction->payment_status === 'paid')
-                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-green-100 text-green-700">Paid</span>
+                                            <span
+                                                class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-green-100 text-green-700">Paid</span>
                                         @elseif ($transaction->payment_status === 'pending')
-                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-yellow-100 text-yellow-700">Pending</span>
+                                            <span
+                                                class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-yellow-100 text-yellow-700">Pending</span>
                                         @elseif ($transaction->payment_status === 'canceled')
-                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-red-100 text-red-700">Canceled</span>
+                                            <span
+                                                class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-red-100 text-red-700">Canceled</span>
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 text-center td-nowrap">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button
-                                                class="btn btn-icon btn-sm bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                                title="Print Struk">
+                                            <button class="btn btn-success btn-icon btn-sm" title="Print Struk">
                                                 <i class="fa-solid fa-print"></i>
                                             </button>
                                             <a href="{{ route('transactions.show', $transaction->id) }}"
@@ -125,8 +131,8 @@
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </button>
                                             <form id="delete-form-{{ $transaction->id }}"
-                                                action="{{ route('transactions.destroy', $transaction->id) }}" method="POST"
-                                                style="display: none;">
+                                                action="{{ route('transactions.destroy', $transaction->id) }}"
+                                                method="POST" style="display: none;">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>

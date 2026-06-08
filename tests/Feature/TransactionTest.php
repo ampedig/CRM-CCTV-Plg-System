@@ -89,3 +89,93 @@ test('storing transaction fails with invalid data', function () {
 
     $response->assertSessionHasErrors(['customer_id', 'payment_status', 'product_id', 'quantity']);
 });
+
+test('transactions edit page can be rendered for authenticated users', function () {
+    $transaction = Transaction::create([
+        'customer_id' => $this->customer->id,
+        'payment_status' => 'pending',
+        'grand_total' => 300000
+    ]);
+
+    $response = $this
+        ->actingAs($this->user)
+        ->get(route('transactions.edit', $transaction->id));
+
+    $response->assertOk();
+});
+
+test('authenticated user can update an existing transaction', function () {
+    $transaction = Transaction::create([
+        'customer_id' => $this->customer->id,
+        'payment_status' => 'pending',
+        'grand_total' => 300000
+    ]);
+    
+    $transaction->details()->create([
+        'product_id' => $this->product->id,
+        'quantity' => 1,
+        'sub_total' => 300000
+    ]);
+
+    $otherProduct = Product::create([
+        'name' => 'Dahua Dome',
+        'slug' => 'dahua-dome',
+        'category_id' => $this->category->id,
+        'image' => 'products/test.png',
+        'price' => 200000,
+        'is_active' => 1
+    ]);
+
+    $response = $this
+        ->actingAs($this->user)
+        ->put(route('transactions.update', $transaction->id), [
+            'customer_id' => $this->customer->id,
+            'payment_status' => 'paid',
+            'product_id' => [$otherProduct->id],
+            'quantity' => [3]
+        ]);
+
+    $response->assertRedirect(route('transactions.index'));
+
+    $transaction->refresh();
+    
+    $this->assertSame('paid', $transaction->payment_status);
+    $this->assertEquals(600000, $transaction->grand_total); // 200000 * 3
+    
+    // Old details should be deleted
+    $this->assertDatabaseMissing('transaction_details', [
+        'product_id' => $this->product->id,
+        'transaction_id' => $transaction->id
+    ]);
+
+    // New details should exist
+    $this->assertDatabaseHas('transaction_details', [
+        'transaction_id' => $transaction->id,
+        'product_id' => $otherProduct->id,
+        'quantity' => 3,
+        'sub_total' => 600000
+    ]);
+});
+
+test('transactions show page can be rendered for authenticated users', function () {
+    $transaction = Transaction::create([
+        'customer_id' => $this->customer->id,
+        'payment_status' => 'pending',
+        'grand_total' => 300000
+    ]);
+    
+    $transaction->details()->create([
+        'product_id' => $this->product->id,
+        'quantity' => 1,
+        'sub_total' => 300000
+    ]);
+
+    $response = $this
+        ->actingAs($this->user)
+        ->get(route('transactions.show', $transaction->id));
+
+    $response->assertOk();
+    $response->assertSee('Invoice Transaksi');
+    $response->assertSee('John Doe'); // Customer's name
+    $response->assertSee('Hikvision 2MP'); // Product name
+});

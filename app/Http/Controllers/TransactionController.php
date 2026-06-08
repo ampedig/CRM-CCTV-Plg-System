@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
 use App\Models\Customer;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use App\Models\Transaction;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class TransactionController extends Controller
 {
@@ -46,6 +46,7 @@ class TransactionController extends Controller
     {
         $customers = Customer::where('is_active', 1)->get();
         $products = Product::where('is_active', 1)->get();
+
         return view('dashboard.transactions.create', compact('customers', 'products'));
     }
 
@@ -98,6 +99,7 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction): View
     {
+        $transaction->load(['customer', 'details.product']);
         return view('dashboard.transactions.show', compact('transaction'));
     }
 
@@ -106,7 +108,11 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction): View
     {
-        return view('dashboard.transactions.edit', compact('transaction'));
+        $transaction->load('details.product');
+        $customers = Customer::where('is_active', 1)->get();
+        $products = Product::where('is_active', 1)->get();
+
+        return view('dashboard.transactions.edit', compact('transaction', 'customers', 'products'));
     }
 
     /**
@@ -114,8 +120,45 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction): RedirectResponse
     {
-        // Will be implemented next
-        return redirect()->route('transactions.index');
+        $validated = $request->validate([
+            'customer_id' => 'required|exists:customers,id',
+            'payment_status' => 'required|in:pending,paid,canceled',
+            'product_id' => 'required|array|min:1',
+            'product_id.*' => 'required|exists:products,id',
+            'quantity' => 'required|array|min:1',
+            'quantity.*' => 'required|integer|min:1',
+        ]);
+
+        DB::transaction(function () use ($validated, $transaction) {
+            $transaction->update([
+                'customer_id' => $validated['customer_id'],
+                'payment_status' => $validated['payment_status'],
+            ]);
+
+            // Clear old details
+            $transaction->details()->delete();
+
+            $grandTotal = 0;
+
+            foreach ($validated['product_id'] as $index => $productId) {
+                $product = Product::findOrFail($productId);
+                $qty = intval($validated['quantity'][$index]);
+                $subTotal = $product->price * $qty;
+                $grandTotal += $subTotal;
+
+                $transaction->details()->create([
+                    'product_id' => $productId,
+                    'quantity' => $qty,
+                    'sub_total' => $subTotal,
+                ]);
+            }
+
+            $transaction->update([
+                'grand_total' => $grandTotal,
+            ]);
+        });
+
+        return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil diperbarui.');
     }
 
     /**
@@ -128,4 +171,3 @@ class TransactionController extends Controller
         return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 }
-
