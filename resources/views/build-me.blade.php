@@ -3,14 +3,28 @@
 
 <head>
     @@include('../partials/head.html', {
-    "title": "Tambah Produk - Masum.xyz",
-    "description": "Halaman Tambah Produk Baru"
+    "title": "Tambah Transaksi - Masum.xyz",
+    "description": "Halaman Tambah Transaksi Baru"
     })
-    <!-- Select2 CSS (Local) -->
     <link rel="stylesheet" href="assets/libs/select2/css/select2.min.css">
-    <!-- Quill Editor CSS (Local) -->
-    <link rel="stylesheet" href="assets/libs/quill/quill.snow.css">
-    <link rel="stylesheet" href="assets/css/text-editor.page.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
 </head>
 
 <body class="bg-slate-50 text-slate-600 font-sans antialiased">
@@ -27,147 +41,116 @@
 
             @@include('../partials/navbar.html')
 
-            <!-- Scrollable Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto flex flex-col">
+                <div class="flex-1 p-4 md:p-8">
+                    <div class="w-full">
+                        <!-- 1 Panel Form -->
+                        <form action="javascript:void(0)" method="POST" id="form-transaksi">
+                            <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 space-y-8">
 
-                <!-- Content Wrapper -->
-                <div class="flex-1 p-8">
-                    <!-- Form Container (Single Component) -->
-                    <div class="max-w-screen-2xl mx-auto">
-
-                        <form action="javascript:void(0)" method="POST">
-                            <!-- Wrapper Card Putih Besar -->
-                            <div class="bg-white border border-slate-200 rounded-2xl p-8">
-
-                                <!-- Header Kecil dalam Form -->
-                                <div class="mb-8 pb-4 border-b border-slate-100">
-                                    <h2 class="text-lg font-semibold text-slate-800">Tambah Produk Baru</h2>
-                                    <p class="text-sm text-slate-500 mt-1">Lengkapi detail di bawah untuk menambahkan
-                                        item baru.</p>
+                                <!-- Informasi Umum -->
+                                <div>
+                                    <h3
+                                        class="text-lg font-semibold text-slate-800 mb-4 pb-3 border-b border-slate-100">
+                                        Buat Transaksi
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-semibold text-slate-700 mb-2">Pelanggan
+                                                <span class="text-danger">*</span></label>
+                                            <select class="select2-customer w-full" name="customer_id" required>
+                                                <option></option>
+                                                <option value="1">Rudi Hartono (0812-3456-7890)</option>
+                                                <option value="2">Siti Aminah (0857-1231-1231)</option>
+                                                <option value="3">PT Maju Mundur (-)</option>
+                                                <option value="4">Agus Salim (0819-2233-4455)</option>
+                                            </select>
+                                            <p class="text-xs text-slate-400 mt-2">Belum ada pelanggan? <a
+                                                    href="create-pelanggan.html"
+                                                    class="text-brand-600 font-semibold hover:text-brand-700 transition">Tambah
+                                                    Baru</a></p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-semibold text-slate-700 mb-2">Status
+                                                Pembayaran <span class="text-danger">*</span></label>
+                                            <select class="select2-status w-full" name="payment_status" required>
+                                                <option value="pending" selected>Pending</option>
+                                                <option value="paid">Paid (Lunas)</option>
+                                                <option value="canceled">Canceled (Gagal)</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- 1. Upload Gambar (Dengan Preview) -->
-                                <div class="mb-8">
-                                    <label class="block text-sm font-semibold text-slate-700 mb-3">Foto Produk</label>
-                                    <div
-                                        class="w-full h-56 rounded-xl image-upload-area flex flex-col items-center justify-center cursor-pointer relative group overflow-hidden">
-                                        <!-- Input File -->
-                                        <input type="file" id="product-image"
-                                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
-                                            accept="image/*">
+                                <!-- Detail Produk -->
+                                <div>
+                                    <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+                                        <h3 class="text-lg font-semibold text-slate-800">
+                                            Daftar Barang Yang Dibeli
+                                        </h3>
+                                        <button type="button" onclick="openProductModal()"
+                                            class="btn btn-primary btn-sm flex items-center gap-2">
+                                            <i class="fa-solid fa-cart-plus"></i> Pilih Produk
+                                        </button>
+                                    </div>
 
-                                        <!-- Placeholder Text (Default) -->
-                                        <div id="upload-placeholder"
-                                            class="text-center p-6 group-hover:-translate-y-1 transition-transform duration-300">
+                                    <div class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                                        <!-- Table for selected products (Scrollable on mobile) -->
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-left min-w-[600px]">
+                                                <thead
+                                                    class="bg-slate-100/50 text-slate-500 text-xs uppercase tracking-wider">
+                                                    <tr>
+                                                        <th class="p-4 font-semibold">Produk</th>
+                                                        <th class="p-4 font-semibold w-40 text-right">Harga</th>
+                                                        <th class="p-4 font-semibold w-32 text-center">Qty</th>
+                                                        <th class="p-4 font-semibold w-40 text-right">Subtotal</th>
+                                                        <th class="p-4 font-semibold w-16 text-center">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-slate-100 bg-white"
+                                                    id="product-list-body">
+                                                    <!-- Empty state -->
+                                                    <tr id="empty-state">
+                                                        <td colspan="5" class="p-8 text-center text-slate-400">
+                                                            <i
+                                                                class="fa-solid fa-box-open text-3xl mb-3 text-slate-300"></i>
+                                                            <p>Belum ada produk yang dipilih.</p>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Selected products will be injected here -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Footer for Totals -->
+                                        <div class="bg-slate-50/50 border-t border-slate-200 p-4 sm:p-6">
                                             <div
-                                                class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-3 text-brand-600">
-                                                <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
-                                            </div>
-                                            <p class="text-sm font-semibold text-slate-700">Klik untuk upload</p>
-                                            <p class="text-xs text-slate-400 mt-1">atau drag & drop gambar disini</p>
-                                            <p class="text-[10px] text-slate-300 mt-2">Max. 2MB (PNG, JPG)</p>
-                                        </div>
-
-                                        <!-- Image Preview (Hidden by default) -->
-                                        <img id="image-preview" src="#" alt="Preview"
-                                            class="absolute inset-0 w-full h-full object-contain p-2 hidden z-10">
-                                    </div>
-                                </div>
-
-                                <!-- 2. Identitas Produk -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Produk <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" placeholder="Contoh: Kamera CCTV Hikvision Outdoor"
-                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Kategori <span
-                                                class="text-danger">*</span></label>
-                                        <select class="select2-category w-full">
-                                            <option></option>
-                                            <option value="cctv-indoor">CCTV Indoor</option>
-                                            <option value="cctv-outdoor">CCTV Outdoor</option>
-                                            <option value="dvr-nvr">DVR & NVR</option>
-                                            <option value="accessories">Aksesoris CCTV</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Merk <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" placeholder="Contoh: Hikvision, Dahua"
-                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Unit <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" placeholder="Contoh: pcs, meter, roll, pack"
-                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Harga <span
-                                                class="text-danger">*</span></label>
-                                        <div class="relative">
-                                            <span
-                                                class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 font-semibold text-sm">Rp</span>
-                                            <input type="number" placeholder="0"
-                                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 font-medium">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 3. Deskripsi -->
-                                <div class="mb-8">
-                                    <label class="block text-sm font-semibold text-slate-700 mb-3">Deskripsi
-                                        Lengkap</label>
-                                    <!-- Wrapper class for focus styling -->
-                                    <div class="editor-wrapper">
-                                        <div id="quill-editor" style="min-height: 300px !important;"></div>
-                                    </div>
-                                </div>
-
-                                <!-- 4. Status Toggles -->
-                                <div class="mb-10">
-                                    <div class="flex flex-col gap-4">
-                                        <div
-                                            class="flex items-center justify-between p-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors">
-                                            <div class="flex items-center gap-3">
-                                                <div id="status-icon-bg"
-                                                    class="p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300">
-                                                    <i id="status-icon" class="fa-solid fa-power-off"></i>
+                                                class="flex flex-col sm:flex-row justify-end items-end sm:items-center gap-4 sm:gap-8">
+                                                <div class="text-right">
+                                                    <span class="text-sm font-medium text-slate-500 block mb-1">Total
+                                                        Item Qty</span>
+                                                    <span id="summary-total-item"
+                                                        class="text-lg font-semibold text-slate-800">0</span>
                                                 </div>
-                                                <div>
-                                                    <p id="status-text"
-                                                        class="text-sm font-semibold text-slate-700 transition-colors duration-300">
-                                                        Aktif</p>
-                                                    <p id="status-desc"
-                                                        class="text-xs text-slate-500 transition-colors duration-300">
-                                                        Produk akan tampil dan bisa dibeli.</p>
+                                                <div class="text-right">
+                                                    <span class="text-sm font-medium text-slate-500 block mb-1">Grand
+                                                        Total</span>
+                                                    <span id="summary-grand-total"
+                                                        class="text-2xl font-semibold text-brand-600">Rp 0</span>
+                                                    <input type="hidden" name="grand_total" id="input-grand-total"
+                                                        value="0">
                                                 </div>
                                             </div>
-                                            <label class="relative inline-flex items-center cursor-pointer">
-                                                <input type="checkbox" id="status-toggle" name="status" value="aktif"
-                                                    class="sr-only peer" checked>
-                                                <div
-                                                    class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500">
-                                                </div>
-                                            </label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Action Buttons (Bottom Left Aligned) -->
-                                <div class="pt-6 border-t border-slate-100 flex items-center justify-start gap-3">
-                                    <a href="produk.html" class="btn btn-white">
-                                        Batal
-                                    </a>
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa-solid fa-save"></i> Simpan
+                                <div class="pt-6 border-t border-slate-100 flex gap-3 justify-end">
+                                    <a href="transaksi.html" class="btn btn-white px-6">Batal</a>
+                                    <button type="button" onclick="submitForm()"
+                                        class="btn btn-primary px-6 flex items-center gap-2">
+                                        <i class="fa-solid fa-floppy-disk"></i> Simpan Transaksi
                                     </button>
                                 </div>
 
@@ -181,116 +164,374 @@
         </div>
     </div>
 
+    <!-- Modal Pilih Produk -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onclick="closeProductModal()"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col relative z-10 transform scale-95 transition-transform duration-300"
+                id="productModalContent">
+
+                <!-- Modal Header -->
+                <div
+                    class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl">
+                    <h3 class="text-lg font-semibold text-slate-800">Pilih Produk CCTV</h3>
+                    <button type="button" onclick="closeProductModal()"
+                        class="text-slate-400 hover:text-slate-500 hover:bg-slate-100 w-8 h-8 flex justify-center items-center rounded-xl transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Search -->
+                <div class="p-6 border-b border-slate-100">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-search text-slate-400"></i>
+                        </div>
+                        <input type="text" id="searchProduct"
+                            class="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors"
+                            placeholder="Cari nama produk atau merk...">
+                    </div>
+                </div>
+
+                <!-- Modal Body (Grid Produk) -->
+                <div class="p-6 overflow-y-auto flex-1 custom-scrollbar bg-slate-50/30">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="modal-product-grid">
+
+                        <!-- Product Item 1 -->
+                        <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
+                            onclick="selectProduct(1, 'Kamera CCTV Hikvision 2MP Indoor', 'Hikvision', 350000, 'https://placehold.co/100x100/e2e8f0/64748b?text=CCTV')">
+                            <div
+                                class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                                <img src="https://placehold.co/100x100/e2e8f0/64748b?text=CCTV" alt="CCTV"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
+                                    Kamera CCTV Hikvision 2MP Indoor</h4>
+                                <p
+                                    class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                    Hikvision</p>
+                                <p class="text-sm font-semibold text-slate-800">Rp 350.000</p>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 2 -->
+                        <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
+                            onclick="selectProduct(2, 'DVR Dahua 4 Channel 1080p', 'Dahua', 650000, 'https://placehold.co/100x100/e2e8f0/64748b?text=DVR')">
+                            <div
+                                class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                                <img src="https://placehold.co/100x100/e2e8f0/64748b?text=DVR" alt="DVR"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
+                                    DVR Dahua 4 Channel 1080p</h4>
+                                <p
+                                    class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                    Dahua</p>
+                                <p class="text-sm font-semibold text-slate-800">Rp 650.000</p>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 3 -->
+                        <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
+                            onclick="selectProduct(3, 'Hardisk Seagate Skyhawk 1TB', 'Seagate', 850000, 'https://placehold.co/100x100/e2e8f0/64748b?text=HDD')">
+                            <div
+                                class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                                <img src="https://placehold.co/100x100/e2e8f0/64748b?text=HDD" alt="HDD"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
+                                    Hardisk Seagate Skyhawk 1TB</h4>
+                                <p
+                                    class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                    Seagate</p>
+                                <p class="text-sm font-semibold text-slate-800">Rp 850.000</p>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 4 -->
+                        <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
+                            onclick="selectProduct(4, 'Kabel Coaxial RG59 + Power (50m)', 'SPC', 150000, 'https://placehold.co/100x100/e2e8f0/64748b?text=KABEL')">
+                            <div
+                                class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                                <img src="https://placehold.co/100x100/e2e8f0/64748b?text=KABEL" alt="Kabel"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
+                                    Kabel Coaxial RG59 + Power (50m)</h4>
+                                <p
+                                    class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                    SPC</p>
+                                <p class="text-sm font-semibold text-slate-800">Rp 150.000</p>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 5 -->
+                        <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
+                            onclick="selectProduct(5, 'Power Supply Jaring 12V 10A', 'SPC', 125000, 'https://placehold.co/100x100/e2e8f0/64748b?text=PSU')">
+                            <div
+                                class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                                <img src="https://placehold.co/100x100/e2e8f0/64748b?text=PSU" alt="PSU"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
+                                    Power Supply Jaring 12V 10A</h4>
+                                <p
+                                    class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                    SPC</p>
+                                <p class="text-sm font-semibold text-slate-800">Rp 125.000</p>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 6 -->
+                        <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
+                            onclick="selectProduct(6, 'Jasa Instalasi per Titik', 'Service', 200000, 'https://placehold.co/100x100/e2e8f0/64748b?text=JASA')">
+                            <div
+                                class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
+                                <img src="https://placehold.co/100x100/e2e8f0/64748b?text=JASA" alt="Jasa"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4
+                                    class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
+                                    Jasa Instalasi per Titik</h4>
+                                <p
+                                    class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                    Service</p>
+                                <p class="text-sm font-semibold text-slate-800">Rp 200.000</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @@include('../partials/vendor-scripts.html')
-    <script src="assets/libs/quill/quill.js"></script>
+    <script src="assets/libs/select2/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Page Specific Script -->
     <script>
+        // Array to store selected products
+        let selectedProducts = [];
+
+        // Format Mata Uang Rupiah (IDR)
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(number);
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Select2 Initialization ---
+            // Inisialisasi Select2
             if (typeof $ !== 'undefined' && $.fn.select2) {
-                $('.select2-category').select2({
-                    placeholder: 'Pilih Kategori',
-                    width: '100%',
-                    minimumResultsForSearch: Infinity
+                $('.select2-customer').select2({
+                    placeholder: 'Pilih pelanggan...',
+                    width: '100%'
+                });
+
+                $('.select2-status').select2({
+                    minimumResultsForSearch: Infinity,
+                    width: '100%'
                 });
             }
 
-            // --- Quill Rich Text Editor Initialization ---
-            if (document.getElementById('quill-editor')) {
-                new Quill('#quill-editor', {
-                    theme: 'snow',
-                    placeholder: 'Ketikkan deskripsi lengkap produk...',
-                    modules: {
-                        toolbar: [
-                            [{
-                                'font': []
-                            }, {
-                                'size': ['small', false, 'large', 'huge']
-                            }],
-                            [{
-                                'header': [1, 2, 3, 4, 5, 6, false]
-                            }],
-                            ['bold', 'italic', 'underline', 'strike'],
-                            [{
-                                'color': []
-                            }, {
-                                'background': []
-                            }],
-                            [{
-                                'script': 'sub'
-                            }, {
-                                'script': 'super'
-                            }],
-                            [{
-                                'list': 'ordered'
-                            }, {
-                                'list': 'bullet'
-                            }, {
-                                'indent': '-1'
-                            }, {
-                                'indent': '+1'
-                            }],
-                            [{
-                                'direction': 'rtl'
-                            }, {
-                                'align': []
-                            }],
-                            ['clean']
-                        ]
-                    }
-                });
-            }
-
-            // --- Status Toggle Logic ---
-            const statusToggle = document.getElementById('status-toggle');
-            const statusText = document.getElementById('status-text');
-            const statusDesc = document.getElementById('status-desc');
-            const statusIcon = document.getElementById('status-icon');
-            const statusIconBg = document.getElementById('status-icon-bg');
-
-            if (statusToggle && statusText && statusDesc && statusIcon && statusIconBg) {
-                statusToggle.addEventListener('change', function() {
-                    if (this.checked) {
-                        statusText.innerText = 'Aktif';
-                        statusDesc.innerText = 'Produk akan tampil dan bisa dibeli.';
-                        statusIcon.className = 'fa-solid fa-power-off';
-                        statusIconBg.className =
-                            'p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300';
+            // Real-time Search di Modal
+            const searchInput = document.getElementById('searchProduct');
+            searchInput.addEventListener('input', function() {
+                const term = this.value.toLowerCase();
+                const items = document.querySelectorAll('#modal-product-grid > div');
+                items.forEach(item => {
+                    const title = item.querySelector('h4').textContent.toLowerCase();
+                    const brand = item.querySelector('p').textContent.toLowerCase();
+                    if (title.includes(term) || brand.includes(term)) {
+                        item.style.display = 'flex';
                     } else {
-                        statusText.innerText = 'Nonaktif';
-                        statusDesc.innerText = 'Produk disembunyikan dari aplikasi user.';
-                        statusIcon.className = 'fa-solid fa-ban';
-                        statusIconBg.className =
-                            'p-2 bg-rose-50 text-rose-600 rounded-lg transition-colors duration-300';
+                        item.style.display = 'none';
                     }
                 });
-            }
-
-            // --- Image Preview Logic ---
-            const productImageInput = document.getElementById('product-image');
-            const imagePreview = document.getElementById('image-preview');
-            const uploadPlaceholder = document.getElementById('upload-placeholder');
-
-            if (productImageInput && imagePreview && uploadPlaceholder) {
-                productImageInput.addEventListener('change', function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            imagePreview.src = e.target.result;
-                            imagePreview.classList.remove('hidden');
-                            uploadPlaceholder.classList.add('hidden');
-                        }
-                        reader.readAsDataURL(file);
-                    } else {
-                        imagePreview.classList.add('hidden');
-                        imagePreview.src = '#';
-                        uploadPlaceholder.classList.remove('hidden');
-                    }
-                });
-            }
+            });
         });
+
+        // Modal Functions
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('productModalContent');
+
+        function openProductModal() {
+            modal.classList.remove('hidden');
+            // Sedikit delay untuk trigger animasi
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+
+            // Reset pencarian
+            document.getElementById('searchProduct').value = '';
+            document.querySelectorAll('#modal-product-grid > div').forEach(item => {
+                item.style.display = 'flex';
+            });
+        }
+
+        function closeProductModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Logic Memilih Produk
+        function selectProduct(id, name, brand, price, image) {
+            // Cek apakah produk sudah ada
+            const existingProduct = selectedProducts.find(p => p.id === id);
+
+            if (existingProduct) {
+                // Jika sudah ada, tambah quantity-nya
+                existingProduct.qty += 1;
+            } else {
+                // Jika belum ada, tambahkan ke array
+                selectedProducts.push({
+                    id: id,
+                    name: name,
+                    brand: brand,
+                    price: price,
+                    image: image,
+                    qty: 1
+                });
+            }
+
+            renderProductTable();
+            closeProductModal();
+        }
+
+        // Fungsi Render Ulang Tabel Produk
+        function renderProductTable() {
+            const tbody = document.getElementById('product-list-body');
+            const emptyState = document.getElementById('empty-state');
+
+            // Clear existing rows (except empty state)
+            const rows = tbody.querySelectorAll('.product-item-row');
+            rows.forEach(row => row.remove());
+
+            if (selectedProducts.length === 0) {
+                emptyState.style.display = 'table-row';
+            } else {
+                emptyState.style.display = 'none';
+
+                selectedProducts.forEach((product, index) => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'product-item-row hover:bg-slate-50/50 transition-colors';
+                    tr.innerHTML = `
+                        <td class="p-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-200">
+                                    <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-800">${product.name}</h4>
+                                    <p class="text-xs text-slate-500">${product.brand}</p>
+                                    <!-- Hidden inputs for form submission -->
+                                    <input type="hidden" name="product_id[]" value="${product.id}">
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <span class="text-sm text-slate-600">${formatRupiah(product.price)}</span>
+                        </td>
+                        <td class="p-4">
+                            <div class="flex justify-center">
+                                <input type="number" name="quantity[]" min="1" value="${product.qty}" 
+                                    class="w-16 px-2 py-1.5 text-center border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-brand-500"
+                                    onchange="updateQuantity(${index}, this.value)">
+                            </div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <span class="text-sm font-semibold text-slate-800">${formatRupiah(product.price * product.qty)}</span>
+                            <input type="hidden" name="sub_total[]" value="${product.price * product.qty}">
+                        </td>
+                        <td class="p-4 text-center">
+                            <button type="button" onclick="removeProduct(${index})" class="text-red-400 hover:text-red-600 hover:bg-red-50 w-8 h-8 rounded-lg transition-colors inline-flex items-center justify-center">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            calculateTotals();
+        }
+
+        // Update Quantity via input
+        function updateQuantity(index, newQty) {
+            const qty = parseInt(newQty);
+            if (qty > 0) {
+                selectedProducts[index].qty = qty;
+                renderProductTable();
+            } else {
+                // Jangan perbolehkan kurang dari 1
+                renderProductTable(); // render ulang agar input kembali ke nilai asal
+            }
+        }
+
+        // Hapus produk
+        function removeProduct(index) {
+            selectedProducts.splice(index, 1);
+            renderProductTable();
+        }
+
+        // Kalkulasi Total
+        function calculateTotals() {
+            let totalQty = 0;
+            let grandTotal = 0;
+
+            selectedProducts.forEach(p => {
+                totalQty += p.qty;
+                grandTotal += (p.price * p.qty);
+            });
+
+            document.getElementById('summary-total-item').textContent = totalQty;
+            document.getElementById('summary-grand-total').textContent = formatRupiah(grandTotal);
+            document.getElementById('input-grand-total').value = grandTotal;
+        }
+
+        // Dummy Submit
+        function submitForm() {
+            if (selectedProducts.length === 0) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Pilih Produk',
+                    text: 'Silakan pilih minimal 1 produk terlebih dahulu!',
+                    confirmButtonColor: '#0ea5e9'
+                });
+                return;
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Transaksi berhasil disimpan!',
+                confirmButtonColor: '#0ea5e9'
+            }).then(() => {
+                window.location.href = 'transaksi.html';
+            });
+        }
     </script>
 </body>
 

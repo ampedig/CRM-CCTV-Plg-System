@@ -41,14 +41,13 @@
                 <i class="fa-solid fa-tag sb-icon"></i> <span>Kategori</span>
             </a>
 
-            <a href="chat-history.html" class="sb-item t-sidebar">
-                <i class="fa-solid fa-message sb-icon"></i> <span>Riwayat Chat</span>
-            </a>
-
-            <a href="transaksi.html" class="sb-item t-sidebar">
+            <a href="{{ route('transactions.index') }}" class="sb-item t-sidebar">
                 <i class="fa-solid fa-receipt sb-icon"></i> <span>Transaksi</span>
             </a>
 
+            <a href="chat-history.html" class="sb-item t-sidebar">
+                <i class="fa-solid fa-message sb-icon"></i> <span>Riwayat Chat</span>
+            </a>
 
             <p class="sb-title sb-title--spaced t-sidebar-title">Admin</p>
 
