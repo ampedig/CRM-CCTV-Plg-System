@@ -175,7 +175,8 @@
                 });
                 Toast.fire({
                     icon: 'success',
-                    title: "{{ session('success') }}"
+                    title: 'Berhasil...!',
+                    text: "{{ session('success') }}"
                 });
             });
         </script>
@@ -197,7 +198,8 @@
                 });
                 Toast.fire({
                     icon: 'error',
-                    title: "{{ session('error') }}"
+                    title: 'Gagal...!',
+                    text: "{{ session('error') }}"
                 });
             });
         </script>

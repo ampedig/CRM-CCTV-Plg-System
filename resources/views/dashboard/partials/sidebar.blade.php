@@ -6,7 +6,7 @@
         <div
             class="flex items-center gap-3 font-semibold text-lg tracking-tight text-slate-900 overflow-hidden logo-group">
             <img src="assets/images/logo.png" alt="AMPEDIG Logo" class="w-10 h-10 rounded-xl shrink-0">
-            <span class="logo-text whitespace-nowrap">PAY AMPEDIG</span>
+            <span class="logo-text whitespace-nowrap">AMBLAST</span>
         </div>
         <button id="desktopSidebarToggle"
             class="hidden lg:flex items-center justify-center w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors shrink-0 outline-none">
@@ -27,94 +27,35 @@
 
             <p class="sb-title sb-title--spaced t-sidebar-title">Manajemen</p>
 
+            <a href="{{ route('customers.index') }}" class="sb-item t-sidebar">
+                <i class="fa-solid fa-users sb-icon"></i>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="produk.html" class="sb-item t-sidebar">
+                <i class="fa-solid fa-cart-shopping sb-icon"></i>
+                <span>Produk</span>
+            </a>
+
+            <a href="category.html" class="sb-item t-sidebar">
+                <i class="fa-solid fa-tag sb-icon"></i> <span>Kategori</span>
+            </a>
+
+            <a href="chat-history.html" class="sb-item t-sidebar">
+                <i class="fa-solid fa-message sb-icon"></i> <span>Riwayat Chat</span>
+            </a>
+
             <a href="transaksi.html" class="sb-item t-sidebar">
                 <i class="fa-solid fa-receipt sb-icon"></i> <span>Transaksi</span>
             </a>
 
-            <a href="merchant.html" class="sb-item t-sidebar">
-                <i class="fa-solid fa-store sb-icon"></i>
-                <span>Merchant</span>
-            </a>
-
-            <a href="withdraw.html" class="sb-item t-sidebar">
-                <i class="fa-solid fa-money-bill sb-icon"></i>
-                <span>Withdraw</span>
-            </a>
-
-            <div class="relative group">
-                <button type="button" class="sb-dropdown t-sidebar dropdown-toggle" aria-expanded="false">
-                    <div class="sb-dropdown-content">
-                        <i class="fa-solid fa-book sb-icon"></i>
-                        <span>Dokumentasi</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down sb-chevron chevron-icon"></i>
-                </button>
-                <div
-                    class="submenu-container grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-                    <div class="overflow-hidden">
-                        <ul class="sb-submenu-line">
-                            <li><a href="cash-in.html" class="sb-sub-item">Cash In</a></li>
-                            <li><a href="cash-out.html" class="sb-sub-item">Cash Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <button type="button" class="sb-dropdown t-sidebar dropdown-toggle" aria-expanded="false">
-                    <div class="sb-dropdown-content">
-                        <i class="fa-solid fa-wallet sb-icon"></i>
-                        <span>Pembayaran</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down sb-chevron chevron-icon"></i>
-                </button>
-                <div
-                    class="submenu-container grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-                    <div class="overflow-hidden">
-                        <ul class="sb-submenu-line">
-                            <li><a href="pilih-pembayaran.html" class="sb-sub-item">Pilih Pembayaran</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
             <p class="sb-title sb-title--spaced t-sidebar-title">Admin</p>
-
-            <a href="admin-payout.html" class="sb-item t-sidebar">
-                <i class="fa-solid fa-money-bill sb-icon"></i>
-                <span>Payout</span>
-            </a>
-
-            <a href="admin-merchant.html" class="sb-item t-sidebar">
-                <i class="fa-solid fa-store sb-icon"></i>
-                <span>Admin Merchant</span>
-            </a>
 
             <a href="{{ route('users.index') }}" class="sb-item t-sidebar">
                 <i class="fa-solid fa-users sb-icon"></i>
                 <span>Pengguna</span>
             </a>
-
-            <!-- <p class="sb-title sb-title--spaced t-sidebar-title">Pages</p>
-            <div class="relative group">
-                <button type="button" class="sb-dropdown t-sidebar dropdown-toggle" aria-expanded="false">
-                    <div class="sb-dropdown-content">
-                        <i class="fa-solid fa-triangle-exclamation sb-icon"></i>
-                        <span>Error Pages</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down sb-chevron chevron-icon"></i>
-                </button>
-                <div
-                    class="submenu-container grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-                    <div class="overflow-hidden">
-                        <ul class="sb-submenu-line">
-                            <li><a href="error-404.html" class="sb-sub-item">404 Not Found</a></li>
-                            <li><a href="error-500.html" class="sb-sub-item">500 Server Error</a></li>
-                            <li><a href="error-403.html" class="sb-sub-item">403 Forbidden</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div> -->
 
             <p class="sb-title sb-title--spaced t-sidebar-title">System</p>
 

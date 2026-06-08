@@ -3,8 +3,8 @@
 
 <head>
     @@include('../partials/head.html', {
-    "title": "Tambah Pengguna - Masum.xyz",
-    "description": "Halaman Tambah Pengguna Baru"
+    "title": "Tambah Pelanggan - Masum.xyz",
+    "description": "Halaman Tambah Pelanggan Baru"
     })
     <!-- Select2 CSS (Local) -->
     <link rel="stylesheet" href="assets/libs/select2/css/select2.min.css">
@@ -38,10 +38,9 @@
 
                                 <!-- Header Kecil dalam Form -->
                                 <div class="mb-8 pb-4 border-b border-slate-100">
-                                    <h2 class="text-lg font-semibold text-slate-800">Tambah Pengguna Baru</h2>
-                                    <p class="text-sm text-slate-500 mt-1">Lengkapi detail di bawah untuk menambahkan
-                                        pengguna baru.
-                                    </p>
+                                    <h2 class="text-lg font-semibold text-slate-800">Tambah Pelanggan Baru</h2>
+                                    <p class="text-sm text-slate-500 mt-1">Lengkapi detail di bawah untuk mendaftarkan
+                                        pelanggan baru.</p>
                                 </div>
 
                                 <!-- Form Fields -->
@@ -49,47 +48,67 @@
                                     <div>
                                         <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Lengkap
                                             <span class="text-danger">*</span></label>
-                                        <input type="text" name="full_name" placeholder="Contoh: Ahmad Fauzi"
+                                        <input type="text" name="full_name" placeholder="Contoh: Rudi Hartono"
                                             required
                                             class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
                                     </div>
 
                                     <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Alamat Email
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">No. WhatsApp
                                             <span class="text-danger">*</span></label>
-                                        <input type="email" name="email"
-                                            placeholder="Contoh: ahmad.fauzi@example.com" required
+                                        <input type="tel" name="whatsapp" placeholder="Contoh: 081234567890"
+                                            required
                                             class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
                                     </div>
 
                                     <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Kata Sandi <span
-                                                class="text-danger">*</span></label>
-                                        <div class="relative">
-                                            <input type="password" id="password" name="password"
-                                                placeholder="Minimal 8 karakter" required
-                                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
-                                            <button type="button" onclick="togglePasswordVisibility()"
-                                                class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors">
-                                                <i class="fa-solid fa-eye" id="password-toggle-icon"></i>
-                                            </button>
-                                        </div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Pekerjaan <span
+                                                class="text-slate-400 text-xs font-normal">(Opsional)</span></label>
+                                        <input type="text" name="profession"
+                                            placeholder="Contoh: Swasta, PNS, Pengusaha"
+                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
                                     </div>
 
-                                    <div class="w-full">
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Role <span
-                                                class="text-danger">*</span></label>
-                                        <select class="select2-role w-full" required name="role">
-                                            <option></option>
-                                            <option value="admin">Admin</option>
-                                            <option value="sales">Sales</option>
-                                        </select>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Lahir
+                                            <span class="text-slate-400 text-xs font-normal">(Opsional)</span></label>
+                                        <input type="date" name="birth_date"
+                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700 text-left">
+                                    </div>
+
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Status Pelanggan
+                                            <span class="text-danger">*</span></label>
+                                        <div
+                                            class="flex items-center justify-between p-4 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100/50 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <div id="status-icon-bg"
+                                                    class="p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300">
+                                                    <i id="status-icon" class="fa-solid fa-user-check"></i>
+                                                </div>
+                                                <div>
+                                                    <p id="status-text"
+                                                        class="text-sm font-semibold text-slate-700 transition-colors duration-300">
+                                                        Aktif</p>
+                                                    <p id="status-desc"
+                                                        class="text-xs text-slate-500 transition-colors duration-300">
+                                                        Pelanggan dapat melakukan transaksi dan menerima promo.</p>
+                                                </div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" id="status-toggle" name="status" value="aktif"
+                                                    class="sr-only peer" checked>
+                                                <div
+                                                    class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500">
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- Action Buttons (Bottom Left Aligned) -->
                                 <div class="pt-6 border-t border-slate-100 flex items-center justify-start gap-3">
-                                    <a href="pengguna.html" class="btn btn-white">
+                                    <a href="pelanggan.html" class="btn btn-white">
                                         Batal
                                     </a>
                                     <button type="submit" class="btn btn-primary">
@@ -112,31 +131,39 @@
     <!-- Page Specific Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Select2 Initialization (Fixed Width) ---
-            if (typeof $ !== 'undefined' && $.fn.select2) {
-                $('.select2-role').select2({
-                    placeholder: 'Pilih Role',
-                    width: '100%', // Memaksa width 100% dari container parent
-                    minimumResultsForSearch: Infinity // Sembunyikan search jika item sedikit
+            const statusToggle = document.getElementById('status-toggle');
+            const statusText = document.getElementById('status-text');
+            const statusDesc = document.getElementById('status-desc');
+            const statusIcon = document.getElementById('status-icon');
+            const statusIconBg = document.getElementById('status-icon-bg');
+
+            if (statusToggle && statusText && statusDesc && statusIcon && statusIconBg) {
+                statusToggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        statusText.innerText = 'Aktif';
+                        statusDesc.innerText = 'Pelanggan dapat melakukan transaksi dan menerima promo.';
+
+                        // Switch icon
+                        statusIcon.className = 'fa-solid fa-user-check';
+
+                        // Switch colors (emerald/green)
+                        statusIconBg.className =
+                            'p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300';
+                    } else {
+                        statusText.innerText = 'Nonaktif';
+                        statusDesc.innerText =
+                            'Pelanggan dinonaktifkan sementara dan tidak dapat bertransaksi.';
+
+                        // Switch icon
+                        statusIcon.className = 'fa-solid fa-user-xmark';
+
+                        // Switch colors (rose/red)
+                        statusIconBg.className =
+                            'p-2 bg-rose-50 text-rose-600 rounded-lg transition-colors duration-300';
+                    }
                 });
             }
         });
-
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = document.getElementById('password-toggle-icon');
-            if (passwordInput && toggleIcon) {
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    toggleIcon.classList.remove('fa-eye');
-                    toggleIcon.classList.add('fa-eye-slash');
-                } else {
-                    passwordInput.type = 'password';
-                    toggleIcon.classList.remove('fa-eye-slash');
-                    toggleIcon.classList.add('fa-eye');
-                }
-            }
-        }
     </script>
 </body>
 
