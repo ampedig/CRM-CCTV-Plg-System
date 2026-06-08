@@ -3,15 +3,19 @@
 
 <head>
     @@include('../partials/head.html', {
-    "title": "Kategori Blog - Masum.xyz",
-    "description": "Halaman Kategori Blog"
+    "title": "Tambah Produk - Masum.xyz",
+    "description": "Halaman Tambah Produk Baru"
     })
+    <!-- Select2 CSS (Local) -->
     <link rel="stylesheet" href="assets/libs/select2/css/select2.min.css">
+    <!-- Quill Editor CSS (Local) -->
+    <link rel="stylesheet" href="assets/libs/quill/quill.snow.css">
+    <link rel="stylesheet" href="assets/css/text-editor.page.css">
 </head>
 
 <body class="bg-slate-50 text-slate-600 font-sans antialiased">
 
-    <div class="flex h-screen overflow-hidden bg-slate-50">
+    <div class="fixed inset-0 flex overflow-hidden bg-slate-50">
 
         @@include('../partials/sidebar.html')
 
@@ -23,449 +27,266 @@
 
             @@include('../partials/navbar.html')
 
+            <!-- Scrollable Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto flex flex-col">
 
                 <!-- Content Wrapper -->
                 <div class="flex-1 p-8">
+                    <!-- Form Container (Single Component) -->
                     <div class="max-w-screen-2xl mx-auto">
-                        <!-- Table Container -->
-                        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
-                            <!-- Header Table -->
-                            <div
-                                class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-sm text-slate-500 font-medium">Show</span>
-                                    <select class="select2-show-entries w-24">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
+
+                        <form action="javascript:void(0)" method="POST">
+                            <!-- Wrapper Card Putih Besar -->
+                            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+
+                                <!-- Header Kecil dalam Form -->
+                                <div class="mb-8 pb-4 border-b border-slate-100">
+                                    <h2 class="text-lg font-semibold text-slate-800">Tambah Produk Baru</h2>
+                                    <p class="text-sm text-slate-500 mt-1">Lengkapi detail di bawah untuk menambahkan
+                                        item baru.</p>
                                 </div>
 
-                                <button class="btn btn-primary rounded-xl" title="Tambah Kategori"
-                                    id="btnTambahKategori">
-                                    <i class="fa-solid fa-plus font-semibold"></i> Tambah Kategori
-                                </button>
+                                <!-- 1. Upload Gambar (Dengan Preview) -->
+                                <div class="mb-8">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-3">Foto Produk</label>
+                                    <div
+                                        class="w-full h-56 rounded-xl image-upload-area flex flex-col items-center justify-center cursor-pointer relative group overflow-hidden">
+                                        <!-- Input File -->
+                                        <input type="file" id="product-image"
+                                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
+                                            accept="image/*">
+
+                                        <!-- Placeholder Text (Default) -->
+                                        <div id="upload-placeholder"
+                                            class="text-center p-6 group-hover:-translate-y-1 transition-transform duration-300">
+                                            <div
+                                                class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-3 text-brand-600">
+                                                <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                                            </div>
+                                            <p class="text-sm font-semibold text-slate-700">Klik untuk upload</p>
+                                            <p class="text-xs text-slate-400 mt-1">atau drag & drop gambar disini</p>
+                                            <p class="text-[10px] text-slate-300 mt-2">Max. 2MB (PNG, JPG)</p>
+                                        </div>
+
+                                        <!-- Image Preview (Hidden by default) -->
+                                        <img id="image-preview" src="#" alt="Preview"
+                                            class="absolute inset-0 w-full h-full object-contain p-2 hidden z-10">
+                                    </div>
+                                </div>
+
+                                <!-- 2. Identitas Produk -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Produk <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" placeholder="Contoh: Kamera CCTV Hikvision Outdoor"
+                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Kategori <span
+                                                class="text-danger">*</span></label>
+                                        <select class="select2-category w-full">
+                                            <option></option>
+                                            <option value="cctv-indoor">CCTV Indoor</option>
+                                            <option value="cctv-outdoor">CCTV Outdoor</option>
+                                            <option value="dvr-nvr">DVR & NVR</option>
+                                            <option value="accessories">Aksesoris CCTV</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Merk <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" placeholder="Contoh: Hikvision, Dahua"
+                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Unit <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" placeholder="Contoh: pcs, meter, roll, pack"
+                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">Harga <span
+                                                class="text-danger">*</span></label>
+                                        <div class="relative">
+                                            <span
+                                                class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 font-semibold text-sm">Rp</span>
+                                            <input type="number" placeholder="0"
+                                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 font-medium">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Deskripsi -->
+                                <div class="mb-8">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-3">Deskripsi
+                                        Lengkap</label>
+                                    <!-- Wrapper class for focus styling -->
+                                    <div class="editor-wrapper">
+                                        <div id="quill-editor" style="min-height: 300px !important;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Status Toggles -->
+                                <div class="mb-10">
+                                    <div class="flex flex-col gap-4">
+                                        <div
+                                            class="flex items-center justify-between p-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <div id="status-icon-bg"
+                                                    class="p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300">
+                                                    <i id="status-icon" class="fa-solid fa-power-off"></i>
+                                                </div>
+                                                <div>
+                                                    <p id="status-text"
+                                                        class="text-sm font-semibold text-slate-700 transition-colors duration-300">
+                                                        Aktif</p>
+                                                    <p id="status-desc"
+                                                        class="text-xs text-slate-500 transition-colors duration-300">
+                                                        Produk akan tampil dan bisa dibeli.</p>
+                                                </div>
+                                            </div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" id="status-toggle" name="status" value="aktif"
+                                                    class="sr-only peer" checked>
+                                                <div
+                                                    class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500">
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons (Bottom Left Aligned) -->
+                                <div class="pt-6 border-t border-slate-100 flex items-center justify-start gap-3">
+                                    <a href="produk.html" class="btn btn-white">
+                                        Batal
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-save"></i> Simpan
+                                    </button>
+                                </div>
+
                             </div>
-
-                            <!-- Main Table -->
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead
-                                        class="bg-slate-50 text-slate-500 uppercase text-xs font-semibold tracking-wider">
-                                        <tr>
-                                            <th
-                                                class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                                #</th>
-                                            <th
-                                                class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                                Nama Kategori</th>
-                                            <th
-                                                class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                                Warna</th>
-                                            <th
-                                                class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                                Total Produk</th>
-                                            <th
-                                                class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                                Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-100 text-sm">
-                                        <!-- Item 1 -->
-                                        <tr class="hover:bg-slate-50 transition-colors">
-                                            <td class="px-6 py-4 text-slate-700 font-semibold td-nowrap">1</td>
-                                            <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">Marketing</td>
-                                            <td class="px-6 py-4 td-nowrap">
-                                                <div class="flex items-center gap-2.5">
-                                                    <span
-                                                        class="w-4 h-4 rounded-full bg-[#10B981] border border-emerald-600/20"></span>
-                                                    <code
-                                                        class="text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-lg">#10B981</code>
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 text-center td-nowrap">
-                                                <span
-                                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-semibold text-xs">
-                                                    24
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 text-center td-nowrap">
-                                                <div class="flex items-center justify-center gap-2">
-                                                    <button
-                                                        class="btn btn-primary btn-sm flex items-center gap-2 btn-edit-kategori">
-                                                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                                                    </button>
-                                                    <button class="btn btn-danger btn-sm flex items-center gap-2">
-                                                        <i class="fa-solid fa-trash-can"></i> Hapus
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Item 2 -->
-                                        <tr class="hover:bg-slate-50 transition-colors">
-                                            <td class="px-6 py-4 text-slate-700 font-semibold td-nowrap">2</td>
-                                            <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">Teknologi</td>
-                                            <td class="px-6 py-4 td-nowrap">
-                                                <div class="flex items-center gap-2.5">
-                                                    <span
-                                                        class="w-4 h-4 rounded-full bg-[#3B82F6] border border-blue-600/20"></span>
-                                                    <code
-                                                        class="text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-lg">#3B82F6</code>
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 text-center td-nowrap">
-                                                <span
-                                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-semibold text-xs">
-                                                    42
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 text-center td-nowrap">
-                                                <div class="flex items-center justify-center gap-2">
-                                                    <button
-                                                        class="btn btn-primary btn-sm flex items-center gap-2 btn-edit-kategori">
-                                                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                                                    </button>
-                                                    <button class="btn btn-danger btn-sm flex items-center gap-2">
-                                                        <i class="fa-solid fa-trash-can"></i> Hapus
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Item 3 -->
-                                        <tr class="hover:bg-slate-50 transition-colors">
-                                            <td class="px-6 py-4 text-slate-700 font-semibold td-nowrap">3</td>
-                                            <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">UI/UX Design
-                                            </td>
-                                            <td class="px-6 py-4 td-nowrap">
-                                                <div class="flex items-center gap-2.5">
-                                                    <span
-                                                        class="w-4 h-4 rounded-full bg-[#6366F1] border border-indigo-600/20"></span>
-                                                    <code
-                                                        class="text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-lg">#6366F1</code>
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 text-center td-nowrap">
-                                                <span
-                                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-semibold text-xs">
-                                                    15
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 text-center td-nowrap">
-                                                <div class="flex items-center justify-center gap-2">
-                                                    <button
-                                                        class="btn btn-primary btn-sm flex items-center gap-2 btn-edit-kategori">
-                                                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                                                    </button>
-                                                    <button class="btn btn-danger btn-sm flex items-center gap-2">
-                                                        <i class="fa-solid fa-trash-can"></i> Hapus
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <!-- Pagination -->
-                            <div
-                                class="p-5 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-                                <span class="text-xs text-slate-500 font-medium">Menampilkan <span
-                                        class="font-semibold text-slate-700">1-3</span> dari <span
-                                        class="font-semibold text-slate-700">3</span> data</span>
-
-                                <nav aria-label="Page navigation">
-                                    <ul class="inline-flex items-center -space-x-px">
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center w-9 h-9 ml-0 leading-tight text-slate-500 bg-white border border-slate-200 rounded-l-lg hover:bg-slate-50 hover:text-slate-700 transition">
-                                                <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center w-9 h-9 leading-tight text-brand-600 bg-brand-50 border border-brand-200 font-semibold z-10 transition">1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center w-9 h-9 leading-tight text-slate-500 bg-white border border-slate-200 hover:bg-slate-50 hover:text-slate-700 transition">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center w-9 h-9 leading-tight text-slate-500 bg-white border border-slate-200 hover:bg-slate-50 hover:text-slate-700 transition">3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center w-9 h-9 leading-tight text-slate-500 bg-white border border-slate-200 rounded-r-lg hover:bg-slate-50 hover:text-slate-700 transition">
-                                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-
+                        </form>
                     </div>
                 </div>
 
-                <!-- Footer -->
-                <footer
-                    class="shrink-0 border-t border-slate-100 bg-white h-[76px] flex items-center justify-center text-sm text-slate-400 font-medium">
-                    &copy; 2026 Masum.xyz
-                </footer>
+                @@include('../partials/footer.html')
             </main>
         </div>
     </div>
 
-
-
-    <!-- Modal Tambah Kategori -->
-    <div id="modalTambahKategori" class="fixed inset-0 z-50 hidden">
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" id="modalOverlay"></div>
-
-        <!-- Modal Panel -->
-        <div class="fixed inset-0 z-10 overflow-y-auto w-full max-h-screen">
-            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0" id="modalBackdrop">
-                <div
-                    class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg rounded-2xl border border-slate-100">
-
-                    <form action="javascript:void(0)" class="mb-0">
-                        <div class="bg-white px-6 pb-6 pt-6">
-                            <div class="flex items-center justify-between mb-6">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800">Tambah Kategori Baru</h3>
-                                    <p class="text-xs text-slate-500 mt-1">Lengkapi data untuk kategori blog baru.</p>
-                                </div>
-                                <button type="button"
-                                    class="text-slate-400 hover:text-slate-600 transition-colors w-8 h-8 flex items-center justify-center rounded-xl hover:bg-slate-100"
-                                    id="btnCloseModal">
-                                    <i class="fa-solid fa-xmark text-xl"></i>
-                                </button>
-                            </div>
-
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Kategori <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" placeholder="Ketik nama kategori..."
-                                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700"
-                                        required>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Warna Kategori <span
-                                            class="text-danger">*</span></label>
-                                    <div class="flex items-center gap-3">
-                                        <!-- Color Picker Cube -->
-                                        <div
-                                            class="relative w-12 h-12 shrink-0 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 hover:border-brand-300 transition-colors">
-                                            <input type="color" id="category-color-picker" value="#3B82F6"
-                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] cursor-pointer border-0 p-0 bg-transparent">
-                                        </div>
-                                        <!-- Hex Text Input -->
-                                        <input type="text" id="category-color-hex" value="#3B82F6"
-                                            placeholder="#FFFFFF" required
-                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-brand-500 transition-colors uppercase font-mono font-medium text-slate-700">
-                                    </div>
-                                    <p class="text-[11px] text-slate-500 mt-2 font-medium">Klik kotak warna di atas
-                                        untuk memilih atau ketik kode Hex.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-slate-50 border-t border-slate-100 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 rounded-b-2xl">
-                            <button type="button" class="btn btn-white rounded-xl font-semibold w-full sm:w-auto"
-                                id="btnCancelModal">Batal</button>
-                            <button type="submit"
-                                class="btn btn-primary rounded-xl font-semibold w-full sm:w-auto">Simpan
-                                Kategori</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Edit Kategori -->
-    <div id="modalEditKategori" class="fixed inset-0 z-50 hidden">
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" id="modalOverlayEdit"></div>
-
-        <!-- Modal Panel -->
-        <div class="fixed inset-0 z-10 overflow-y-auto w-full max-h-screen">
-            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0" id="modalBackdropEdit">
-                <div
-                    class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg rounded-2xl border border-slate-100">
-
-                    <form action="javascript:void(0)" class="mb-0">
-                        <div class="bg-white px-6 pb-6 pt-6">
-                            <div class="flex items-center justify-between mb-6">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800">Edit Kategori</h3>
-                                    <p class="text-xs text-slate-500 mt-1">Ubah data kategori blog ini.</p>
-                                </div>
-                                <button type="button"
-                                    class="text-slate-400 hover:text-slate-600 transition-colors w-8 h-8 flex items-center justify-center rounded-xl hover:bg-slate-100"
-                                    id="btnCloseModalEdit">
-                                    <i class="fa-solid fa-xmark text-xl"></i>
-                                </button>
-                            </div>
-
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Kategori <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" placeholder="Ketik nama kategori..." value="Marketing"
-                                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700"
-                                        required>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Warna Kategori <span
-                                            class="text-danger">*</span></label>
-                                    <div class="flex items-center gap-3">
-                                        <!-- Color Picker Cube -->
-                                        <div
-                                            class="relative w-12 h-12 shrink-0 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 hover:border-brand-300 transition-colors">
-                                            <input type="color" id="category-color-picker-edit" value="#10B981"
-                                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] cursor-pointer border-0 p-0 bg-transparent">
-                                        </div>
-                                        <!-- Hex Text Input -->
-                                        <input type="text" id="category-color-hex-edit" value="#10B981"
-                                            placeholder="#FFFFFF" required
-                                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-brand-500 transition-colors uppercase font-mono font-medium text-slate-700">
-                                    </div>
-                                    <p class="text-[11px] text-slate-500 mt-2 font-medium">Klik kotak warna di atas
-                                        untuk memilih atau ketik kode Hex.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-slate-50 border-t border-slate-100 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 rounded-b-2xl">
-                            <button type="button" class="btn btn-white rounded-xl font-semibold w-full sm:w-auto"
-                                id="btnCancelModalEdit">Batal</button>
-                            <button type="submit"
-                                class="btn btn-primary rounded-xl font-semibold w-full sm:w-auto">Simpan
-                                Perubahan</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
     @@include('../partials/vendor-scripts.html')
-    <script src="assets/libs/select2/js/select2.min.js"></script>
+    <script src="assets/libs/quill/quill.js"></script>
 
+    <!-- Page Specific Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Select2 Init
+            // --- Select2 Initialization ---
             if (typeof $ !== 'undefined' && $.fn.select2) {
-                $('.select2-show-entries').select2({
+                $('.select2-category').select2({
+                    placeholder: 'Pilih Kategori',
+                    width: '100%',
                     minimumResultsForSearch: Infinity
                 });
             }
 
-            // Modal Tambah Kategori Logic
-            const modal = document.getElementById('modalTambahKategori');
-            const btnOpen = document.getElementById('btnTambahKategori');
-            const btnClose = document.getElementById('btnCloseModal');
-            const btnCancel = document.getElementById('btnCancelModal');
-            const modalBackdrop = document.getElementById('modalBackdrop');
-
-            const toggleModal = () => {
-                if (modal.classList.contains('hidden')) {
-                    modal.classList.remove('hidden');
-                } else {
-                    modal.classList.add('hidden');
-                }
-            };
-
-            if (btnOpen && modal) {
-                btnOpen.addEventListener('click', toggleModal);
-                btnClose.addEventListener('click', toggleModal);
-                btnCancel.addEventListener('click', toggleModal);
-
-                // Allow closing when clicking outside the modal content
-                modalBackdrop.addEventListener('click', (e) => {
-                    if (e.target === modalBackdrop) {
-                        toggleModal();
+            // --- Quill Rich Text Editor Initialization ---
+            if (document.getElementById('quill-editor')) {
+                new Quill('#quill-editor', {
+                    theme: 'snow',
+                    placeholder: 'Ketikkan deskripsi lengkap produk...',
+                    modules: {
+                        toolbar: [
+                            [{
+                                'font': []
+                            }, {
+                                'size': ['small', false, 'large', 'huge']
+                            }],
+                            [{
+                                'header': [1, 2, 3, 4, 5, 6, false]
+                            }],
+                            ['bold', 'italic', 'underline', 'strike'],
+                            [{
+                                'color': []
+                            }, {
+                                'background': []
+                            }],
+                            [{
+                                'script': 'sub'
+                            }, {
+                                'script': 'super'
+                            }],
+                            [{
+                                'list': 'ordered'
+                            }, {
+                                'list': 'bullet'
+                            }, {
+                                'indent': '-1'
+                            }, {
+                                'indent': '+1'
+                            }],
+                            [{
+                                'direction': 'rtl'
+                            }, {
+                                'align': []
+                            }],
+                            ['clean']
+                        ]
                     }
                 });
             }
 
-            // Link color picker and hex text input in modal
-            const colorPicker = document.getElementById('category-color-picker');
-            const colorHexInput = document.getElementById('category-color-hex');
+            // --- Status Toggle Logic ---
+            const statusToggle = document.getElementById('status-toggle');
+            const statusText = document.getElementById('status-text');
+            const statusDesc = document.getElementById('status-desc');
+            const statusIcon = document.getElementById('status-icon');
+            const statusIconBg = document.getElementById('status-icon-bg');
 
-            if (colorPicker && colorHexInput) {
-                colorPicker.addEventListener('input', (e) => {
-                    colorHexInput.value = e.target.value.toUpperCase();
-                });
-
-                colorHexInput.addEventListener('input', (e) => {
-                    let val = e.target.value;
-                    if (val && !val.startsWith('#')) {
-                        val = '#' + val;
-                    }
-                    if (/^#[0-9A-F]{6}$/i.test(val)) {
-                        colorPicker.value = val;
-                    }
-                });
-            }
-
-            // Modal Edit Kategori Logic
-            const modalEdit = document.getElementById('modalEditKategori');
-            const btnEditList = document.querySelectorAll('.btn-edit-kategori');
-            const btnCloseEdit = document.getElementById('btnCloseModalEdit');
-            const btnCancelEdit = document.getElementById('btnCancelModalEdit');
-            const modalBackdropEdit = document.getElementById('modalBackdropEdit');
-
-            const toggleModalEdit = () => {
-                if (modalEdit.classList.contains('hidden')) {
-                    modalEdit.classList.remove('hidden');
-                } else {
-                    modalEdit.classList.add('hidden');
-                }
-            };
-
-            if (modalEdit) {
-                btnEditList.forEach(btn => {
-                    btn.addEventListener('click', toggleModalEdit);
-                });
-                btnCloseEdit.addEventListener('click', toggleModalEdit);
-                btnCancelEdit.addEventListener('click', toggleModalEdit);
-
-                // Allow closing when clicking outside the modal content
-                modalBackdropEdit.addEventListener('click', (e) => {
-                    if (e.target === modalBackdropEdit) {
-                        toggleModalEdit();
+            if (statusToggle && statusText && statusDesc && statusIcon && statusIconBg) {
+                statusToggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        statusText.innerText = 'Aktif';
+                        statusDesc.innerText = 'Produk akan tampil dan bisa dibeli.';
+                        statusIcon.className = 'fa-solid fa-power-off';
+                        statusIconBg.className =
+                            'p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300';
+                    } else {
+                        statusText.innerText = 'Nonaktif';
+                        statusDesc.innerText = 'Produk disembunyikan dari aplikasi user.';
+                        statusIcon.className = 'fa-solid fa-ban';
+                        statusIconBg.className =
+                            'p-2 bg-rose-50 text-rose-600 rounded-lg transition-colors duration-300';
                     }
                 });
             }
 
-            // Link color picker and hex text input in Edit modal
-            const colorPickerEdit = document.getElementById('category-color-picker-edit');
-            const colorHexInputEdit = document.getElementById('category-color-hex-edit');
+            // --- Image Preview Logic ---
+            const productImageInput = document.getElementById('product-image');
+            const imagePreview = document.getElementById('image-preview');
+            const uploadPlaceholder = document.getElementById('upload-placeholder');
 
-            if (colorPickerEdit && colorHexInputEdit) {
-                colorPickerEdit.addEventListener('input', (e) => {
-                    colorHexInputEdit.value = e.target.value.toUpperCase();
-                });
-
-                colorHexInputEdit.addEventListener('input', (e) => {
-                    let val = e.target.value;
-                    if (val && !val.startsWith('#')) {
-                        val = '#' + val;
-                    }
-                    if (/^#[0-9A-F]{6}$/i.test(val)) {
-                        colorPickerEdit.value = val;
+            if (productImageInput && imagePreview && uploadPlaceholder) {
+                productImageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.classList.remove('hidden');
+                            uploadPlaceholder.classList.add('hidden');
+                        }
+                        reader.readAsDataURL(file);
+                    } else {
+                        imagePreview.classList.add('hidden');
+                        imagePreview.src = '#';
+                        uploadPlaceholder.classList.remove('hidden');
                     }
                 });
             }

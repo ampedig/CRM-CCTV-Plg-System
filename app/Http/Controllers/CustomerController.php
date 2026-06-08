@@ -58,7 +58,7 @@ class CustomerController extends Controller
     {
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
-            'whatsapp_number' => 'required|string|max:20|unique:customers,whatsapp_number,' . $customer->id,
+            'whatsapp_number' => 'required|string|max:20|unique:customers,whatsapp_number,'.$customer->id,
             'occupation' => 'nullable|string|max:255',
             'date_of_birth' => 'nullable|date',
             'is_active' => 'required|boolean',

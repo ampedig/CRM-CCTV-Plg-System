@@ -5,7 +5,7 @@
     <div class="flex items-center justify-between h-20 px-6 border-b border-slate-100 logo-wrapper">
         <div
             class="flex items-center gap-3 font-semibold text-lg tracking-tight text-slate-900 overflow-hidden logo-group">
-            <img src="assets/images/logo.png" alt="AMPEDIG Logo" class="w-10 h-10 rounded-xl shrink-0">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG Logo" class="w-10 h-10 rounded-xl shrink-0">
             <span class="logo-text whitespace-nowrap">AMBLAST</span>
         </div>
         <button id="desktopSidebarToggle"
@@ -32,7 +32,7 @@
                 <span>Pelanggan</span>
             </a>
 
-            <a href="produk.html" class="sb-item t-sidebar">
+            <a href="{{ route('products.index') }}" class="sb-item t-sidebar">
                 <i class="fa-solid fa-cart-shopping sb-icon"></i>
                 <span>Produk</span>
             </a>

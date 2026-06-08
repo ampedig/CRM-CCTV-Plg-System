@@ -68,7 +68,7 @@
                                 <label class="relative inline-flex items-center cursor-pointer">
                                     <input type="hidden" name="is_active" value="0">
                                     <input type="checkbox" id="status-toggle" name="is_active" value="1" class="sr-only peer" {{ old('is_active', 1) ? 'checked' : '' }}>
-                                    <div id="toggle-bg" class="w-11 h-6 {{ old('is_active', 1) ? 'bg-emerald-500' : 'bg-slate-300' }} peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                    <div id="toggle-bg" class="w-11 h-6 {{ old('is_active', 1) ? 'bg-emerald-500' : 'bg-rose-500' }} peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all">
                                     </div>
                                 </label>
                             </div>
@@ -104,13 +104,13 @@
             const toggleBg = document.getElementById('toggle-bg');
 
             if (statusToggle && statusText && statusDesc && statusIcon && statusIconBg && toggleBg) {
-                statusToggle.addEventListener('change', function() {
-                    if (this.checked) {
+                const updateStatusView = () => {
+                    if (statusToggle.checked) {
                         statusText.innerText = 'Aktif';
                         statusDesc.innerText = 'Pelanggan dapat melakukan transaksi dan menerima promo.';
                         statusIcon.className = 'fa-solid fa-user-check';
                         statusIconBg.className = 'p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300';
-                        toggleBg.classList.remove('bg-slate-300');
+                        toggleBg.classList.remove('bg-rose-500');
                         toggleBg.classList.add('bg-emerald-500');
                     } else {
                         statusText.innerText = 'Nonaktif';
@@ -118,9 +118,12 @@
                         statusIcon.className = 'fa-solid fa-user-xmark';
                         statusIconBg.className = 'p-2 bg-rose-50 text-rose-600 rounded-lg transition-colors duration-300';
                         toggleBg.classList.remove('bg-emerald-500');
-                        toggleBg.classList.add('bg-slate-300');
+                        toggleBg.classList.add('bg-rose-500');
                     }
-                });
+                };
+
+                statusToggle.addEventListener('change', updateStatusView);
+                updateStatusView(); // Run once on load
             }
         });
     </script>
