@@ -37,7 +37,7 @@
                 <span>Produk</span>
             </a>
 
-            <a href="category.html" class="sb-item t-sidebar">
+            <a href="{{ route('categories.index') }}" class="sb-item t-sidebar">
                 <i class="fa-solid fa-tag sb-icon"></i> <span>Kategori</span>
             </a>
 
