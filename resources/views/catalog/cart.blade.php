@@ -2,17 +2,31 @@
 <html lang="id">
 
 <head>
-    @@include('../partials/head.html', {
-    "title": "Keranjang Belanja - AMPEDIG",
-    "description": "Simpan dan pesan produk CCTV pilihan Anda dari katalog AMPEDIG."
-    })
+    @section('title', 'Keranjang Belanja - AMPEDIG')
+    @include('dashboard.partials.head')
+    @vite(['resources/css/app.css'])
     <style>
         /* Override body lock from form-plugins.css to allow scrolling */
-        html,
-        body {
+        html {
             height: auto !important;
             overflow: auto !important;
             overscroll-behavior: auto !important;
+        }
+
+        /* Ensure footer sticks to bottom */
+        body {
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: 100vh !important;
+            height: auto !important;
+            overflow: auto !important;
+            overscroll-behavior: auto !important;
+            margin: 0;
+        }
+
+        /* Push footer to bottom */
+        main {
+            flex-grow: 1 !important;
         }
 
         /* Smooth scrollbar */
@@ -35,12 +49,60 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
+        /* Custom max-width container to prevent excessive width on desktop */
+        .katalog-container {
+            max-width: 1080px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .katalog-container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .katalog-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        /* Fixed heights for logos to bypass missing Tailwind compilation */
+        .katalog-logo {
+            height: 32px !important;
+            width: auto !important;
+        }
+
+        .katalog-logo-footer {
+            height: 24px !important;
+            width: auto !important;
+        }
+
+        /* Grid fallbacks for missing Tailwind classes */
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-12 {
+                grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+            }
+            .lg\:col-span-8 {
+                grid-column: span 8 / span 8 !important;
+            }
+            .lg\:col-span-4 {
+                grid-column: span 4 / span 4 !important;
+            }
+        }
+
         /* Cart image sizing */
         .cart-img {
-            width: 72px;
-            height: 72px;
-            object-fit: cover;
-            border-radius: 1rem;
+            width: 72px !important;
+            height: 72px !important;
+            object-fit: cover !important;
+            border-radius: 1rem !important;
         }
     </style>
 </head>
@@ -49,25 +111,25 @@
 
     <!-- ===== STICKY NAVBAR ===== -->
     <header class="katalog-header sticky top-0 z-50 bg-white/90 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="katalog-container">
             <div class="flex items-center justify-between h-16 gap-4">
 
                 <!-- Back Button -->
-                <a href="katalog.html"
+                <a href="{{ route('catalog.index') }}"
                     class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">
                     <i class="fa-solid fa-arrow-left"></i>
                     <span>Kembali ke Katalog</span>
                 </a>
 
                 <!-- Logo -->
-                <a href="katalog.html" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="../assets/images/logo.png" alt="AMPEDIG" class="h-8 w-auto rounded-lg">
+                <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
                     <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
                 </a>
 
                 <!-- Right Side Actions -->
                 <div class="flex items-center gap-3 flex-shrink-0">
-                    <a href="https://wa.me/6281234567890" target="_blank"
+                    <a href="https://wa.me/{{ config('services.whatsapp.number') }}" target="_blank"
                         class="btn btn-primary btn-sm flex items-center gap-2 rounded-xl">
                         <i class="fa-brands fa-whatsapp text-sm"></i>
                         <span>Hubungi Kami</span>
@@ -78,7 +140,7 @@
     </header>
 
     <!-- ===== CART CONTAINER ===== -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <main class="flex-grow katalog-container py-10 w-full">
         <h1 class="text-xl sm:text-2xl font-semibold text-slate-800 mb-8">Keranjang Belanja</h1>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8" id="cartContent">
@@ -110,7 +172,7 @@
                         <span>Kirim Pesanan ke WhatsApp</span>
                     </a>
 
-                    <a href="katalog.html"
+                    <a href="{{ route('catalog.index') }}"
                         class="w-full py-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 text-xs font-semibold rounded-xl text-center transition-colors">
                         Lanjut Belanja
                     </a>
@@ -126,7 +188,7 @@
             <h2 class="text-lg font-semibold text-slate-700 mb-2">Keranjang Belanja Kosong</h2>
             <p class="text-sm text-slate-400 mb-6 max-w-md mx-auto">Anda belum menambahkan produk apa pun ke keranjang
                 belanja Anda. Temukan berbagai solusi CCTV terbaik di katalog kami.</p>
-            <a href="katalog.html" class="btn btn-primary px-8 py-3.5 rounded-xl text-xs font-semibold">
+            <a href="{{ route('catalog.index') }}" class="inline-block px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-semibold transition-colors">
                 Lihat Katalog Produk
             </a>
         </div>
@@ -134,9 +196,9 @@
 
     <!-- ===== FOOTER ===== -->
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm mt-auto">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="../assets/images/logo.png" alt="AMPEDIG" class="h-7 w-auto rounded-lg">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo-footer rounded-lg">
                 <span class="font-semibold text-white">AMPEDIG</span>
             </div>
             <p>©
@@ -147,10 +209,10 @@
         </div>
     </footer>
 
-    @@include('../partials/vendor-scripts.html')
+    @include('dashboard.partials.vendor-scripts')
 
     <script>
-        const WHATSAPP_NUMBER = '6281234567890';
+        const WHATSAPP_NUMBER = '{{ config('services.whatsapp.number') }}';
 
         // Load items from localStorage
         function getCart() {

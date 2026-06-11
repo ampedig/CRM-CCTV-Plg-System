@@ -24,4 +24,9 @@ class CatalogController extends Controller
 
         return view('catalog.detail', compact('product'));
     }
+
+    public function cart()
+    {
+        return view('catalog.cart');
+    }
 }

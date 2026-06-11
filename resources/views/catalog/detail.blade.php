@@ -201,7 +201,7 @@
 
                 <!-- Right Side Actions -->
                 <div class="flex items-center gap-3 flex-shrink-0">
-                    <a href="cart.html"
+                    <a href="{{ route('catalog.cart') }}"
                         class="relative text-slate-600 hover:text-brand-600 transition-colors p-2.5 flex items-center">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
                         <span id="cartBadge"
