@@ -104,6 +104,16 @@
             object-fit: cover !important;
             border-radius: 1rem !important;
         }
+
+        /* Fixed size for quantity buttons to prevent squishing */
+        .cart-qty-btn {
+            width: 28px !important;
+            height: 28px !important;
+            flex-shrink: 0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
     </style>
 </head>
 
@@ -167,14 +177,14 @@
                     </div>
 
                     <a id="checkoutWaBtn" href="#" target="_blank"
-                        class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 mb-4">
+                        class="btn btn-primary w-full rounded-xl flex items-center justify-center gap-2 mb-4">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span>Kirim Pesanan ke WhatsApp</span>
                     </a>
 
                     <a href="{{ route('catalog.index') }}"
-                        class="w-full py-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 text-xs font-semibold rounded-xl text-center transition-colors">
-                        Lanjut Belanja
+                        class="btn btn-white w-full rounded-xl flex items-center justify-center gap-2">
+                        <span>Lanjut Belanja</span>
                     </a>
                 </div>
             </div>
@@ -188,7 +198,7 @@
             <h2 class="text-lg font-semibold text-slate-700 mb-2">Keranjang Belanja Kosong</h2>
             <p class="text-sm text-slate-400 mb-6 max-w-md mx-auto">Anda belum menambahkan produk apa pun ke keranjang
                 belanja Anda. Temukan berbagai solusi CCTV terbaik di katalog kami.</p>
-            <a href="{{ route('catalog.index') }}" class="inline-block px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-semibold transition-colors">
+            <a href="{{ route('catalog.index') }}" class="btn btn-primary rounded-xl inline-flex items-center justify-center px-8">
                 Lihat Katalog Produk
             </a>
         </div>
@@ -265,11 +275,11 @@
                     <!-- Quantity Control & Price -->
                     <div class="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
                         <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-2 py-1">
-                            <button onclick="updateQty(${index}, -1)" class="w-7 h-7 bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 rounded-lg flex items-center justify-center text-sm font-semibold transition-colors">
+                            <button onclick="updateQty(${index}, -1)" class="cart-qty-btn bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 rounded-lg text-sm font-semibold transition-colors">
                                 <i class="fa-solid fa-minus text-[10px]"></i>
                             </button>
                             <span class="w-8 text-center text-xs font-semibold text-slate-700">${item.qty}</span>
-                            <button onclick="updateQty(${index}, 1)" class="w-7 h-7 bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 rounded-lg flex items-center justify-center text-sm font-semibold transition-colors">
+                            <button onclick="updateQty(${index}, 1)" class="cart-qty-btn bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 rounded-lg text-sm font-semibold transition-colors">
                                 <i class="fa-solid fa-plus text-[10px]"></i>
                             </button>
                         </div>

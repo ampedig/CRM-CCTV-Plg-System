@@ -293,12 +293,12 @@
                 <!-- Call to Action -->
                 <div class="border-t border-slate-100 pt-6 flex flex-col sm:flex-row gap-4">
                     <button onclick="addToCart()"
-                        class="flex-1 py-4 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2">
+                        class="btn btn-primary flex-1 rounded-xl flex items-center justify-center gap-2">
                         <i class="fa-solid fa-cart-plus text-sm"></i>
                         <span>Tambah ke Keranjang</span>
                     </button>
                     <a id="waOrderBtn" href="#" target="_blank"
-                        class="flex-1 py-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2">
+                        class="btn btn-white flex-1 rounded-xl flex items-center justify-center gap-2">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span>Beli Langsung (WA)</span>
                     </a>
