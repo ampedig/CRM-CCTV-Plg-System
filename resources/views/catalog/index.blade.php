@@ -40,6 +40,27 @@
             border-color: var(--brand-600, #0284c7);
         }
 
+        .cat-pill {
+            flex-shrink: 0;
+        }
+
+        /* Scrollable category list */
+        .category-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+            padding-bottom: 6px;
+            margin-bottom: -6px; /* Offset the padding bottom */
+        }
+
+        .category-scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
         /* Product card hover lift */
         .product-card {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -119,18 +140,12 @@
             }
         }
 
-        /* Fixed height for product images on all screens to prevent distortion */
+        /* Fixed height/aspect ratio for product images to be square on all screens */
         .product-card img {
-            height: 140px !important;
             width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 1 / 1 !important;
             object-fit: cover !important;
-        }
-
-        @media (max-width: 639px) {
-            .product-card img {
-                height: auto !important;
-                aspect-ratio: 1 / 1 !important;
-            }
         }
 
         /* Fallback for search button border radius */
@@ -222,7 +237,7 @@
         <!-- Category Pills -->
         <div class="mb-8">
             <h2 class="text-base font-semibold text-slate-700 mb-4">Kategori Produk</h2>
-            <div class="flex gap-2 flex-wrap" id="categoryList">
+            <div class="category-scroll-container" id="categoryList">
                 <button
                     class="cat-pill active px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-brand-400 transition-all"
                     data-cat="all">
@@ -254,7 +269,7 @@
         <!-- Product Grid -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="productGrid">
             @forelse($products as $product)
-            <div onclick="openDetail(this)"
+            <a href="{{ route('catalog.detail', $product->slug) }}"
                 class="product-card cursor-pointer bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-brand-400 transition-all"
                 data-cat="{{ $product->category->slug ?? '' }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}"
                 data-brand="{{ $product->merk ?? 'Generic' }}"
@@ -270,12 +285,12 @@
                         class="text-[10px] font-semibold text-brand-600 bg-brand-50 px-2 py-0.5 rounded-md w-fit mb-1.5">{{ $product->category->name ?? 'Uncategorized' }}</span>
                     <h3 class="text-sm font-semibold text-slate-800 leading-snug mb-2 flex-1">{{ $product->name }}</h3>
                     <p class="text-base font-semibold text-slate-900 mb-3">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <button
+                    <div
                         class="w-full py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 mt-auto">
                         Lihat Detail
-                    </button>
+                    </div>
                 </div>
-            </div>
+            </a>
             @empty
                 <!-- No Products -> Let JS handle or handled below -->
             @endforelse
@@ -416,29 +431,7 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Open Product Detail Page
-        function openDetail(card) {
-            const name = card.dataset.name;
-            const price = card.dataset.price;
-            const brand = card.dataset.brand;
-            const cat = card.dataset.cat;
-            const img = card.querySelector('img').src;
-            const desc = card.dataset.desc;
-            const unit = card.dataset.unit || 'pcs';
-            const isActive = card.dataset.isActive || 'true';
 
-            localStorage.setItem('selectedProduct', JSON.stringify({
-                name,
-                price,
-                brand,
-                img,
-                cat,
-                desc,
-                unit,
-                isActive
-            }));
-            window.location.href = 'detail-produk.html';
-        }
 
         // Update Cart Badge Count
         function updateCartBadge() {
