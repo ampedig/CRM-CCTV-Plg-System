@@ -31,9 +31,18 @@ class Customer extends Model
             ->selectRaw('COUNT(*) as total_count, SUM(grand_total) as total_value')
             ->first();
 
+        $hasPending = $this->transactions()->where('payment_status', 'pending')->exists();
+        $hasPaid = $this->transactions()->where('payment_status', 'paid')->exists();
+
+        $paymentStatus = 'Belum';
+        if (! $hasPending && $hasPaid) {
+            $paymentStatus = 'Lunas';
+        }
+
         $this->update([
             'transaction_count' => $stats->total_count ?? 0,
             'total_transaction_value' => $stats->total_value ?? 0,
+            'payment_status' => $paymentStatus,
         ]);
     }
 }
