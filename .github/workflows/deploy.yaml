@@ -1,0 +1,63 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [prod]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /www/wwwroot/crm-cctv
+
+            # Menentukan php binary versi 8.5 untuk aaPanel
+            PHP_BIN="/www/server/php/85/bin/php"
+
+            echo ">>> Enable maintenance mode"
+            $PHP_BIN artisan down || true
+
+            echo ">>> Pull latest code"
+            git pull origin main
+
+            echo ">>> Composer install"
+            # Jalankan composer menggunakan PHP 8.5
+            COMPOSER_PATH=$(which composer)
+            $PHP_BIN $COMPOSER_PATH install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+            echo ">>> Migrate database"
+            $PHP_BIN artisan migrate --force
+
+            echo ">>> Clear & optimize Laravel"
+            $PHP_BIN artisan optimize:clear
+            $PHP_BIN artisan optimize
+
+            echo ">>> Disable maintenance mode"
+            $PHP_BIN artisan up
+
+      - name: Send Telegram Notification
+        run: |
+          MSG="🚀 Deployment Berhasil
+
+          Project: CRM CCTV Wongkito
+          Site : https://cctvwongkito.my.id
+          Branch: prod
+          Author: $(git log -1 --pretty=%an)
+          Commit: $(git log -1 --pretty=%B)
+
+          Tanggal: $(date +"%d %b %Y %H:%M:%S")"
+
+          curl -s -X POST "https://api.telegram.org/bot7606903409:AAHG_hyBsE1lfZOMZv5sqizwUZkBCE8Sk-A/sendMessage" \
+          -d chat_id=1255532464 \
+          -d text="$MSG" \
+          -d parse_mode=Markdown
