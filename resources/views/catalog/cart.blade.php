@@ -89,9 +89,11 @@
             .lg\:grid-cols-12 {
                 grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
             }
+
             .lg\:col-span-8 {
                 grid-column: span 8 / span 8 !important;
             }
+
             .lg\:col-span-4 {
                 grid-column: span 4 / span 4 !important;
             }
@@ -133,7 +135,7 @@
 
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
                     <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
                 </a>
 
@@ -198,7 +200,8 @@
             <h2 class="text-lg font-semibold text-slate-700 mb-2">Keranjang Belanja Kosong</h2>
             <p class="text-sm text-slate-400 mb-6 max-w-md mx-auto">Anda belum menambahkan produk apa pun ke keranjang
                 belanja Anda. Temukan berbagai solusi CCTV terbaik di katalog kami.</p>
-            <a href="{{ route('catalog.index') }}" class="btn btn-primary rounded-xl inline-flex items-center justify-center px-8">
+            <a href="{{ route('catalog.index') }}"
+                class="btn btn-primary rounded-xl inline-flex items-center justify-center px-8">
                 Lihat Katalog Produk
             </a>
         </div>
@@ -208,7 +211,7 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm mt-auto">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo-footer rounded-lg">
+                <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo-footer rounded-lg">
                 <span class="font-semibold text-white">AMPEDIG</span>
             </div>
             <p>©

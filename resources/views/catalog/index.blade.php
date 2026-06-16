@@ -187,13 +187,13 @@
 
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
                     <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
                 </a>
 
                 <!-- Search Bar (Desktop) -->
                 <form action="{{ route('catalog.index') }}" method="GET" class="flex-1 max-w-xl hidden md:block">
-                    @if(request()->filled('category'))
+                    @if (request()->filled('category'))
                         <input type="hidden" name="category" value="{{ request('category') }}">
                     @endif
                     <div class="relative">
@@ -240,7 +240,7 @@
 
             <!-- Search Bar -->
             <form action="{{ route('catalog.index') }}" method="GET" class="max-w-lg mx-auto">
-                @if(request()->filled('category'))
+                @if (request()->filled('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
                 <div class="relative">
@@ -319,12 +319,13 @@
         </div>
 
         <!-- Empty State -->
-        @if($products->isEmpty())
+        @if ($products->isEmpty())
             <div id="emptyState" class="text-center py-20">
                 <div class="text-5xl mb-4">🔍</div>
                 <h3 class="text-lg font-semibold text-slate-700 mb-2">Produk Tidak Ditemukan</h3>
                 <p class="text-sm text-slate-400">Coba kata kunci atau kategori yang berbeda.</p>
-                <a href="{{ route('catalog.index') }}" class="mt-5 inline-block btn btn-primary btn-sm rounded-xl">Reset Filter</a>
+                <a href="{{ route('catalog.index') }}"
+                    class="mt-5 inline-block btn btn-primary btn-sm rounded-xl">Reset Filter</a>
             </div>
         @else
             <!-- Pagination Links -->
@@ -353,7 +354,7 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm pb-20 sm:pb-8">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG"
+                <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG"
                     class="katalog-logo-footer rounded-lg">
                 <span class="font-semibold text-white">AMPEDIG</span>
             </div>

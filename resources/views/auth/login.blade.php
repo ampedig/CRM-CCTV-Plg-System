@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Login | AMPPAY - Ampedig Pay</title>
+    <title>Login | CCTV Wongkito palembang</title>
 
     <!-- Meta SEO & CDN -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
@@ -39,9 +39,10 @@
             <!-- Logo -->
             <div class="relative z-10 flex items-center gap-3 font-semibold text-2xl text-white tracking-tight">
                 <div class="flex items-center justify-center w-10 h-10 text-brand-600">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG Logo" class="h-10 w-auto rounded-xl">
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG Logo"
+                        class="h-10 w-auto rounded-xl">
                 </div>
-                <span>AMPEDIG</span>
+                <span>CCTV Wongkito</span>
             </div>
 
             <!-- Main Content -->
@@ -52,7 +53,7 @@
                     agency dan transaksi PPOB yang efisien and modern.</p>
             </div>
             <div class="relative z-10 text-brand-200 text-sm font-medium">
-                &copy; {{ date('Y') }} Masum.xyz. All rights reserved.
+                &copy; {{ date('Y') }} CCTV Wongkito. All rights reserved.
             </div>
         </div>
 
@@ -62,9 +63,10 @@
                 <div class="lg:hidden flex justify-center mb-8">
                     <div class="flex items-center gap-2 font-semibold text-2xl text-slate-900">
                         <div class="flex items-center justify-center w-10 h-10 text-white">
-                            <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG Logo" class="h-10 w-auto rounded-xl">
+                            <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG Logo"
+                                class="h-10 w-auto rounded-xl">
                         </div>
-                        <span>AMPEDIG</span>
+                        <span>CCTV Wongkito</span>
                     </div>
                 </div>
 
@@ -76,7 +78,8 @@
 
                 <!-- Session Status Alert -->
                 @if (session('status'))
-                    <div class="mb-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-sm font-medium text-emerald-700">
+                    <div
+                        class="mb-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-sm font-medium text-emerald-700">
                         {{ session('status') }}
                     </div>
                 @endif
@@ -93,7 +96,8 @@
                                 class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-brand-600">
                                 <i class="fa-regular fa-envelope text-slate-400"></i>
                             </div>
-                            <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="nama@perusahaan.com"
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" required
+                                autofocus autocomplete="username" placeholder="nama@perusahaan.com"
                                 class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 transition-all duration-200">
                         </div>
                         @error('email')
@@ -105,17 +109,15 @@
                     <div class="space-y-2">
                         <div class="flex justify-between items-center">
                             <label class="block text-sm font-semibold text-slate-700" for="password">Password</label>
-                            @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}"
-                                    class="text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">Lupa Password?</a>
-                            @endif
+
                         </div>
                         <div class="relative group">
                             <div
                                 class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-brand-600">
                                 <i class="fa-solid fa-lock text-slate-400"></i>
                             </div>
-                            <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="••••••••"
+                            <input type="password" id="password" name="password" required
+                                autocomplete="current-password" placeholder="••••••••"
                                 class="w-full pl-11 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 transition-all duration-200">
 
                             <!-- Toggle Password Visibility -->
@@ -136,7 +138,8 @@
                                 <input type="checkbox" id="remember_me" name="remember"
                                     class="w-5 h-5 text-brand-600 border-slate-300 rounded focus:ring-brand-500 transition-colors cursor-pointer">
                                 <span
-                                    class="ml-3 text-sm text-slate-600 font-medium group-hover:text-slate-900 transition-colors">Ingat saya</span>
+                                    class="ml-3 text-sm text-slate-600 font-medium group-hover:text-slate-900 transition-colors">Ingat
+                                    saya</span>
                             </label>
                         </div>
 
@@ -146,33 +149,6 @@
                         </button>
                     </div>
                 </form>
-
-                <!-- Divider -->
-                <div class="relative my-8">
-                    <div class="absolute inset-0 flex items-center">
-                        <div class="w-full border-t border-slate-100"></div>
-                    </div>
-                    <div class="relative flex justify-center text-xs uppercase tracking-wider">
-                        <span class="px-4 bg-white text-slate-400 font-semibold">Atau masuk dengan</span>
-                    </div>
-                </div>
-
-                <!-- Social Login -->
-                <div class="grid grid-cols-1">
-                    <button
-                        class="flex items-center justify-center gap-3 w-full px-6 py-3.5 border border-slate-200 rounded-xl bg-white text-slate-600 font-semibold hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 transition-all duration-200">
-                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5">
-                        <span>Lanjutkan dengan Google</span>
-                    </button>
-                </div>
-
-                <!-- Register Link -->
-                @if (Route::has('register'))
-                    <p class="mt-8 text-center text-sm text-slate-500">
-                        Belum memiliki akun? <a href="{{ route('register') }}"
-                            class="font-semibold text-brand-600 hover:text-brand-700 hover:underline transition-colors">Daftar Akun Baru</a>
-                    </p>
-                @endif
             </div>
         </div>
 

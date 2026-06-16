@@ -215,7 +215,7 @@
             <div class="flex items-center justify-between h-16 gap-4">
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
                     <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
                 </a>
 
@@ -331,7 +331,8 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm border-t border-slate-700 mt-auto">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo-footer rounded-lg">
+                <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG"
+                    class="katalog-logo-footer rounded-lg">
                 <span class="font-semibold text-white">AMPEDIG</span>
             </div>
             <p>©
