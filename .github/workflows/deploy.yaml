@@ -24,26 +24,34 @@ jobs:
             # Menentukan php binary versi 8.5 untuk aaPanel
             PHP_BIN="/www/server/php/85/bin/php"
 
-            echo ">>> Enable maintenance mode"
-            $PHP_BIN artisan down || true
+            # Mengatasi kendala safe.directory pada git
+            git config --global --add safe.directory /www/wwwroot/cctvwongkito.my.id
+
+            echo ">>> Change owner to deploy user"
+            sudo chown -R masum-xyz:masum-xyz /www/wwwroot/cctvwongkito.my.id
 
             echo ">>> Pull latest code"
-            git pull origin main
+            git pull origin prod
+
+            echo ">>> Change owner to web server"
+            sudo chown -R www:www /www/wwwroot/cctvwongkito.my.id
+            sudo chmod -R 775 /www/wwwroot/cctvwongkito.my.id/storage /www/wwwroot/cctvwongkito.my.id/bootstrap/cache
+
+            echo ">>> Enable maintenance mode"
+            sudo -u www $PHP_BIN artisan down || true
 
             echo ">>> Composer install"
-            # Jalankan composer menggunakan PHP 8.5
-            COMPOSER_PATH=$(which composer)
-            $PHP_BIN $COMPOSER_PATH install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+            sudo -u www $PHP_BIN /usr/bin/composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 
             echo ">>> Migrate database"
-            $PHP_BIN artisan migrate --force
+            sudo -u www $PHP_BIN artisan migrate --force
 
             echo ">>> Clear & optimize Laravel"
-            $PHP_BIN artisan optimize:clear
-            $PHP_BIN artisan optimize
+            sudo -u www $PHP_BIN artisan optimize:clear
+            sudo -u www $PHP_BIN artisan optimize
 
             echo ">>> Disable maintenance mode"
-            $PHP_BIN artisan up
+            sudo -u www $PHP_BIN artisan up
 
       - name: Send Telegram Notification
         run: |
