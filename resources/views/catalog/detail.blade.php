@@ -106,6 +106,7 @@
             .lg\:grid-cols-12 {
                 grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
             }
+
             .lg\:col-span-6 {
                 grid-column: span 6 / span 6 !important;
             }
@@ -115,6 +116,7 @@
         .gap-x-6 {
             column-gap: 1.5rem !important;
         }
+
         @media (min-width: 640px) {
             .sm\:grid-cols-2 {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;

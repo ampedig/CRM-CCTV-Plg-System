@@ -51,14 +51,18 @@
             gap: 0.5rem;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
             padding-bottom: 6px;
-            margin-bottom: -6px; /* Offset the padding bottom */
+            margin-bottom: -6px;
+            /* Offset the padding bottom */
         }
 
         .category-scroll-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari and Opera */
+            display: none;
+            /* Chrome, Safari and Opera */
         }
 
         /* Product card hover lift */
@@ -182,22 +186,26 @@
             <div class="flex items-center justify-between h-16 gap-4">
 
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+                <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
                     <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
                     <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
                 </a>
 
                 <!-- Search Bar (Desktop) -->
-                <div class="flex-1 max-w-xl hidden md:block">
+                <form action="{{ route('catalog.index') }}" method="GET" class="flex-1 max-w-xl hidden md:block">
+                    @if(request()->filled('category'))
+                        <input type="hidden" name="category" value="{{ request('category') }}">
+                    @endif
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                             <i class="fa-solid fa-search text-slate-400 text-sm"></i>
                         </div>
-                        <input type="text" id="searchInputNav" placeholder="Cari produk, merk, kategori..."
+                        <input type="text" name="search" id="searchInputNav" value="{{ request('search') }}"
+                            placeholder="Cari produk, merk, kategori..."
                             class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 focus:bg-white transition-all"
                             oninput="syncSearch(this.value)">
                     </div>
-                </div>
+                </form>
 
                 <!-- Right Side Actions -->
                 <div class="flex items-center gap-3 flex-shrink-0">
@@ -231,20 +239,24 @@
             </p>
 
             <!-- Search Bar -->
-            <div class="max-w-lg mx-auto">
+            <form action="{{ route('catalog.index') }}" method="GET" class="max-w-lg mx-auto">
+                @if(request()->filled('category'))
+                    <input type="hidden" name="category" value="{{ request('category') }}">
+                @endif
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <i class="fa-solid fa-search text-slate-400"></i>
                     </div>
-                    <input type="text" id="searchInput" placeholder="Cari produk, merk..."
+                    <input type="text" name="search" id="searchInput" value="{{ request('search') }}"
+                        placeholder="Cari produk, merk..."
                         class="w-full pl-12 pr-4 py-4 bg-white border border-slate-100 rounded-2xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none transition-all"
                         oninput="syncSearch(this.value)">
-                    <button
+                    <button type="submit"
                         class="absolute inset-y-0 right-0 px-5 text-white bg-brand-600 hover:bg-brand-700 rounded-r-2xl font-semibold text-sm transition-colors">
                         Cari
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 
@@ -255,71 +267,71 @@
         <div class="mb-8">
             <h2 class="text-base font-semibold text-slate-700 mb-4">Kategori Produk</h2>
             <div class="category-scroll-container" id="categoryList">
-                <button
-                    class="cat-pill active px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-brand-400 transition-all"
-                    data-cat="all">
+                <a href="{{ route('catalog.index', array_merge(request()->query(), ['category' => null, 'page' => null])) }}"
+                    class="cat-pill {{ !request()->filled('category') ? 'active' : '' }} px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-brand-400 transition-all">
                     Semua
-                </button>
+                </a>
                 @foreach ($categories as $category)
-                <button
-                    class="cat-pill px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-brand-400 transition-all"
-                    data-cat="{{ $category->slug }}">
-                    {{ $category->name }}
-                </button>
+                    <a href="{{ route('catalog.index', array_merge(request()->query(), ['category' => $category->slug, 'page' => null])) }}"
+                        class="cat-pill {{ request('category') === $category->slug ? 'active' : '' }} px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-brand-400 transition-all">
+                        {{ $category->name }}
+                    </a>
                 @endforeach
             </div>
         </div>
 
-        <!-- Toolbar: Result count + Sort -->
+        <!-- Toolbar: Result count -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
             <p id="resultCount" class="text-sm text-slate-500">Menampilkan <span
-                    class="font-semibold text-slate-700">{{ $products->count() }}</span> produk</p>
-            <select id="sortSelect" onchange="sortProducts(this.value)"
-                class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors text-slate-600">
-                <option value="default">Urutkan: Default</option>
-                <option value="price-asc">Harga: Terendah</option>
-                <option value="price-desc">Harga: Tertinggi</option>
-                <option value="name-asc">Nama: A–Z</option>
-            </select>
+                    class="font-semibold text-slate-700">{{ $products->total() }}</span> produk</p>
         </div>
 
         <!-- Product Grid -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="productGrid">
             @forelse($products as $product)
-            <a href="{{ route('catalog.detail', $product->slug) }}"
-                class="product-card cursor-pointer bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-brand-400 transition-all"
-                data-cat="{{ $product->category->slug ?? '' }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}"
-                data-brand="{{ $product->merk ?? 'Generic' }}"
-                data-desc="{{ $product->description ?? '' }}"
-                data-unit="{{ $product->unit ?? 'pcs' }}" data-is-active="{{ $product->is_active ? 'true' : 'false' }}">
-                <div class="relative">
-                    <img src="{{ $product->image ? asset('storage/' . $product->image) : 'https://placehold.co/400x300/e0f2fe/0284c7?text=' . urlencode($product->name) }}"
-                        alt="{{ $product->name }}" class="w-full h-40 object-cover"
-                        onerror="this.src='https://placehold.co/400x300/e0f2fe/0284c7?text={{ urlencode($product->name) }}'">
-                </div>
-                <div class="p-3 flex flex-col flex-1">
-                    <span
-                        class="text-[10px] font-semibold text-brand-600 bg-brand-50 px-2 py-0.5 rounded-md w-fit mb-1.5">{{ $product->category->name ?? 'Uncategorized' }}</span>
-                    <h3 class="text-sm font-semibold text-slate-800 leading-snug mb-2 flex-1">{{ $product->name }}</h3>
-                    <p class="text-base font-semibold text-slate-900 mb-3">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <div
-                        class="w-full py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 mt-auto">
-                        Lihat Detail
+                <a href="{{ route('catalog.detail', $product->slug) }}"
+                    class="product-card cursor-pointer bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-brand-400 transition-all"
+                    data-cat="{{ $product->category->slug ?? '' }}" data-name="{{ $product->name }}"
+                    data-price="{{ $product->price }}" data-brand="{{ $product->merk ?? 'Generic' }}"
+                    data-desc="{{ $product->description ?? '' }}" data-unit="{{ $product->unit ?? 'pcs' }}"
+                    data-is-active="{{ $product->is_active ? 'true' : 'false' }}">
+                    <div class="relative">
+                        <img src="{{ $product->image ? asset('storage/' . $product->image) : 'https://placehold.co/400x300/e0f2fe/0284c7?text=' . urlencode($product->name) }}"
+                            alt="{{ $product->name }}" class="w-full h-40 object-cover"
+                            onerror="this.src='https://placehold.co/400x300/e0f2fe/0284c7?text={{ urlencode($product->name) }}'">
                     </div>
-                </div>
-            </a>
+                    <div class="p-3 flex flex-col flex-1">
+                        <span style="background-color: {{ $product->category->color ?? '#0284c7' }}; color: #ffffff;"
+                            class="text-[10px] font-semibold px-2 py-0.5 rounded-md w-fit mb-1.5">{{ $product->category->name ?? 'Uncategorized' }}</span>
+                        <h3 class="text-sm font-semibold text-slate-800 leading-snug mb-2 flex-1">{{ $product->name }}
+                        </h3>
+                        <p class="text-base font-semibold text-slate-900 mb-3">Rp
+                            {{ number_format($product->price, 0, ',', '.') }}</p>
+                        <div
+                            class="w-full py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 mt-auto">
+                            Lihat Detail
+                        </div>
+                    </div>
+                </a>
             @empty
                 <!-- No Products -> Let JS handle or handled below -->
             @endforelse
         </div>
 
         <!-- Empty State -->
-        <div id="emptyState" class="hidden text-center py-20">
-            <div class="text-5xl mb-4">🔍</div>
-            <h3 class="text-lg font-semibold text-slate-700 mb-2">Produk Tidak Ditemukan</h3>
-            <p class="text-sm text-slate-400">Coba kata kunci atau kategori yang berbeda.</p>
-            <button onclick="resetFilter()" class="mt-5 btn btn-primary btn-sm rounded-xl">Reset Filter</button>
-        </div>
+        @if($products->isEmpty())
+            <div id="emptyState" class="text-center py-20">
+                <div class="text-5xl mb-4">🔍</div>
+                <h3 class="text-lg font-semibold text-slate-700 mb-2">Produk Tidak Ditemukan</h3>
+                <p class="text-sm text-slate-400">Coba kata kunci atau kategori yang berbeda.</p>
+                <a href="{{ route('catalog.index') }}" class="mt-5 inline-block btn btn-primary btn-sm rounded-xl">Reset Filter</a>
+            </div>
+        @else
+            <!-- Pagination Links -->
+            <div class="mt-8">
+                @include('dashboard.components.pagination', ['paginator' => $products])
+            </div>
+        @endif
 
     </main>
 
@@ -327,7 +339,8 @@
     <section class="bg-brand-600 text-white py-12 px-4 mt-10">
         <div class="katalog-container text-center">
             <h2 class="text-2xl font-semibold mb-3">Butuh Konsultasi Gratis?</h2>
-            <p class="text-blue-100 mb-6 text-sm">Tim kami siap membantu Anda memilih produk yang sesuai kebutuhan dan anggaran.</p>
+            <p class="text-blue-100 mb-6 text-sm">Tim kami siap membantu Anda memilih produk yang sesuai kebutuhan dan
+                anggaran.</p>
             <a href="https://wa.me/{{ config('services.whatsapp.number') }}" target="_blank"
                 class="inline-flex items-center gap-2 bg-white text-brand-700 px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-colors">
                 <i class="fa-brands fa-whatsapp text-green-600 text-lg"></i>
@@ -340,7 +353,8 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm pb-20 sm:pb-8">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG" class="katalog-logo-footer rounded-lg">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG"
+                    class="katalog-logo-footer rounded-lg">
                 <span class="font-semibold text-white">AMPEDIG</span>
             </div>
             <p>©
@@ -354,86 +368,12 @@
     <script>
         const WHATSAPP_NUMBER = '{{ config('services.whatsapp.number') }}';
 
-        let activeCategory = 'all';
-        let searchTerm = '';
-        let sortMode = 'default';
-
         // Sync dua search input (hero & navbar)
         function syncSearch(val) {
-            searchTerm = val.toLowerCase();
             const heroInput = document.getElementById('searchInput');
             const navInput = document.getElementById('searchInputNav');
             if (heroInput) heroInput.value = val;
             if (navInput) navInput.value = val;
-            applyFilter();
-        }
-
-        // Category filter
-        document.getElementById('categoryList').addEventListener('click', (e) => {
-            const btn = e.target.closest('.cat-pill');
-            if (!btn) return;
-
-            document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeCategory = btn.dataset.cat;
-            applyFilter();
-        });
-
-        function sortProducts(mode) {
-            sortMode = mode;
-            applyFilter();
-        }
-
-        function applyFilter() {
-            const grid = document.getElementById('productGrid');
-            const cards = Array.from(grid.querySelectorAll('.product-card'));
-            let visible = 0;
-
-            // Filter
-            cards.forEach(card => {
-                const cat = card.dataset.cat;
-                const name = card.dataset.name.toLowerCase();
-                const brand = card.dataset.brand.toLowerCase();
-
-                const matchCat = activeCategory === 'all' || cat === activeCategory;
-                const matchSearch = name.includes(searchTerm) || brand.includes(searchTerm);
-
-                if (matchCat && matchSearch) {
-                    card.style.display = '';
-                    visible++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // Sort visible cards
-            const visibleCards = cards.filter(c => c.style.display !== 'none');
-            visibleCards.sort((a, b) => {
-                if (sortMode === 'price-asc') return +a.dataset.price - +b.dataset.price;
-                if (sortMode === 'price-desc') return +b.dataset.price - +a.dataset.price;
-                if (sortMode === 'name-asc') return a.dataset.name.localeCompare(b.dataset.name);
-                return 0;
-            });
-            visibleCards.forEach(c => grid.appendChild(c));
-
-            // Update count
-            document.getElementById('resultCount').innerHTML =
-                `Menampilkan <span class="font-semibold text-slate-700">${visible}</span> produk`;
-
-            // Empty state
-            document.getElementById('emptyState').classList.toggle('hidden', visible > 0);
-        }
-
-        function resetFilter() {
-            activeCategory = 'all';
-            searchTerm = '';
-            sortMode = 'default';
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchInputNav').value = '';
-            document.getElementById('sortSelect').value = 'default';
-            document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-            document.querySelector('.cat-pill[data-cat="all"]').classList.add('active');
-            applyFilter();
         }
 
         // Order via WhatsApp
@@ -448,8 +388,6 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-
-
         // Update Cart Badge Count
         function updateCartBadge() {
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -460,7 +398,9 @@
                 badge.classList.toggle('hidden', totalQty === 0);
             }
         }
-        window.addEventListener('DOMContentLoaded', updateCartBadge);
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCartBadge();
+        });
     </script>
 
 </body>
