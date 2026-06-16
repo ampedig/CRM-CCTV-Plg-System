@@ -47,10 +47,12 @@
 
             <!-- Main Content -->
             <div class="relative z-10 max-w-xl">
-                <h2 class="text-5xl font-semibold mb-6 leading-tight text-white">Kelola Bisnis Digital Anda Lebih
-                    Mudah.</h2>
-                <p class="text-brand-100 text-lg leading-relaxed">Platform all-in-one untuk manajemen
-                    agency dan transaksi PPOB yang efisien and modern.</p>
+                <h2 class="text-5xl font-semibold mb-6 leading-tight text-white">
+                    Solusi Keamanan Rumah Anda
+                </h2>
+                <p class="text-brand-100 text-lg leading-relaxed">
+                    Sistem canggih untuk memonitor dan mengelola keamanan properti Anda dari mana saja.
+                </p>
             </div>
             <div class="relative z-10 text-brand-200 text-sm font-medium">
                 &copy; {{ date('Y') }} CCTV Wongkito. All rights reserved.
