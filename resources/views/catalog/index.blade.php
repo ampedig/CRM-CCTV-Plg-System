@@ -121,6 +121,24 @@
             width: auto !important;
         }
 
+        .cart-badge {
+            position: absolute !important;
+            top: -2px !important;
+            right: -2px !important;
+            background-color: #f43f5e !important;
+            color: #ffffff !important;
+            font-size: 9px !important;
+            font-weight: 700 !important;
+            width: 16px !important;
+            height: 16px !important;
+            border-radius: 9999px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            flex-shrink: 0 !important;
+        }
+
         /* Responsive Product Grid fallback */
         #productGrid {
             display: grid !important;
@@ -186,8 +204,7 @@
                     <a href="{{ route('catalog.cart') }}"
                         class="relative text-slate-600 hover:text-brand-600 transition-colors p-2.5 flex items-center">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
-                        <span id="cartBadge"
-                            class="absolute -top-0.5 -right-0.5 bg-rose-500 text-white text-[9px] w-4.5 h-4.5 rounded-full flex items-center justify-center font-semibold hidden">0</span>
+                        <span id="cartBadge" class="cart-badge hidden">0</span>
                     </a>
                     <a href="https://wa.me/{{ config('services.whatsapp.number') }}" target="_blank"
                         class="btn btn-primary btn-sm flex items-center gap-2 rounded-xl">

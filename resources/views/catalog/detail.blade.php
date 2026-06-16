@@ -83,6 +83,24 @@
             width: auto !important;
         }
 
+        .cart-badge {
+            position: absolute !important;
+            top: -2px !important;
+            right: -2px !important;
+            background-color: #f43f5e !important;
+            color: #ffffff !important;
+            font-size: 9px !important;
+            font-weight: 700 !important;
+            width: 16px !important;
+            height: 16px !important;
+            border-radius: 9999px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            flex-shrink: 0 !important;
+        }
+
         /* Grid fallbacks for missing Tailwind classes */
         @media (min-width: 1024px) {
             .lg\:grid-cols-12 {
@@ -204,8 +222,7 @@
                     <a href="{{ route('catalog.cart') }}"
                         class="relative text-slate-600 hover:text-brand-600 transition-colors p-2.5 flex items-center">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
-                        <span id="cartBadge"
-                            class="absolute -top-0.5 -right-0.5 bg-rose-500 text-white text-[9px] w-4.5 h-4.5 rounded-full flex items-center justify-center font-semibold hidden">0</span>
+                        <span id="cartBadge" class="cart-badge hidden">0</span>
                     </a>
                     <a href="https://wa.me/{{ config('services.whatsapp.number') }}" target="_blank"
                         class="btn btn-primary btn-sm flex items-center gap-2 rounded-xl">
@@ -324,6 +341,7 @@
     </footer>
 
     @include('dashboard.partials.vendor-scripts')
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
     <script>
         const WHATSAPP_NUMBER = '{{ config('services.whatsapp.number') }}';
@@ -374,21 +392,24 @@
             }
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Show Success Notification with SweetAlert
-            if (typeof Swal !== 'undefined') {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Berhasil...!',
-                    text: 'Produk ditambahkan ke keranjang.',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                    toast: true
-                });
-            } else {
-                alert('Produk berhasil ditambahkan ke keranjang!');
-            }
+            // Show Success Notification with SweetAlert Toast
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Berhasil...!',
+                text: 'Produk ditambahkan ke keranjang.'
+            });
             updateCartBadge();
         }
 

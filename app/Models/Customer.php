@@ -21,4 +21,19 @@ class Customer extends Model
     {
         return $this->hasMany(ChatHistory::class);
     }
+
+    /**
+     * Recalculate and save transaction statistics (count & total value).
+     */
+    public function recalculateTransactionStats(): void
+    {
+        $stats = $this->transactions()
+            ->selectRaw('COUNT(*) as total_count, SUM(grand_total) as total_value')
+            ->first();
+
+        $this->update([
+            'transaction_count' => $stats->total_count ?? 0,
+            'total_transaction_value' => $stats->total_value ?? 0,
+        ]);
+    }
 }

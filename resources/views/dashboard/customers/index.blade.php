@@ -238,6 +238,117 @@
                 }
             });
         }
+
+        // --- Dynamic Table Columns Visibility ---
+        function initDynamicColumns(tableId, containerId) {
+            const table = document.getElementById(tableId);
+            const container = document.getElementById(containerId);
+            if (!table || !container) return;
+
+            const storageKey = `col_vis_${window.location.pathname}_${tableId}`;
+            let hiddenColumns = [];
+            try {
+                hiddenColumns = JSON.parse(localStorage.getItem(storageKey)) || [];
+            } catch (e) {
+                hiddenColumns = [];
+            }
+
+            const headerRow = table.querySelector("thead tr");
+            if (!headerRow) return;
+
+            const headers = headerRow.querySelectorAll("th");
+            container.innerHTML = "";
+
+            headers.forEach((th, index) => {
+                const columnName = th.innerText.trim();
+                // Skip action columns or empty headers
+                if (!columnName || columnName === "#" || columnName === "Aksi") return;
+
+                const isHidden = hiddenColumns.includes(index);
+                
+                // Create checkbox item
+                const label = document.createElement("label");
+                label.className = "flex items-center gap-2 px-3 py-2 hover:bg-slate-50 rounded-lg cursor-pointer";
+                
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.className = "column-checkbox w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500";
+                checkbox.checked = !isHidden;
+                checkbox.dataset.column = index;
+                
+                checkbox.addEventListener("change", function() {
+                    setColumnVisibility(table, index, this.checked);
+                    saveColumnState(storageKey, index, !this.checked);
+                });
+
+                const textSpan = document.createElement("span");
+                textSpan.className = "text-sm text-slate-700";
+                textSpan.innerText = columnName;
+
+                label.appendChild(checkbox);
+                label.appendChild(textSpan);
+                container.appendChild(label);
+
+                // Set initial visibility
+                if (isHidden) {
+                    setColumnVisibility(table, index, false);
+                }
+            });
+        }
+
+        function setColumnVisibility(table, columnIndex, isVisible) {
+            const index = columnIndex + 1;
+            const th = table.querySelector(`thead tr th:nth-child(${index})`);
+            if (th) {
+                if (isVisible) th.classList.remove("hidden");
+                else th.classList.add("hidden");
+            }
+            table.querySelectorAll(`tbody tr td:nth-child(${index})`).forEach(td => {
+                if (isVisible) td.classList.remove("hidden");
+                else td.classList.add("hidden");
+            });
+        }
+
+        function saveColumnState(storageKey, columnIndex, isHidden) {
+            let hiddenColumns = JSON.parse(localStorage.getItem(storageKey)) || [];
+            if (isHidden) {
+                if (!hiddenColumns.includes(columnIndex)) {
+                    hiddenColumns.push(columnIndex);
+                }
+            } else {
+                hiddenColumns = hiddenColumns.filter(i => i !== columnIndex);
+            }
+            localStorage.setItem(storageKey, JSON.stringify(hiddenColumns));
+        }
+
+        // Toggle Column Dropdown Menu
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnColumns = document.getElementById("btnColumns");
+            const columnMenu = document.getElementById("columnMenu");
+
+            if (btnColumns && columnMenu) {
+                btnColumns.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    columnMenu.classList.toggle("hidden");
+                });
+
+                document.addEventListener("click", (e) => {
+                    if (!columnMenu.contains(e.target) && !btnColumns.contains(e.target)) {
+                        columnMenu.classList.add("hidden");
+                    }
+                });
+            }
+
+            initDynamicColumns("pelangganTable", "columnListContainer");
+            
+            // Initialize Select2 if exists
+            if (typeof $ !== 'undefined' && $.fn.select2) {
+                $('.select2-show-entries').select2({
+                    minimumResultsForSearch: Infinity,
+                    width: 'auto'
+                });
+            }
+        });
     </script>
 
     @if (session('success'))
