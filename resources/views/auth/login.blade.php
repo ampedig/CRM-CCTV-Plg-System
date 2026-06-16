@@ -7,6 +7,26 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login | CCTV Wongkito palembang</title>
 
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Halaman login admin area CCTV Wongkito Palembang. Masuk untuk mengelola pelanggan, produk, kategori, riwayat chat, dan memantau analitik CRM secara real-time.">
+    <meta name="keywords" content="login cctv wongkito, admin cctv wongkito, cctv wongkito">
+    <meta name="author" content="CCTV Wongkito">
+    <link rel="canonical" href="{{ request()->url() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:title" content="Login Admin - CCTV Wongkito Palembang">
+    <meta property="og:description" content="Masuk ke Dashboard Admin CCTV Wongkito Palembang untuk mengelola data pelanggan dan analitik CRM.">
+    <meta property="og:image" content="{{ asset('assets/images/logo.webp') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request()->url() }}">
+    <meta property="twitter:title" content="Login Admin - CCTV Wongkito Palembang">
+    <meta property="twitter:description" content="Masuk ke Dashboard Admin CCTV Wongkito Palembang untuk mengelola data pelanggan dan analitik CRM.">
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.webp') }}">
+
     <!-- Meta SEO & CDN -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/apple-touch-icon.png') }}">

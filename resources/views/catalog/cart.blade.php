@@ -4,6 +4,26 @@
 <head>
     @section('title', 'Keranjang Belanja - CCTV Wongkito')
     @include('dashboard.partials.head')
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Wongkito Palembang. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
+    <meta name="keywords" content="keranjang belanja cctv, cctv wongkito, beli cctv palembang, cctv palembang">
+    <meta name="author" content="CCTV Wongkito">
+    <link rel="canonical" href="{{ request()->url() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:title" content="Keranjang Belanja - CCTV Wongkito Palembang">
+    <meta property="og:description" content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Wongkito Palembang. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
+    <meta property="og:image" content="{{ asset('assets/images/logo.webp') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request()->url() }}">
+    <meta property="twitter:title" content="Keranjang Belanja - CCTV Wongkito Palembang">
+    <meta property="twitter:description" content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Wongkito Palembang. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.webp') }}">
     <style>
         /* Override body lock from form-plugins.css to allow scrolling */
         html {

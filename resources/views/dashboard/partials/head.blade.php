@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@yield('title', 'Dashboard') | AMPPAY - Ampedig Pay | Biaya Ringan, Integrasi Gampang</title>
+<title>@yield('title', 'Dashboard') | CCTV Wongkito Palembang</title>
 
 <!-- Meta SEO & CDN -->
 <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">

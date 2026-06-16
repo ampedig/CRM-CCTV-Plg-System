@@ -5,6 +5,26 @@
     @section('title', 'Katalog Produk')
     @include('dashboard.partials.head')
 
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Cari CCTV terbaik di Palembang? Temukan berbagai macam pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap di CCTV Wongkito. Garansi resmi, harga terjangkau!">
+    <meta name="keywords" content="cctv palembang, kamera cctv palembang, cctv wongkito, ip camera palembang, pasang cctv palembang, cctv murah palembang">
+    <meta name="author" content="CCTV Wongkito">
+    <link rel="canonical" href="{{ request()->url() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:title" content="Katalog Produk CCTV Wongkito Palembang">
+    <meta property="og:description" content="Temukan berbagai pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap dengan harga terjangkau dan garansi resmi.">
+    <meta property="og:image" content="{{ asset('assets/images/logo.webp') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request()->url() }}">
+    <meta property="twitter:title" content="Katalog Produk CCTV Wongkito Palembang">
+    <meta property="twitter:description" content="Temukan berbagai pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap dengan harga terjangkau dan garansi resmi.">
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.webp') }}">
+
     <style>
         html,
         body.katalog-page {

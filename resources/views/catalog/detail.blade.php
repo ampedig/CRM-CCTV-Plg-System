@@ -4,6 +4,26 @@
 <head>
     @section('title', $product->name . ' - CCTV Wongkito')
     @include('dashboard.partials.head')
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Beli {{ $product->name }} dengan harga terbaik di CCTV Wongkito Palembang. Merk: {{ $product->merk ?? '-' }}. {{ Str::limit(strip_tags($product->description), 130) }}">
+    <meta name="keywords" content="{{ $product->name }}, cctv {{ $product->name }}, {{ $product->merk ?? '' }}, cctv palembang, cctv wongkito, pasang cctv palembang">
+    <meta name="author" content="CCTV Wongkito">
+    <link rel="canonical" href="{{ request()->url() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:title" content="{{ $product->name }} - CCTV Wongkito Palembang">
+    <meta property="og:description" content="Beli {{ $product->name }} dengan harga terbaik di CCTV Wongkito Palembang. Merk: {{ $product->merk ?? '-' }}.">
+    <meta property="og:image" content="{{ asset('storage/' . $product->image) }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request()->url() }}">
+    <meta property="twitter:title" content="{{ $product->name }} - CCTV Wongkito Palembang">
+    <meta property="twitter:description" content="Beli {{ $product->name }} dengan harga terbaik di CCTV Wongkito Palembang. Merk: {{ $product->merk ?? '-' }}.">
+    <meta property="twitter:image" content="{{ asset('storage/' . $product->image) }}">
     <style>
         /* Override body lock from form-plugins.css to allow scrolling */
         html {
