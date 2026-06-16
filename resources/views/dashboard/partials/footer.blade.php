@@ -3,5 +3,5 @@
     &copy;
     <script>
         document.write(new Date().getFullYear());
-    </script> Pay Ampedig | All rights reserved.
+    </script> CCTV Wongkito Palembang | All rights reserved.
 </footer>
