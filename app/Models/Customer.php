@@ -12,6 +12,10 @@ class Customer extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'last_consultation_at' => 'datetime',
+    ];
+
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);

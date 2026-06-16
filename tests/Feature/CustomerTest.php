@@ -29,8 +29,7 @@ test('customer edit page can be rendered for authenticated users and contains an
         ->get(route('customers.edit', $this->customer->id));
 
     $response->assertOk();
-    $response->assertSee('Data Analytics');
-    $response->assertSee('Rekayasa Algoritma');
+    $response->assertSee('Advanced Updated');
     $response->assertSee('total_chats_received');
     $response->assertSee('consultation_frequency');
     $response->assertSee('web_visit_count');

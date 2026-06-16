@@ -1,0 +1,36 @@
+### Test WA Webhook - Valid Structured Payload
+POST http://127.0.0.1:8000/api/wa/webhook
+Content-Type: application/json
+Accept: application/json
+
+{
+  "event": "message.received",
+  "timestamp": "2026-06-07T03:35:31.853Z",
+  "sender": {
+    "phone": "6282260442004",
+    "name": "Moh Masum Safrulihsan",
+    "id": "6282260442004@s.whatsapp.net"
+  },
+  "message": {
+    "id": "ACB02872621C88670816D94BB54A51EE",
+    "timestamp": 1780803331,
+    "text": "saya nyari Roko sampoerna isi 16 ada ga mas"
+  }
+}
+
+### Test WA Webhook - Invalid Payload (Missing message text)
+POST http://127.0.0.1:8000/api/wa/webhook
+Content-Type: application/json
+Accept: application/json
+
+{
+  "event": "message.received",
+  "timestamp": "2026-06-07T03:35:31.853Z",
+  "sender": {
+    "phone": "6282260442004",
+    "name": "Moh Masum Safrulihsan"
+  },
+  "message": {
+    "id": "ACB02872621C88670816D94BB54A51EE"
+  }
+}
