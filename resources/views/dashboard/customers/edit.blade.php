@@ -100,6 +100,123 @@
                         </div>
                     </div>
 
+                    <!-- Separator -->
+                    <div class="mb-8 pb-4 border-b border-slate-100 mt-10">
+                        <h2 class="text-lg font-semibold text-slate-800">
+                            Advanced Updated
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Total Chat Diterima <span
+                                    class="text-rose-500">*</span></label>
+                            <input type="number" name="total_chats_received"
+                                value="{{ old('total_chats_received', $customer->total_chats_received) }}" min="0"
+                                required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('total_chats_received')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Frekuensi Konsultasi <span
+                                    class="text-rose-500">*</span></label>
+                            <input type="number" name="consultation_frequency"
+                                value="{{ old('consultation_frequency', $customer->consultation_frequency) }}"
+                                min="0" required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('consultation_frequency')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Jumlah Kunjungan Web <span
+                                    class="text-rose-500">*</span></label>
+                            <input type="number" name="web_visit_count"
+                                value="{{ old('web_visit_count', $customer->web_visit_count) }}" min="0" required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('web_visit_count')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Jumlah Transaksi (TRX) <span
+                                    class="text-rose-500">*</span></label>
+                            <input type="number" name="transaction_count"
+                                value="{{ old('transaction_count', $customer->transaction_count) }}" min="0"
+                                required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('transaction_count')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Total Nilai Transaksi (Rp) <span
+                                    class="text-rose-500">*</span></label>
+                            <input type="number" step="0.01" name="total_transaction_value"
+                                value="{{ old('total_transaction_value', $customer->total_transaction_value) }}"
+                                min="0" required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('total_transaction_value')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Minat Kategori Terakhir <span
+                                    class="text-slate-400 text-xs font-normal">(Opsional)</span></label>
+                            <input type="text" name="last_product_interest"
+                                value="{{ old('last_product_interest', $customer->last_product_interest) }}"
+                                placeholder="Contoh: Kamera CCTV, Aksesoris"
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('last_product_interest')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Status Skor Klien (Lead Score)
+                                <span class="text-rose-500">*</span></label>
+                            <select name="lead_score_status" required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors font-medium text-slate-700">
+                                <option value="Cold"
+                                    {{ old('lead_score_status', $customer->lead_score_status) === 'Cold' ? 'selected' : '' }}>
+                                    Cold</option>
+                                <option value="Warm"
+                                    {{ old('lead_score_status', $customer->lead_score_status) === 'Warm' ? 'selected' : '' }}>
+                                    Warm</option>
+                                <option value="Hot"
+                                    {{ old('lead_score_status', $customer->lead_score_status) === 'Hot' ? 'selected' : '' }}>
+                                    Hot</option>
+                            </select>
+                            @error('lead_score_status')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Status Pembayaran Global <span
+                                    class="text-rose-500">*</span></label>
+                            <select name="payment_status" required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors font-medium text-slate-700">
+                                <option value="Belum"
+                                    {{ old('payment_status', $customer->payment_status) === 'Belum' ? 'selected' : '' }}>
+                                    Belum Lunas (Belum)</option>
+                                <option value="Lunas"
+                                    {{ old('payment_status', $customer->payment_status) === 'Lunas' ? 'selected' : '' }}>
+                                    Lunas</option>
+                            </select>
+                            @error('payment_status')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="pt-6 border-t border-slate-100 flex items-center justify-start gap-3">
                         <a href="{{ route('customers.index') }}" class="btn btn-white">
                             Batal
@@ -131,14 +248,17 @@
                         statusText.innerText = 'Aktif';
                         statusDesc.innerText = 'Pelanggan dapat melakukan transaksi dan menerima promo.';
                         statusIcon.className = 'fa-solid fa-user-check';
-                        statusIconBg.className = 'p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300';
+                        statusIconBg.className =
+                            'p-2 bg-emerald-50 text-emerald-600 rounded-lg transition-colors duration-300';
                         toggleBg.classList.remove('bg-rose-500');
                         toggleBg.classList.add('bg-emerald-500');
                     } else {
                         statusText.innerText = 'Nonaktif';
-                        statusDesc.innerText = 'Pelanggan dinonaktifkan sementara dan tidak dapat bertransaksi.';
+                        statusDesc.innerText =
+                            'Pelanggan dinonaktifkan sementara dan tidak dapat bertransaksi.';
                         statusIcon.className = 'fa-solid fa-user-xmark';
-                        statusIconBg.className = 'p-2 bg-rose-50 text-rose-600 rounded-lg transition-colors duration-300';
+                        statusIconBg.className =
+                            'p-2 bg-rose-50 text-rose-600 rounded-lg transition-colors duration-300';
                         toggleBg.classList.remove('bg-emerald-500');
                         toggleBg.classList.add('bg-rose-500');
                     }

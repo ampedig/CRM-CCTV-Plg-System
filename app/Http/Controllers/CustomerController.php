@@ -83,6 +83,14 @@ class CustomerController extends Controller
             'occupation' => 'nullable|string|max:255',
             'date_of_birth' => 'nullable|date',
             'is_active' => 'required|boolean',
+            'total_chats_received' => 'required|integer|min:0',
+            'consultation_frequency' => 'required|integer|min:0',
+            'web_visit_count' => 'required|integer|min:0',
+            'transaction_count' => 'required|integer|min:0',
+            'total_transaction_value' => 'required|numeric|min:0',
+            'last_product_interest' => 'nullable|string|max:255',
+            'lead_score_status' => 'required|string|in:Cold,Warm,Hot,cold,warm,hot',
+            'payment_status' => 'required|string|in:Belum,Lunas',
         ]);
 
         $customer->update($validated);

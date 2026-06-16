@@ -115,9 +115,6 @@
                                     </td>
                                     <td class="px-6 py-4 text-center td-nowrap">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="btn btn-success btn-icon btn-sm" title="Print Struk">
-                                                <i class="fa-solid fa-print"></i>
-                                            </button>
                                             <a href="{{ route('transactions.show', $transaction->id) }}"
                                                 class="btn btn-primary btn-icon btn-sm" title="Show">
                                                 <i class="fa-solid fa-eye"></i>
