@@ -194,8 +194,8 @@
             <!-- TABLE SECTION -->
             <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
                 <div class="px-6 py-5 border-b border-slate-100 flex justify-between items-center bg-white">
-                    <h3 class="t-title font-semibold text-slate-900">Data Merchant</h3>
-                    <a href="merchant.html" class="btn btn-primary btn-sm">Lihat Semua</a>
+                    <h3 class="t-title font-semibold text-slate-900">Transaksi Terbaru</h3>
+                    <a href="{{ route('transactions.index') }}" class="btn btn-primary btn-sm">Lihat Semua</a>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
@@ -206,13 +206,13 @@
                                     ID</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                    Nama</th>
+                                    Tanggal</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                    Pemilik</th>
+                                    Pelanggan</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                    Saldo</th>
+                                    Total Belanja</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Status</th>
@@ -222,44 +222,43 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-sm">
-                            <!-- Row 1 -->
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">#M-001</td>
-                                <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">Toko Berkah Utama</td>
-                                <td class="px-6 py-4 text-slate-700 td-nowrap">Budi Santoso</td>
-                                <td class="px-6 py-4 font-medium text-slate-700 td-nowrap">Rp 1.500.000</td>
-                                <td class="px-6 py-4 td-nowrap">
-                                    <span
-                                        class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-700">Aktif</span>
-                                </td>
-                                <td class="px-6 py-4 text-center td-nowrap">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <a href="show-merchant.html"
-                                            class="btn btn-secondary btn-sm flex items-center gap-2">
-                                            <i class="fa-solid fa-eye"></i> Detail
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Row 2 -->
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">#M-002</td>
-                                <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">Warung Madura Jaya</td>
-                                <td class="px-6 py-4 text-slate-700 td-nowrap">Ahmad Dahlan</td>
-                                <td class="px-6 py-4 font-medium text-slate-700 td-nowrap">Rp 350.000</td>
-                                <td class="px-6 py-4 td-nowrap">
-                                    <span
-                                        class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-700">Aktif</span>
-                                </td>
-                                <td class="px-6 py-4 text-center td-nowrap">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <a href="show-merchant.html"
-                                            class="btn btn-secondary btn-sm flex items-center gap-2">
-                                            <i class="fa-solid fa-eye"></i> Detail
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @forelse ($latestTransactions as $transaction)
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">#TRX-{{ $transaction->id }}</td>
+                                    <td class="px-6 py-4 text-slate-500 td-nowrap">
+                                        {{ $transaction->created_at->translatedFormat('d M Y H:i') }}
+                                    </td>
+                                    <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
+                                        {{ $transaction->customer->full_name ?? '-' }}
+                                    </td>
+                                    <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
+                                        Rp {{ number_format($transaction->grand_total, 0, ',', '.') }}
+                                    </td>
+                                    <td class="px-6 py-4 td-nowrap">
+                                        @if ($transaction->payment_status === 'paid')
+                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-green-100 text-green-700">Paid</span>
+                                        @elseif ($transaction->payment_status === 'pending')
+                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-yellow-100 text-yellow-700">Pending</span>
+                                        @elseif ($transaction->payment_status === 'canceled')
+                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-red-100 text-red-700">Canceled</span>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 text-center td-nowrap">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <a href="{{ route('transactions.show', $transaction->id) }}"
+                                                class="btn btn-secondary btn-sm flex items-center gap-2">
+                                                <i class="fa-solid fa-eye"></i> Detail
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="px-6 py-8 text-center text-slate-400 font-medium">
+                                        Tidak ada transaksi terbaru.
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
