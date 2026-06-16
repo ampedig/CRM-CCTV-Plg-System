@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /www/wwwroot/crm-cctv
+            cd /www/wwwroot/cctvwongkito.my.id
 
             # Menentukan php binary versi 8.5 untuk aaPanel
             PHP_BIN="/www/server/php/85/bin/php"
