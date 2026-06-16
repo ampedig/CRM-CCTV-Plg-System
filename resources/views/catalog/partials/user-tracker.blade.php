@@ -1,14 +1,10 @@
 {{-- User Tracker Modal Component --}}
 <div id="trackerModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-    <!-- Backdrop -->
-    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-md transition-opacity duration-300 opacity-0" id="trackerBackdrop" onclick="closeTrackerModal()"></div>
+    <!-- Backdrop (No close on click) -->
+    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-md transition-opacity duration-300 opacity-0" id="trackerBackdrop"></div>
     
-    <!-- Modal Card -->
+    <!-- Modal Card (No close button) -->
     <div class="bg-white rounded-3xl max-w-md w-full border border-slate-100 shadow-2xl overflow-hidden relative transform transition-all scale-95 duration-300 opacity-0 z-10" id="trackerCard">
-        <!-- Close Button -->
-        <button onclick="closeTrackerModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors p-2 rounded-full hover:bg-slate-50">
-            <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
 
         <!-- Step 1: Input WhatsApp -->
         <div id="stepPhone" class="p-6 sm:p-8 flex flex-col items-center text-center">
@@ -38,9 +34,6 @@
                     <button type="submit" id="btnPhoneSubmit" class="btn btn-primary w-full py-3 rounded-xl flex items-center justify-center gap-2 font-semibold">
                         <span>Lanjutkan</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </button>
-                    <button type="button" onclick="closeTrackerModal()" class="w-full py-2.5 text-xs text-slate-400 hover:text-slate-600 font-semibold transition-colors text-center">
-                        Nanti Saja
                     </button>
                 </div>
             </form>
@@ -76,16 +69,18 @@
 
                 <!-- Pekerjaan -->
                 <div class="mb-4">
-                    <label for="inputOccupation" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Pekerjaan</label>
+                    <label for="inputOccupation" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Pekerjaan <span class="text-rose-500">*</span></label>
                     <input type="text" id="inputOccupation" placeholder="Contoh: Pengusaha, Karyawan" 
-                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all font-semibold">
+                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all font-semibold"
+                        required>
                 </div>
 
                 <!-- Tanggal Lahir -->
                 <div class="mb-5">
-                    <label for="inputDob" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Tanggal Lahir</label>
+                    <label for="inputDob" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Tanggal Lahir <span class="text-rose-500">*</span></label>
                     <input type="date" id="inputDob" 
-                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all font-semibold">
+                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all font-semibold"
+                        required>
                 </div>
 
                 <div class="flex gap-3 mt-6">

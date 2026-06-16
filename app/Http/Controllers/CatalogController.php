@@ -84,8 +84,8 @@ class CatalogController extends Controller
         $request->validate([
             'whatsapp_number' => 'required|string',
             'full_name' => 'required|string|max:255',
-            'occupation' => 'nullable|string|max:255',
-            'date_of_birth' => 'nullable|date',
+            'occupation' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
         ]);
 
         $formattedNumber = $this->formatWhatsAppNumber($request->input('whatsapp_number'));
