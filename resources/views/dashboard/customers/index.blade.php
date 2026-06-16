@@ -135,20 +135,20 @@
                                     <td class="px-6 py-4 text-center td-nowrap">
                                         @if (strtolower($customer->lead_score_status) === 'hot')
                                             <span
-                                                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 border border-rose-100">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600">
+                                                <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background-color: #ef4444;"></span>
                                                 Hot
                                             </span>
                                         @elseif (strtolower($customer->lead_score_status) === 'warm')
                                             <span
-                                                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 border border-amber-100">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600">
+                                                <span class="w-1.5 h-1.5 rounded-full" style="background-color: #f59e0b;"></span>
                                                 Warm
                                             </span>
                                         @else
                                             <span
-                                                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+                                                <span class="w-1.5 h-1.5 rounded-full" style="background-color: #94a3b8;"></span>
                                                 Cold
                                             </span>
                                         @endif
