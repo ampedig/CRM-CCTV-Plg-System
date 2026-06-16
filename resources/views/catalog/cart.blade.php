@@ -2,7 +2,7 @@
 <html lang="id">
 
 <head>
-    @section('title', 'Keranjang Belanja - AMPEDIG')
+    @section('title', 'Keranjang Belanja - CCTV Wongkito')
     @include('dashboard.partials.head')
     @vite(['resources/css/app.css'])
     <style>
@@ -135,8 +135,9 @@
 
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
-                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
+                        class="katalog-logo rounded-lg">
+                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Wongkito</span>
                 </a>
 
                 <!-- Right Side Actions -->
@@ -211,13 +212,14 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm mt-auto">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo-footer rounded-lg">
-                <span class="font-semibold text-white">AMPEDIG</span>
+                <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
+                    class="katalog-logo-footer rounded-lg">
+                <span class="font-semibold text-white">CCTV Wongkito</span>
             </div>
             <p>©
                 <script>
                     document.write(new Date().getFullYear())
-                </script> AMPEDIG. All rights reserved.
+                </script> CCTV Wongkito. All rights reserved.
             </p>
         </div>
     </footer>
@@ -307,7 +309,7 @@
             document.getElementById('summaryTotalPrice').innerText = formatPrice(totalPrice);
 
             // Construct WhatsApp Message
-            let waText = `Halo AMPEDIG 👋, saya ingin memesan beberapa produk dari katalog berikut:\n\n`;
+            let waText = `Halo CCTV Wongkito 👋, saya ingin memesan beberapa produk dari katalog berikut:\n\n`;
             cart.forEach((item, i) => {
                 waText +=
                     `${i + 1}. *${item.name}*\n   (${item.qty} ${item.unit}) x ${formatPrice(item.price)} = *${formatPrice(item.price * item.qty)}*\n\n`;

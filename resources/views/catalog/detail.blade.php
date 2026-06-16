@@ -2,7 +2,7 @@
 <html lang="id">
 
 <head>
-    @section('title', $product->name . ' - AMPEDIG')
+    @section('title', $product->name . ' - CCTV Wongkito')
     @include('dashboard.partials.head')
     <style>
         /* Override body lock from form-plugins.css to allow scrolling */
@@ -215,8 +215,8 @@
             <div class="flex items-center justify-between h-16 gap-4">
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
-                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito" class="katalog-logo rounded-lg">
+                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Wongkito</span>
                 </a>
 
                 <!-- Right Side Actions -->
@@ -284,7 +284,7 @@
                     <div class="mb-6">
                         <h2 class="text-sm font-semibold text-slate-700 mb-2">Deskripsi Produk</h2>
                         <div id="productDesc" class="product-desc">
-                            {!! $product->description ?? '<p>Produk berkualitas dari AMPEDIG. Dijamin orisinil dan bergaransi.</p>' !!}
+                            {!! $product->description ?? '<p>Produk berkualitas dari CCTV Wongkito. Dijamin orisinil dan bergaransi.</p>' !!}
                         </div>
                     </div>
 
@@ -331,14 +331,14 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm border-t border-slate-700 mt-auto">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG"
+                <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
                     class="katalog-logo-footer rounded-lg">
-                <span class="font-semibold text-white">AMPEDIG</span>
+                <span class="font-semibold text-white">CCTV Wongkito</span>
             </div>
             <p>©
                 <script>
                     document.write(new Date().getFullYear())
-                </script> AMPEDIG. All rights reserved.
+                </script> CCTV Wongkito. All rights reserved.
             </p>
         </div>
     </footer>
@@ -374,7 +374,7 @@
 
         // Pre-fill WA Message Link
         const msg =
-            `Halo AMPEDIG 👋, saya tertarik dengan produk:\n\n*${product.name}*\nHarga: ${formatted} / ${unit}\n\nBisa dibantu info lebih lanjut mengenai spesifikasi & ketersediaannya?`;
+            `Halo CCTV Wongkito 👋, saya tertarik dengan produk:\n\n*${product.name}*\nHarga: ${formatted} / ${unit}\n\nBisa dibantu info lebih lanjut mengenai spesifikasi & ketersediaannya?`;
         document.getElementById('waOrderBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
         // Add Product to Cart

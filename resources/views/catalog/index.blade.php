@@ -187,8 +187,8 @@
 
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG" class="katalog-logo rounded-lg">
-                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
+                    <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito" class="katalog-logo rounded-lg">
+                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Wongkito</span>
                 </a>
 
                 <!-- Search Bar (Desktop) -->
@@ -354,14 +354,14 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm pb-20 sm:pb-8">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG"
+                <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
                     class="katalog-logo-footer rounded-lg">
-                <span class="font-semibold text-white">AMPEDIG</span>
+                <span class="font-semibold text-white">CCTV Wongkito</span>
             </div>
             <p>©
                 <script>
                     document.write(new Date().getFullYear())
-                </script> AMPEDIG. All rights reserved.
+                </script> CCTV Wongkito. All rights reserved.
             </p>
         </div>
     </footer>
@@ -385,7 +385,7 @@
                 minimumFractionDigits: 0
             }).format(price);
             const msg =
-                `Halo AMPEDIG 👋, saya tertarik dengan produk:\n\n*${name}*\nHarga: ${formatted}\n\nBisa dibantu info lebih lanjut?`;
+                `Halo CCTV Wongkito 👋, saya tertarik dengan produk:\n\n*${name}*\nHarga: ${formatted}\n\nBisa dibantu info lebih lanjut?`;
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
