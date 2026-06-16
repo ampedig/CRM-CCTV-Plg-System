@@ -4,7 +4,6 @@
 <head>
     @section('title', 'Keranjang Belanja - CCTV Wongkito')
     @include('dashboard.partials.head')
-    @vite(['resources/css/app.css'])
     <style>
         /* Override body lock from form-plugins.css to allow scrolling */
         html {
