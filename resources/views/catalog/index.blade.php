@@ -403,6 +403,7 @@
         });
     </script>
 
+    @include('catalog.partials.user-tracker')
 </body>
 
 </html>

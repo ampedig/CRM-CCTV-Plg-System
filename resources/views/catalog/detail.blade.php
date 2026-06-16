@@ -428,6 +428,7 @@
         window.addEventListener('DOMContentLoaded', updateCartBadge);
     </script>
 
+    @include('catalog.partials.user-tracker')
 </body>
 
 </html>

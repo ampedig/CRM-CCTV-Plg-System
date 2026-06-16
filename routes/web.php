@@ -15,6 +15,12 @@ Route::get('/', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/produk/{slug}', [CatalogController::class, 'detail'])->name('catalog.detail');
 Route::get('/keranjang', [CatalogController::class, 'cart'])->name('catalog.cart');
 
+Route::prefix('catalog-tracker')->group(function () {
+    Route::post('/check', [CatalogController::class, 'checkCustomer'])->name('catalog.tracker.check');
+    Route::post('/register', [CatalogController::class, 'registerCustomer'])->name('catalog.tracker.register');
+    Route::post('/record-visit', [CatalogController::class, 'recordVisit'])->name('catalog.tracker.visit');
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
