@@ -19,6 +19,7 @@ Route::prefix('catalog-tracker')->group(function () {
     Route::post('/check', [CatalogController::class, 'checkCustomer'])->name('catalog.tracker.check');
     Route::post('/register', [CatalogController::class, 'registerCustomer'])->name('catalog.tracker.register');
     Route::post('/record-visit', [CatalogController::class, 'recordVisit'])->name('catalog.tracker.visit');
+    Route::post('/record-interest', [CatalogController::class, 'recordInterest'])->name('catalog.tracker.interest');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

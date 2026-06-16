@@ -359,6 +359,7 @@
                     ? asset('storage/' . $product->image)
                     : 'https://placehold.co/600x600/e0f2fe/0284c7?text=' . urlencode($product->name)),
             cat: @json($product->category->slug ?? ''),
+            category_name: @json($product->category->name ?? 'Uncategorized'),
             unit: @json($product->unit ?? 'pcs')
         };
 
@@ -393,6 +394,11 @@
                 });
             }
             localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Record interest category via tracker
+            if (typeof trackProductInterest === 'function') {
+                trackProductInterest(product.category_name);
+            }
 
             // Show Success Notification with SweetAlert Toast
             const Toast = Swal.mixin({

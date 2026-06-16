@@ -307,4 +307,26 @@
             console.error("Error recording visit count:", error);
         }
     }
+
+    // Record Product Interest Helper
+    async function trackProductInterest(categoryName) {
+        const customerWa = localStorage.getItem('customer_wa');
+        if (!customerWa || !categoryName) return;
+
+        try {
+            await fetch("{{ route('catalog.tracker.interest') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({ 
+                    whatsapp_number: customerWa,
+                    category_name: categoryName
+                })
+            });
+        } catch (error) {
+            console.error("Error recording product interest:", error);
+        }
+    }
 </script>

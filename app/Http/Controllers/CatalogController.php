@@ -138,6 +138,35 @@ class CatalogController extends Controller
     }
 
     /**
+     * Record customer's product interest (category name).
+     */
+    public function recordInterest(Request $request)
+    {
+        $request->validate([
+            'whatsapp_number' => 'required|string',
+            'category_name' => 'required|string|max:255',
+        ]);
+
+        $formattedNumber = $this->formatWhatsAppNumber($request->input('whatsapp_number'));
+        $customer = Customer::where('whatsapp_number', $formattedNumber)->first();
+
+        if ($customer) {
+            $customer->update([
+                'last_product_interest' => $request->input('category_name'),
+            ]);
+            return response()->json([
+                'success' => true,
+                'last_product_interest' => $customer->last_product_interest,
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Customer not found.',
+        ], 404);
+    }
+
+    /**
      * Normalize WhatsApp number to format: 628...
      */
     private function formatWhatsAppNumber(string $phone): string
