@@ -26,6 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('users', UserController::class);
+    Route::get('customers/export', [CustomerController::class, 'export'])->name('customers.export');
     Route::resource('customers', CustomerController::class);
     Route::resource('categories', CategoryController::class)->except(['create', 'edit', 'show']);
     Route::resource('products', ProductController::class);

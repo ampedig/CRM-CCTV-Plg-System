@@ -29,6 +29,27 @@ class CustomerController extends Controller
         return view('dashboard.customers.index', compact('customers', 'search'));
     }
 
+    /**
+     * Export customers to Excel (.xlsx format).
+     */
+    public function export(Request $request): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        $search = $request->input('search');
+
+        $customers = Customer::query()
+            ->when($search, function ($query, $search) {
+                $query->where('full_name', 'like', "%{$search}%")
+                    ->orWhere('whatsapp_number', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->get();
+
+        return \Maatwebsite\Excel\Facades\Excel::download(
+            new \App\Exports\CustomersExport($customers),
+            'pelanggan-' . now()->format('Y-m-d-His') . '.xlsx'
+        );
+    }
+
     public function create(): View
     {
         return view('dashboard.customers.create');

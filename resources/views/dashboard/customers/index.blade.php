@@ -47,6 +47,10 @@
                             </div>
                         </div>
 
+                        <a href="{{ route('customers.export', ['search' => request('search')]) }}" class="btn btn-success">
+                            <i class="fa-solid fa-file-excel"></i> Export Excel
+                        </a>
+
                         <a href="{{ route('customers.create') }}" class="btn btn-primary">
                             <i class="fa-solid fa-plus"></i> Tambah Pelanggan
                         </a>
