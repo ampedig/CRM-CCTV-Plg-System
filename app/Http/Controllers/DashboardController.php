@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Customer;
+use App\Models\Product;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -13,6 +16,17 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
 
-        return view('dashboard.dashboard', compact('latestTransactions'));
+        $totalCustomers = Customer::count();
+        $totalTransactions = Transaction::count();
+        $totalProducts = Product::count();
+        $totalEmployees = User::count();
+
+        return view('dashboard.dashboard', compact(
+            'latestTransactions',
+            'totalCustomers',
+            'totalTransactions',
+            'totalProducts',
+            'totalEmployees'
+        ));
     }
 }

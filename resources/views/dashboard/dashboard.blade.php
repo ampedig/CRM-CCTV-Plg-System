@@ -8,22 +8,8 @@
 
             <!-- Menu 1 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div
-                    class="p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group">
-                    <div
-                        class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-store text-3xl"></i>
-                    </div>
-                    <div class="min-w-0">
-                        <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                            Total Merchant
-                        </p>
-                        <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                            37</h3>
-                    </div>
-                </div>
-
-                <a href="pengguna.html"
+                <!-- Total Pelanggan -->
+                <a href="{{ route('customers.index') }}"
                     class="p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group">
                     <div
                         class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
@@ -31,135 +17,60 @@
                     </div>
                     <div class="min-w-0">
                         <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                            Total Pengguna
+                            Total Pelanggan
                         </p>
                         <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                            7</h3>
+                            {{ $totalCustomers }}</h3>
                     </div>
                 </a>
 
-                <div
-                    class="relative p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl rounded-tr-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        Hari Ini
-                    </div>
+                <!-- Total Transaksi -->
+                <a href="{{ route('transactions.index') }}"
+                    class="p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group">
                     <div
                         class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-money-bill-wave  text-3xl"></i>
+                        <i class="fa-solid fa-receipt text-3xl"></i>
                     </div>
                     <div class="min-w-0">
                         <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                            Disbursement
+                            Total Transaksi
                         </p>
                         <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                            17</h3>
+                            {{ $totalTransactions }}</h3>
                     </div>
-                </div>
+                </a>
 
-                <div
-                    class="relative p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl rounded-tr-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        Hari Ini
-                    </div>
+                <!-- Total Produk -->
+                <a href="{{ route('products.index') }}"
+                    class="p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group">
                     <div
                         class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-money-bill-wave  text-3xl"></i>
+                        <i class="fa-solid fa-box text-3xl"></i>
                     </div>
                     <div class="min-w-0">
                         <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                            Transaksi
+                            Total Produk
                         </p>
                         <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                            75</h3>
+                            {{ $totalProducts }}</h3>
                     </div>
-                </div>
-            </div>
+                </a>
 
-            <!-- Menu 2 -->
-            <div class="mb-8 mt-[-10px]">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Total Pegawai -->
+                <a href="{{ route('users.index') }}"
+                    class="p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group">
                     <div
-                        class="relative p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group overflow-hidden">
-                        <div
-                            class="absolute top-0 right-0 px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl rounded-tr-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                            Hari Ini
-                        </div>
-                        <div
-                            class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-clipboard-list text-3xl"></i>
-                        </div>
-                        <div class="min-w-0">
-                            <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                                Transaksi Sukses
-                            </p>
-                            <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                                21</h3>
-                        </div>
+                        class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-user-tie text-3xl"></i>
                     </div>
-
-                    <div
-                        class="relative p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group overflow-hidden">
-                        <div
-                            class="absolute top-0 right-0 px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl rounded-tr-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                            Hari Ini
-                        </div>
-                        <div
-                            class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-chart-line text-3xl"></i>
-                        </div>
-                        <div class="min-w-0">
-                            <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                                Pendapatan
-                            </p>
-                            <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                                Rp 1.750.000</h3>
-                        </div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
+                            Total Pegawai
+                        </p>
+                        <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
+                            {{ $totalEmployees }}</h3>
                     </div>
-
-
-
-                    <!-- Daily New Customers -->
-                    <div
-                        class="relative p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group overflow-hidden">
-                        <div
-                            class="absolute top-0 right-0 px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl rounded-tr-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                            Hari Ini
-                        </div>
-                        <div
-                            class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-user-plus text-3xl"></i>
-                        </div>
-                        <div class="min-w-0">
-                            <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                                Kosong
-                            </p>
-                            <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                                15</h3>
-                        </div>
-                    </div>
-
-                    <!-- Daily Net Profit -->
-                    <div
-                        class="relative p-6 bg-white border border-slate-200 rounded-2xl flex items-center gap-4 hover:border-brand-500 transition-all duration-300 cursor-pointer group overflow-hidden">
-                        <div
-                            class="absolute top-0 right-0 px-3 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl rounded-tr-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                            Hari Ini
-                        </div>
-                        <div
-                            class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-coins text-3xl"></i>
-                        </div>
-                        <div class="min-w-0">
-                            <p class="text-xs font-bold text-brand-500/80 uppercase tracking-wider mb-1">
-                                Kosong
-                            </p>
-                            <h3 class="t-h1 font-bold text-slate-800 truncate group-hover:text-brand-700 transition-colors">
-                                Rp 250.000</h3>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
 
             <!-- LAYOUT GRID -->
@@ -224,7 +135,8 @@
                         <tbody class="divide-y divide-slate-100 text-sm">
                             @forelse ($latestTransactions as $transaction)
                                 <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">#TRX-{{ $transaction->id }}</td>
+                                    <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">#TRX-{{ $transaction->id }}
+                                    </td>
                                     <td class="px-6 py-4 text-slate-500 td-nowrap">
                                         {{ $transaction->created_at->translatedFormat('d M Y H:i') }}
                                     </td>
@@ -236,11 +148,14 @@
                                     </td>
                                     <td class="px-6 py-4 td-nowrap">
                                         @if ($transaction->payment_status === 'paid')
-                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-green-100 text-green-700">Paid</span>
+                                            <span
+                                                class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-green-100 text-green-700">Paid</span>
                                         @elseif ($transaction->payment_status === 'pending')
-                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-yellow-100 text-yellow-700">Pending</span>
+                                            <span
+                                                class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-yellow-100 text-yellow-700">Pending</span>
                                         @elseif ($transaction->payment_status === 'canceled')
-                                            <span class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-red-100 text-red-700">Canceled</span>
+                                            <span
+                                                class="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-red-100 text-red-700">Canceled</span>
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 text-center td-nowrap">
