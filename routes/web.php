@@ -29,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('customers', CustomerController::class);
     Route::resource('categories', CategoryController::class)->except(['create', 'edit', 'show']);
     Route::resource('products', ProductController::class);
+    Route::get('transactions/export', [TransactionController::class, 'export'])->name('transactions.export');
     Route::resource('transactions', TransactionController::class);
     Route::resource('chat-histories', ChatHistoryController::class)->only(['index', 'destroy']);
 

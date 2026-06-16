@@ -54,6 +54,10 @@
                             </div>
                         </div>
 
+                        <a href="{{ route('transactions.export', ['search' => request('search')]) }}" class="btn btn-success rounded-xl">
+                            <i class="fa-solid fa-file-excel"></i> Export Excel
+                        </a>
+
                         <a href="{{ route('transactions.create') }}" class="btn btn-primary rounded-xl">
                             <i class="fa-solid fa-plus"></i> Tambah Transaksi
                         </a>

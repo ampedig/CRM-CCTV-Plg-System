@@ -40,6 +40,71 @@ class TransactionController extends Controller
     }
 
     /**
+     * Export transactions to Excel (CSV format).
+     */
+    public function export(Request $request): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $search = $request->input('search');
+
+        $transactions = Transaction::query()
+            ->with(['customer', 'details.product'])
+            ->when($search, function ($query, $search) {
+                $query->where('payment_status', 'like', "%{$search}%")
+                    ->orWhereHas('customer', function ($q) use ($search) {
+                        $q->where('full_name', 'like', "%{$search}%");
+                    });
+            })
+            ->latest()
+            ->get();
+
+        $filename = 'transaksi-' . now()->format('Y-m-d-His') . '.csv';
+
+        $headers = [
+            "Content-type"        => "text/csv; charset=UTF-8",
+            "Content-Disposition" => "attachment; filename={$filename}",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        return response()->stream(function() use ($transactions) {
+            $file = fopen('php://output', 'w');
+            
+            // Add UTF-8 BOM to ensure proper character encoding in Microsoft Excel
+            fputs($file, "\xEF\xBB\xBF");
+
+            fputcsv($file, [
+                'ID Transaksi',
+                'Tanggal',
+                'Nama Pelanggan',
+                'Detail Produk',
+                'Total Transaksi (Rp)',
+                'Status Pembayaran'
+            ]);
+
+            foreach ($transactions as $transaction) {
+                $detailsArray = [];
+                foreach ($transaction->details as $detail) {
+                    $productName = $detail->product?->name ?? 'Produk Terhapus';
+                    $detailsArray[] = "{$productName} ({$detail->quantity}x)";
+                }
+                $detailsText = implode(', ', $detailsArray);
+
+                fputcsv($file, [
+                    $transaction->id,
+                    $transaction->created_at->format('Y-m-d H:i:s'),
+                    $transaction->customer?->full_name ?? '-',
+                    $detailsText,
+                    number_format($transaction->grand_total, 2, ',', '.'),
+                    ucfirst($transaction->payment_status)
+                ]);
+            }
+
+            fclose($file);
+        }, 200, $headers);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create(): View
