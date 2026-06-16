@@ -36,6 +36,12 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->filled('whatsapp_number')) {
+            $request->merge([
+                'whatsapp_number' => $this->formatWhatsAppNumber($request->input('whatsapp_number'))
+            ]);
+        }
+
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
             'whatsapp_number' => 'required|string|max:20|unique:customers,whatsapp_number',
@@ -49,6 +55,15 @@ class CustomerController extends Controller
         return redirect()->route('customers.index')->with('success', 'Data pelanggan berhasil ditambahkan.');
     }
 
+    public function show(Customer $customer): View
+    {
+        $transactions = $customer->transactions()
+            ->latest()
+            ->paginate(10);
+
+        return view('dashboard.customers.show', compact('customer', 'transactions'));
+    }
+
     public function edit(Customer $customer): View
     {
         return view('dashboard.customers.edit', compact('customer'));
@@ -56,6 +71,12 @@ class CustomerController extends Controller
 
     public function update(Request $request, Customer $customer)
     {
+        if ($request->filled('whatsapp_number')) {
+            $request->merge([
+                'whatsapp_number' => $this->formatWhatsAppNumber($request->input('whatsapp_number'))
+            ]);
+        }
+
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
             'whatsapp_number' => 'required|string|max:20|unique:customers,whatsapp_number,'.$customer->id,
@@ -74,5 +95,23 @@ class CustomerController extends Controller
         $customer->delete();
 
         return redirect()->route('customers.index')->with('success', 'Data pelanggan berhasil dihapus.');
+    }
+
+    /**
+     * Normalize WhatsApp number to format: 628...
+     */
+    private function formatWhatsAppNumber(string $phone): string
+    {
+        $digits = preg_replace('/\D/', '', $phone);
+
+        if (str_starts_with($digits, '0')) {
+            $digits = '62'.substr($digits, 1);
+        }
+
+        if (str_starts_with($digits, '8')) {
+            $digits = '62'.$digits;
+        }
+
+        return $digits;
     }
 }
