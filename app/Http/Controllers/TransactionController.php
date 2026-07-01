@@ -42,7 +42,7 @@ class TransactionController extends Controller
     /**
      * Export transactions to Excel (.xlsx format).
      */
-    public function export(Request $request): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function export(Request $request): \Symfony\Component\HttpFoundation\StreamedResponse
     {
         $search = $request->input('search');
 
@@ -57,10 +57,10 @@ class TransactionController extends Controller
             ->latest()
             ->get();
 
-        return \Maatwebsite\Excel\Facades\Excel::download(
-            new \App\Exports\TransactionsExport($transactions),
-            'transaksi-' . now()->format('Y-m-d-His') . '.xlsx'
-        );
+        $export   = new \App\Exports\TransactionsExport($transactions);
+        $filename = 'transaksi-' . now()->format('Y-m-d-His') . '.xlsx';
+
+        return (new \Rap2hpoutre\FastExcel\FastExcel($export->collection()))->download($filename);
     }
 
     /**

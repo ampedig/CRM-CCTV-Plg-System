@@ -32,7 +32,7 @@ class CustomerController extends Controller
     /**
      * Export customers to Excel (.xlsx format).
      */
-    public function export(Request $request): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function export(Request $request): \Symfony\Component\HttpFoundation\StreamedResponse
     {
         $search = $request->input('search');
 
@@ -44,10 +44,10 @@ class CustomerController extends Controller
             ->latest()
             ->get();
 
-        return \Maatwebsite\Excel\Facades\Excel::download(
-            new \App\Exports\CustomersExport($customers),
-            'pelanggan-' . now()->format('Y-m-d-His') . '.xlsx'
-        );
+        $export   = new \App\Exports\CustomersExport($customers);
+        $filename = 'pelanggan-' . now()->format('Y-m-d-His') . '.xlsx';
+
+        return (new \Rap2hpoutre\FastExcel\FastExcel($export->collection()))->download($filename);
     }
 
     public function create(): View

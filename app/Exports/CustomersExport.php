@@ -2,12 +2,9 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Carbon\Carbon;
 
-class CustomersExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
+class CustomersExport
 {
     protected $customers;
 
@@ -16,46 +13,31 @@ class CustomersExport implements FromCollection, WithHeadings, WithMapping, Shou
         $this->customers = $customers;
     }
 
-    public function collection()
+    /**
+     * Transform collection into array of rows for FastExcel.
+     * FastExcel accepts a Collection or Generator; we map each customer to a flat array.
+     */
+    public function collection(): \Illuminate\Support\Collection
     {
-        return $this->customers;
-    }
+        return $this->customers->map(function ($customer) {
+            $age = $customer->date_of_birth
+                ? Carbon::parse($customer->date_of_birth)->age
+                : '-';
 
-    public function headings(): array
-    {
-        return [
-            'ID_Pelanggan',
-            'Nama',
-            'Umur',
-            'Pekerjaan',
-            'Jumlah_Chat',
-            'Frekuensi_Konsultasi',
-            'Kunjungan_Website',
-            'Nilai_Transaksi',
-            'Frekuensi_Pembelian',
-            'Produk_Diminati',
-            'Status_Pembayaran',
-            'Lead_Scoring'
-        ];
-    }
-
-    public function map($customer): array
-    {
-        $age = $customer->date_of_birth ? \Carbon\Carbon::parse($customer->date_of_birth)->age : '-';
-
-        return [
-            $customer->id,
-            $customer->full_name,
-            $age,
-            $customer->occupation ?? '-',
-            $customer->total_chats_received,
-            $customer->consultation_frequency,
-            $customer->web_visit_count,
-            number_format($customer->total_transaction_value, 2, ',', '.'),
-            $customer->transaction_count,
-            $customer->last_product_interest ?? '-',
-            $customer->payment_status,
-            ucfirst($customer->lead_score_status ?? 'Cold')
-        ];
+            return [
+                'ID_Pelanggan'          => $customer->id,
+                'Nama'                  => $customer->full_name,
+                'Umur'                  => $age,
+                'Pekerjaan'             => $customer->occupation ?? '-',
+                'Jumlah_Chat'           => $customer->total_chats_received,
+                'Frekuensi_Konsultasi'  => $customer->consultation_frequency,
+                'Kunjungan_Website'     => $customer->web_visit_count,
+                'Nilai_Transaksi'       => number_format($customer->total_transaction_value, 2, ',', '.'),
+                'Frekuensi_Pembelian'   => $customer->transaction_count,
+                'Produk_Diminati'       => $customer->last_product_interest ?? '-',
+                'Status_Pembayaran'     => $customer->payment_status,
+                'Lead_Scoring'          => ucfirst($customer->lead_score_status ?? 'Cold'),
+            ];
+        });
     }
 }
