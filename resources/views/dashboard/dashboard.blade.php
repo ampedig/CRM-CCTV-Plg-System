@@ -189,5 +189,5 @@
     </script>
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.page.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.page.js') }}?v={{ filemtime(public_path('assets/js/dashboard.page.js')) }}"></script>
 @endsection
