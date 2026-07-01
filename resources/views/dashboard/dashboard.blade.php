@@ -83,11 +83,7 @@
                         <div class="flex gap-2">
                             <button
                                 class="px-3 py-1 text-xs font-semibold text-brand-600 bg-brand-50 rounded-lg transition-colors hover:bg-brand-100">
-                                Income
-                            </button>
-                            <button
-                                class="px-3 py-1 text-xs font-semibold text-slate-500 hover:bg-slate-50 rounded-lg transition-colors">
-                                Expense
+                                7 Hari Terakhir
                             </button>
                         </div>
                     </div>
@@ -96,7 +92,7 @@
 
                 <!-- Chart (ECharts) -->
                 <div class="lg:col-span-2 bg-white border border-slate-200 rounded-2xl p-6">
-                    <h3 class="t-title text-base font-semibold text-slate-900 mb-6">Pengunjung per Perangkat
+                    <h3 class="t-title text-base font-semibold text-slate-900 mb-6">Kategori Produk Terlaris
                     </h3>
                     <div id="userChart" class="w-full h-[350px]"></div>
                 </div>
@@ -183,7 +179,15 @@
 @endsection
 
 @section('scripts')
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/libs/echarts/echarts.min.js"></script>
-    <script src="assets/js/dashboard.page.js"></script>
+    <script>
+        window.dashboardData = {
+            labels: {!! json_encode($chartLabels) !!},
+            income: {!! json_encode($chartIncome) !!},
+            pending: {!! json_encode($chartPending) !!},
+            popularCategories: {!! json_encode($popularCategories) !!}
+        };
+    </script>
+    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.page.js') }}"></script>
 @endsection
