@@ -2,28 +2,31 @@
 <html lang="id">
 
 <head>
-    @section('title', 'Keranjang Belanja - CCTV Wongkito')
+    @section('title', 'Keranjang Belanja - CCTV Palembang City')
     @include('dashboard.partials.head')
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Wongkito Palembang. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
-    <meta name="keywords" content="keranjang belanja cctv, cctv wongkito, beli cctv palembang, cctv palembang">
-    <meta name="author" content="CCTV Wongkito">
+    <meta name="description"
+        content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Palembang City. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
+    <meta name="keywords" content="keranjang belanja cctv, cctv palembang city, beli cctv palembang, cctv palembang">
+    <meta name="author" content="CCTV Palembang City">
     <link rel="canonical" href="{{ request()->url() }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
-    <meta property="og:title" content="Keranjang Belanja - CCTV Wongkito Palembang">
-    <meta property="og:description" content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Wongkito Palembang. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
-    <meta property="og:image" content="{{ asset('assets/images/logo.webp') }}">
+    <meta property="og:title" content="Keranjang Belanja - CCTV Palembang City">
+    <meta property="og:description"
+        content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Palembang City. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
+    <meta property="og:image" content="{{ asset('assets/images/logo.png') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request()->url() }}">
-    <meta property="twitter:title" content="Keranjang Belanja - CCTV Wongkito Palembang">
-    <meta property="twitter:description" content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Wongkito Palembang. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
-    <meta property="twitter:image" content="{{ asset('assets/images/logo.webp') }}">
+    <meta property="twitter:title" content="Keranjang Belanja - CCTV Palembang City">
+    <meta property="twitter:description"
+        content="Keranjang belanja produk kamera CCTV, DVR, IP Camera, dan aksesoris Anda di CCTV Palembang City. Selesaikan pemesanan Anda dengan mudah via WhatsApp.">
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.png') }}">
     <style>
         /* Override body lock from form-plugins.css to allow scrolling */
         html {
@@ -154,9 +157,9 @@
 
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="CCTV Palembang City"
                         class="katalog-logo rounded-lg">
-                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Wongkito</span>
+                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Palembang City</span>
                 </a>
 
                 <!-- Right Side Actions -->
@@ -231,14 +234,14 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm mt-auto">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
+                <img src="{{ asset('assets/images/logo.png') }}" alt="CCTV Palembang City"
                     class="katalog-logo-footer rounded-lg">
-                <span class="font-semibold text-white">CCTV Wongkito</span>
+                <span class="font-semibold text-white">CCTV Palembang City</span>
             </div>
             <p>©
                 <script>
                     document.write(new Date().getFullYear())
-                </script> CCTV Wongkito. All rights reserved.
+                </script> CCTV Palembang City. All rights reserved.
             </p>
         </div>
     </footer>
@@ -328,7 +331,7 @@
             document.getElementById('summaryTotalPrice').innerText = formatPrice(totalPrice);
 
             // Construct WhatsApp Message
-            let waText = `Halo CCTV Wongkito 👋, saya ingin memesan beberapa produk dari katalog berikut:\n\n`;
+            let waText = `Halo CCTV Palembang City 👋, saya ingin memesan beberapa produk dari katalog berikut:\n\n`;
             cart.forEach((item, i) => {
                 waText +=
                     `${i + 1}. *${item.name}*\n   (${item.qty} ${item.unit}) x ${formatPrice(item.price)} = *${formatPrice(item.price * item.qty)}*\n\n`;

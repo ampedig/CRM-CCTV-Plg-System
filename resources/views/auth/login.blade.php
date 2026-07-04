@@ -5,27 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Login | CCTV Wongkito palembang</title>
+    <title>Login | CCTV Palembang City</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Halaman login admin area CCTV Wongkito Palembang. Masuk untuk mengelola pelanggan, produk, kategori, riwayat chat, dan memantau analitik CRM secara real-time.">
-    <meta name="keywords" content="login cctv wongkito, admin cctv wongkito, cctv wongkito">
-    <meta name="author" content="CCTV Wongkito">
+    <meta name="description"
+        content="Halaman login admin area CCTV Palembang City. Masuk untuk mengelola pelanggan, produk, kategori, riwayat chat, dan memantau analitik CRM secara real-time.">
+    <meta name="keywords" content="login cctv palembang city, admin cctv palembang city, cctv palembang city">
+    <meta name="author" content="CCTV Palembang City">
     <link rel="canonical" href="{{ request()->url() }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
-    <meta property="og:title" content="Login Admin - CCTV Wongkito Palembang">
-    <meta property="og:description" content="Masuk ke Dashboard Admin CCTV Wongkito Palembang untuk mengelola data pelanggan dan analitik CRM.">
-    <meta property="og:image" content="{{ asset('assets/images/logo.webp') }}">
+    <meta property="og:title" content="Login Admin - CCTV Palembang City">
+    <meta property="og:description"
+        content="Masuk ke Dashboard Admin CCTV Palembang City untuk mengelola data pelanggan dan analitik CRM.">
+    <meta property="og:image" content="{{ asset('assets/images/logo.png') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request()->url() }}">
-    <meta property="twitter:title" content="Login Admin - CCTV Wongkito Palembang">
-    <meta property="twitter:description" content="Masuk ke Dashboard Admin CCTV Wongkito Palembang untuk mengelola data pelanggan dan analitik CRM.">
-    <meta property="twitter:image" content="{{ asset('assets/images/logo.webp') }}">
+    <meta property="twitter:title" content="Login Admin - CCTV Palembang City">
+    <meta property="twitter:description"
+        content="Masuk ke Dashboard Admin CCTV Palembang City untuk mengelola data pelanggan dan analitik CRM.">
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.png') }}">
 
     <!-- Meta SEO & CDN -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
@@ -59,10 +62,9 @@
             <!-- Logo -->
             <div class="relative z-10 flex items-center gap-3 font-semibold text-2xl text-white tracking-tight">
                 <div class="flex items-center justify-center w-10 h-10 text-brand-600">
-                    <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG Logo"
-                        class="h-10 w-auto rounded-xl">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG Logo" class="h-10 w-auto rounded-xl">
                 </div>
-                <span>CCTV Wongkito</span>
+                <span>CCTV Palembang City</span>
             </div>
 
             <!-- Main Content -->
@@ -75,7 +77,7 @@
                 </p>
             </div>
             <div class="relative z-10 text-brand-200 text-sm font-medium">
-                &copy; {{ date('Y') }} CCTV Wongkito. All rights reserved.
+                &copy; {{ date('Y') }} CCTV Palembang City. All rights reserved.
             </div>
         </div>
 
@@ -85,10 +87,10 @@
                 <div class="lg:hidden flex justify-center mb-8">
                     <div class="flex items-center gap-2 font-semibold text-2xl text-slate-900">
                         <div class="flex items-center justify-center w-10 h-10 text-white">
-                            <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG Logo"
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG Logo"
                                 class="h-10 w-auto rounded-xl">
                         </div>
-                        <span>CCTV Wongkito</span>
+                        <span>CCTV Palembang City</span>
                     </div>
                 </div>
 

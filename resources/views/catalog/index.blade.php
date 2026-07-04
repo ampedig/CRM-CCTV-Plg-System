@@ -7,27 +7,27 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Cari CCTV terbaik di Palembang? Temukan berbagai macam pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap di CCTV Wongkito. Garansi resmi, harga terjangkau!">
+        content="Cari CCTV terbaik di Palembang? Temukan berbagai macam pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap di CCTV Palembang City. Garansi resmi, harga terjangkau!">
     <meta name="keywords"
-        content="cctv palembang, kamera cctv palembang, cctv wongkito, ip camera palembang, pasang cctv palembang, cctv murah palembang">
-    <meta name="author" content="CCTV Wongkito">
+        content="cctv palembang, kamera cctv palembang, cctv palembang city, ip camera palembang, pasang cctv palembang, cctv murah palembang">
+    <meta name="author" content="CCTV Palembang City">
     <link rel="canonical" href="{{ request()->url() }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
-    <meta property="og:title" content="Katalog Produk CCTV Wongkito Palembang">
+    <meta property="og:title" content="Katalog Produk CCTV Palembang City">
     <meta property="og:description"
         content="Temukan berbagai pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap dengan harga terjangkau dan garansi resmi.">
-    <meta property="og:image" content="{{ asset('assets/images/logo.webp') }}">
+    <meta property="og:image" content="{{ asset('assets/images/logo.png') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request()->url() }}">
-    <meta property="twitter:title" content="Katalog Produk CCTV Wongkito Palembang">
+    <meta property="twitter:title" content="Katalog Produk CCTV Palembang City">
     <meta property="twitter:description"
         content="Temukan berbagai pilihan kamera CCTV indoor, outdoor, IP camera, DVR, dan aksesoris terlengkap dengan harga terjangkau dan garansi resmi.">
-    <meta property="twitter:image" content="{{ asset('assets/images/logo.webp') }}">
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.png') }}">
 
     <style>
         html,
@@ -211,9 +211,9 @@
 
                 <!-- Logo -->
                 <a href="{{ route('catalog.index') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="CCTV Palembang City"
                         class="katalog-logo rounded-lg">
-                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Wongkito</span>
+                    <span class="font-semibold text-lg text-slate-800 hidden sm:block">CCTV Palembang City</span>
                 </a>
 
                 <!-- Search Bar (Desktop) -->
@@ -379,14 +379,14 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm pb-20 sm:pb-8">
         <div class="katalog-container flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="{{ asset('assets/images/logo.webp') }}" alt="CCTV Wongkito"
+                <img src="{{ asset('assets/images/logo.png') }}" alt="CCTV Palembang City"
                     class="katalog-logo-footer rounded-lg">
-                <span class="font-semibold text-white">CCTV Wongkito</span>
+                <span class="font-semibold text-white">CCTV Palembang City</span>
             </div>
             <p>©
                 <script>
                     document.write(new Date().getFullYear())
-                </script> CCTV Wongkito. All rights reserved.
+                </script> CCTV Palembang City. All rights reserved.
             </p>
         </div>
     </footer>
@@ -410,7 +410,7 @@
                 minimumFractionDigits: 0
             }).format(price);
             const msg =
-                `Halo CCTV Wongkito 👋, saya tertarik dengan produk:\n\n*${name}*\nHarga: ${formatted}\n\nBisa dibantu info lebih lanjut?`;
+                `Halo CCTV Palembang City 👋, saya tertarik dengan produk:\n\n*${name}*\nHarga: ${formatted}\n\nBisa dibantu info lebih lanjut?`;
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 

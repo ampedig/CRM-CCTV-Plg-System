@@ -3,5 +3,5 @@
     &copy;
     <script>
         document.write(new Date().getFullYear());
-    </script> CCTV Wongkito Palembang | All rights reserved.
+    </script> CCTV Palembang City | All rights reserved.
 </footer>

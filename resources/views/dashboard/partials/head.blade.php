@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@yield('title', 'Dashboard') | CCTV Wongkito Palembang</title>
+<title>@yield('title', 'Dashboard') | CCTV Palembang City</title>
 
 <!-- Meta SEO & CDN -->
 <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">

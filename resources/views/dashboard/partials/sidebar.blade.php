@@ -5,8 +5,8 @@
     <div class="flex items-center justify-between h-20 px-6 border-b border-slate-100 logo-wrapper">
         <div
             class="flex items-center gap-3 font-semibold text-lg tracking-tight text-slate-900 overflow-hidden logo-group">
-            <img src="{{ asset('assets/images/logo.webp') }}" alt="AMPEDIG Logo" class="w-10 h-10 rounded-xl shrink-0">
-            <span class="logo-text whitespace-nowrap">CCTV WK</span>
+            <img src="{{ asset('assets/images/logo.png') }}" alt="AMPEDIG Logo" class="w-10 h-10 rounded-xl shrink-0">
+            <span class="logo-text whitespace-nowrap">CCTV Plg City</span>
         </div>
         <button id="desktopSidebarToggle"
             class="hidden lg:flex items-center justify-center w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors shrink-0 outline-none">

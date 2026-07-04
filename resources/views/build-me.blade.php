@@ -61,7 +61,7 @@
 
                 <!-- Logo -->
                 <a href="katalog.html" class="flex items-center gap-2.5 flex-shrink-0">
-                    <img src="../assets/images/logo.webp" alt="AMPEDIG" class="h-8 w-auto rounded-lg">
+                    <img src="../assets/images/logo.png" alt="AMPEDIG" class="h-8 w-auto rounded-lg">
                     <span class="font-semibold text-lg text-slate-800 hidden sm:block">AMPEDIG</span>
                 </a>
 
@@ -136,7 +136,7 @@
     <footer class="bg-slate-800 text-slate-400 py-8 px-4 text-sm mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="../assets/images/logo.webp" alt="AMPEDIG" class="h-7 w-auto rounded-lg">
+                <img src="../assets/images/logo.png" alt="AMPEDIG" class="h-7 w-auto rounded-lg">
                 <span class="font-semibold text-white">AMPEDIG</span>
             </div>
             <p>©
