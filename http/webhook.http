@@ -1,9 +1,8 @@
 ### Test WA Webhook - Valid Structured Payload
-POST http://127.0.0.1:8000/api/wa/webhook
+POST https://crm-cctv.test/api/wa/webhook 
 Content-Type: application/json
-Accept: application/json
 
-{
+json({
   "event": "message.received",
   "timestamp": "2026-06-07T03:35:31.853Z",
   "sender": {
@@ -14,16 +13,16 @@ Accept: application/json
   "message": {
     "id": "ACB02872621C88670816D94BB54A51EE",
     "timestamp": 1780803331,
-    "text": "saya nyari Roko sampoerna isi 16 ada ga mas"
+    "text": "toko cctv buka ga kak"
   }
-}
+})
 
 ### Test WA Webhook - Invalid Payload (Missing message text)
-POST http://127.0.0.1:8000/api/wa/webhook
+POST https://crm-cctv.test/api/wa/webhook
 Content-Type: application/json
 Accept: application/json
 
-{
+json({
   "event": "message.received",
   "timestamp": "2026-06-07T03:35:31.853Z",
   "sender": {
@@ -33,4 +32,4 @@ Accept: application/json
   "message": {
     "id": "ACB02872621C88670816D94BB54A51EE"
   }
-}
+})

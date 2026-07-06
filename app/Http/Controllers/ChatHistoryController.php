@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\ChatHistory;
 use App\Models\Customer;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 
 class ChatHistoryController extends Controller
 {
@@ -51,22 +52,27 @@ class ChatHistoryController extends Controller
         $senderPhone = $request->input('sender.phone');
         $messageText = $request->input('message.text');
 
-        if (!$senderPhone || !$messageText) {
+        if (! $senderPhone || ! $messageText) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Sender phone number (sender.phone) and message text (message.text) are required.'
+                'message' => 'Sender phone number (sender.phone) and message text (message.text) are required.',
             ], 400);
         }
+
+        Log::info('Chat message received', [
+            'sender' => $senderPhone,
+            'message' => $messageText,
+        ]);
 
         // Clean and format WhatsApp phone number to standard 628...
         $formattedNumber = $this->formatWhatsAppNumber($senderPhone);
 
         // Find Customer by their formatted WhatsApp number
         $customer = Customer::where('whatsapp_number', $formattedNumber)->first();
-        if (!$customer) {
+        if (! $customer) {
             return response()->json([
                 'status' => 'ignored',
-                'message' => 'Message received but sender is not registered as a customer.'
+                'message' => 'Message received but sender is not registered as a customer.',
             ], 200);
         }
 
@@ -82,11 +88,20 @@ class ChatHistoryController extends Controller
 
         // Update consultation_frequency if last_consultation_at is on a different day or null
         $now = now();
-        if (is_null($customer->last_consultation_at) || !now()->isSameDay($customer->last_consultation_at)) {
+        if (is_null($customer->last_consultation_at) || ! now()->isSameDay($customer->last_consultation_at)) {
             $customer->increment('consultation_frequency');
             $customer->last_consultation_at = $now;
             $customer->save();
         }
+
+        Log::info('Chat message processed successfully', [
+            'customer_id' => $customer->id,
+            'whatsapp_number' => $chat->whatsapp_number,
+            'message' => $chat->message,
+            'consultation_frequency' => $customer->consultation_frequency,
+            'last_consultation_at' => $customer->last_consultation_at,
+            'total_chats_received' => $customer->total_chats_received,
+        ]);
 
         return response()->json([
             'status' => 'success',
@@ -96,7 +111,7 @@ class ChatHistoryController extends Controller
                 'customer' => $customer->full_name,
                 'whatsapp_number' => $chat->whatsapp_number,
                 'message' => $chat->message,
-            ]
+            ],
         ]);
     }
 
