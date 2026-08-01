@@ -386,7 +386,7 @@
             <p>©
                 <script>
                     document.write(new Date().getFullYear())
-                </script>NEW CCTV Palembang City. All rights reserved.
+                </script>CCTV Palembang City. All rights reserved.
             </p>
         </div>
     </footer>
