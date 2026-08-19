@@ -116,7 +116,6 @@ class ImportDataSkripsi extends Command
                 ]);
 
                 // 2. Create Transactions
-                $paymentStatus = strtolower($statusPembayaranCsv) == 'lunas' ? 'paid' : 'pending';
                 $remainingValue = $nilaiTransaksi;
                 $accumulatedValue = 0;
 
@@ -124,10 +123,17 @@ class ImportDataSkripsi extends Command
                     $isLastTransaction = ($i === $frekuensiPembelian);
                     $txDate = $createdAt->copy()->addDays(rand(1, 60) * $i); 
                     
+                    // Default semua transaksi sebelumnya 'Lunas' (paid). 
+                    // Jika CSV bilang 'Belum', maka HANYA transaksi terakhir yang di-set 'Belum' (pending).
+                    $currentPaymentStatus = 'paid';
+                    if ($isLastTransaction && strtolower(trim($statusPembayaranCsv)) !== 'lunas') {
+                        $currentPaymentStatus = 'pending';
+                    }
+
                     $transaction = Transaction::create([
                         'customer_id' => $customer->id,
                         'transaction_date' => $txDate->format('Y-m-d'),
-                        'payment_status' => $paymentStatus,
+                        'payment_status' => $currentPaymentStatus,
                         'grand_total' => 0,
                         'created_at' => $txDate,
                         'updated_at' => $txDate,
@@ -149,19 +155,34 @@ class ImportDataSkripsi extends Command
                         $product = null;
 
                         if ($isLastTransaction && !$firstProductMatched) {
-                            // Find product matching Produk_Diminati category exactly
-                            $matchedProducts = $allProducts->filter(function($p) use ($produkDiminati) {
-                                return ($p->category && strtolower(trim($p->category->name)) === strtolower(trim($produkDiminati))) || 
-                                       (strtolower(trim($p->name)) === strtolower(trim($produkDiminati)));
+                            // Cari produk sesuai minat, yang harganya masih masuk akal (maksimal 1.5x dari target transaksi)
+                            $matchedProducts = $allProducts->filter(function($p) use ($produkDiminati, $targetValue) {
+                                $match = ($p->category && strtolower(trim($p->category->name)) === strtolower(trim($produkDiminati))) || 
+                                         (strtolower(trim($p->name)) === strtolower(trim($produkDiminati)));
+                                return $match && $p->price <= max(100000, $targetValue * 1.5);
                             });
+                            
+                            if ($matchedProducts->isEmpty()) {
+                                // Fallback jika tidak ada yang murah, cari tanpa limit harga
+                                $matchedProducts = $allProducts->filter(function($p) use ($produkDiminati) {
+                                    return ($p->category && strtolower(trim($p->category->name)) === strtolower(trim($produkDiminati))) || 
+                                           (strtolower(trim($p->name)) === strtolower(trim($produkDiminati)));
+                                });
+                            }
+
                             if ($matchedProducts->isNotEmpty()) {
                                 $product = $matchedProducts->random();
                             } else {
-                                $product = $allProducts->random(); // Fallback if missing
+                                $product = $allProducts->random(); // Fallback paling akhir
                             }
                             $firstProductMatched = true;
                         } else {
-                            $product = $allProducts->random();
+                            // Pilih produk acak, TAPI harus yang harganya masuk akal (tidak overbudget)
+                            $affordableProducts = $allProducts->filter(fn($p) => $p->price <= max(100000, $targetValue * 1.2));
+                            if ($affordableProducts->isEmpty()) {
+                                $affordableProducts = $allProducts;
+                            }
+                            $product = $affordableProducts->random();
                         }
 
                         $remainingForThisItem = $targetValue - $currentTxTotal;
