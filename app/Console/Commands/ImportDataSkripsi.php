@@ -84,8 +84,14 @@ class ImportDataSkripsi extends Command
                 $this->info("Processing CSV ID: {$idPelanggan}");
 
                 // 1. Create Customer
-                $birthYear = $tahun - $umur;
-                $dob = Carbon::createFromDate($birthYear, rand(1, 12), rand(1, 28));
+                // [TRIK UMUR AKURAT SAAT EXPORT]
+                // Karena Laravel export menggunakan ->age (relatif terhadap hari ini: 2026),
+                // maka tahun lahir harus dihitung dari TAHUN SAAT INI dikurang umur CSV.
+                // Kita juga set bulan ke 1-7 (Januari-Juli) agar ulang tahunnya sudah lewat sebelum bulan ini (Agustus).
+                // Dengan begini umurnya pasti pas dan tanggal/bulan lahirnya tetap bervariasi!
+                $birthYear = now()->year - $umur;
+                $dob = Carbon::createFromDate($birthYear, rand(1, 7), rand(1, 28));
+                
                 $createdAt = Carbon::createFromDate($tahun, rand(1, 10), rand(1, 28))->setTime(rand(8,17), rand(0,59), rand(0,59));
 
                 $nameType = rand(1, 10);

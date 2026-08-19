@@ -56,8 +56,10 @@
 
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Lahir <span
-                                    class="text-slate-400 text-xs font-normal">(Opsional)</span></label>
-                            <input type="date" name="date_of_birth"
+                                    class="text-slate-400 text-xs font-normal">(Opsional)</span>
+                                <span id="age-display" class="text-xs text-brand-600 font-bold ml-2"></span>
+                            </label>
+                            <input type="date" id="date_of_birth" name="date_of_birth"
                                 value="{{ old('date_of_birth', $customer->date_of_birth) }}"
                                 class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700 text-left">
                             @error('date_of_birth')
@@ -276,6 +278,30 @@
 
                 statusToggle.addEventListener('change', updateStatusView);
                 updateStatusView(); // Run once on load
+            }
+
+            // Hitung Umur Otomatis
+            const dobInput = document.getElementById('date_of_birth');
+            const ageDisplay = document.getElementById('age-display');
+
+            if (dobInput && ageDisplay) {
+                const calculateAge = () => {
+                    if (!dobInput.value) {
+                        ageDisplay.innerText = '';
+                        return;
+                    }
+                    const dob = new Date(dobInput.value);
+                    const today = new Date();
+                    let age = today.getFullYear() - dob.getFullYear();
+                    const m = today.getMonth() - dob.getMonth();
+                    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                        age--;
+                    }
+                    ageDisplay.innerText = `(${age} Tahun)`;
+                };
+
+                dobInput.addEventListener('change', calculateAge);
+                calculateAge(); // Run once on load
             }
         });
     </script>
