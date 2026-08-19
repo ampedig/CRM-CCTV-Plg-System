@@ -149,6 +149,7 @@ class ImportDataSkripsi extends Command
 
                     $firstProductMatched = false;
                     $currentTxTotal = 0;
+                    $detailsData = [];
 
                     // Greedily fill the transaction cart with products based on real price
                     while ($currentTxTotal < $targetValue) {
@@ -207,14 +208,12 @@ class ImportDataSkripsi extends Command
 
                         $subTotal = $qty * $product->price;
                         
-                        TransactionDetail::create([
-                            'transaction_id' => $transaction->id,
+                        $detailsData[] = [
                             'product_id' => $product->id,
                             'quantity' => $qty,
                             'sub_total' => $subTotal,
-                            'created_at' => $txDate,
-                            'updated_at' => $txDate,
-                        ]);
+                            'product_model' => $product, // Simpan reference untuk update profil nanti
+                        ];
 
                         $currentTxTotal += $subTotal;
                         
@@ -223,13 +222,48 @@ class ImportDataSkripsi extends Command
                         }
                     }
 
+                    // [TRIK AKURASI 100% CSV] 
+                    // Jika ini adalah transaksi penutup dari pelanggan tersebut,
+                    // kita paksa (manipulasi) sub_total dari produk terakhir agar grand_total-nya sama persis dengan CSV
+                    if ($isLastTransaction && count($detailsData) > 0) {
+                        $exactTargetForTx = max(0, $remainingValue);
+                        $diff = $exactTargetForTx - $currentTxTotal;
+                        
+                        $lastIndex = count($detailsData) - 1;
+                        $detailsData[$lastIndex]['sub_total'] += $diff;
+
+                        // Pastikan tidak ada sub_total yang minus akibat pengurangan
+                        for ($k = $lastIndex; $k >= 0; $k--) {
+                            if ($detailsData[$k]['sub_total'] < 0) {
+                                $minus = $detailsData[$k]['sub_total'];
+                                $detailsData[$k]['sub_total'] = 0; // Jadikan 0 (seolah bonus/diskon 100%)
+                                if ($k > 0) {
+                                    $detailsData[$k-1]['sub_total'] += $minus; // Bebankan minus ke item sebelumnya
+                                }
+                            }
+                        }
+                        
+                        $currentTxTotal = $exactTargetForTx;
+                    }
+
+                    // Insert ke database setelah data matang
+                    foreach ($detailsData as $detail) {
+                        TransactionDetail::create([
+                            'transaction_id' => $transaction->id,
+                            'product_id' => $detail['product_id'],
+                            'quantity' => $detail['quantity'],
+                            'sub_total' => $detail['sub_total'],
+                            'created_at' => $txDate,
+                            'updated_at' => $txDate,
+                        ]);
+                    }
+
                     // Update actual total
                     $transaction->update(['grand_total' => $currentTxTotal]);
                     
                     // Simulate dynamic last_product_interest update logic from TransactionController
-                    $firstDetail = $transaction->details()->first();
-                    if ($firstDetail) {
-                        $prod = $firstDetail->product;
+                    if (count($detailsData) > 0) {
+                        $prod = $detailsData[0]['product_model'];
                         $catName = $prod->category ? $prod->category->name : $prod->name;
                         $customer->update(['last_product_interest' => $catName]);
                     }
