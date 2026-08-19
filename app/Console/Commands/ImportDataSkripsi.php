@@ -103,9 +103,27 @@ class ImportDataSkripsi extends Command
                     $fullName = $faker->firstName . ' ' . $faker->firstName . ' ' . $faker->lastName; // 20% 3 kata
                 }
 
+                // [TRIK NOMOR WA VALID]
+                // Daftar prefix provider seluler di Indonesia (Telkomsel, Indosat, XL, Tri, Smartfren)
+                $prefixes = [
+                    '811', '812', '813', '821', '822', '823', '852', '853', '851', // Telkomsel & By.U
+                    '814', '815', '816', '855', '856', '857', '858',               // Indosat
+                    '817', '818', '819', '859', '877', '878', '831', '832', '838', // XL / Axis
+                    '895', '896', '897', '898', '899',                             // Tri
+                    '881', '882', '883', '884', '885', '886', '887', '888', '889'  // Smartfren
+                ];
+                
+                $selectedPrefix = $prefixes[array_rand($prefixes)];
+                $suffixLength = rand(7, 9); // Panjang sisa nomor rata-rata 7 s.d 9 digit
+                $suffix = '';
+                for ($k = 0; $k < $suffixLength; $k++) {
+                    $suffix .= rand(0, 9);
+                }
+                $validWhatsApp = '62' . $selectedPrefix . $suffix;
+
                 $customer = Customer::create([
                     'full_name' => $fullName,
-                    'whatsapp_number' => '628' . $faker->numerify('##########'),
+                    'whatsapp_number' => $validWhatsApp,
                     'occupation' => $pekerjaan,
                     'date_of_birth' => $dob->format('Y-m-d'),
                     'total_chats_received' => $jumlahChat,
