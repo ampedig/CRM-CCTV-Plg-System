@@ -104,7 +104,7 @@
                             @forelse ($customers as $index => $customer)
                                 <tr class="hover:bg-slate-50 transition-colors">
                                     <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
-                                        {{ $customer->id }}
+                                        {{ $customers->firstItem() + $loop->index }}
                                     </td>
                                     <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
                                         {{ $customer->full_name }}

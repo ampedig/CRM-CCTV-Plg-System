@@ -19,13 +19,14 @@ class CustomersExport
      */
     public function collection(): \Illuminate\Support\Collection
     {
-        return $this->customers->map(function ($customer) {
+        $counter = 1;
+        return $this->customers->map(function ($customer) use (&$counter) {
             $age = $customer->date_of_birth
                 ? Carbon::parse($customer->date_of_birth)->age
                 : '-';
 
             return [
-                'ID_Pelanggan'          => $customer->id,
+                'ID_Pelanggan'          => $counter++,
                 'Tahun'                 => $customer->created_at ? $customer->created_at->format('Y') : '-',
                 'Umur'                  => $age,
                 'Pekerjaan'             => $customer->occupation ?? '-',
