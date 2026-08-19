@@ -97,7 +97,7 @@
                                         {{ $transactions->firstItem() + $index }}
                                     </td>
                                     <td class="px-6 py-4 text-slate-500 td-nowrap">
-                                        {{ $transaction->created_at->translatedFormat('d M Y H:i') }}
+                                        {{ $transaction->transaction_date ? \Carbon\Carbon::parse($transaction->transaction_date)->translatedFormat('d M Y') : '-' }}
                                     </td>
                                     <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
                                         {{ $transaction->customer?->full_name ?? '-' }}

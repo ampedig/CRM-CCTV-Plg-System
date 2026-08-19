@@ -15,6 +15,7 @@ class Transaction extends Model
 
     protected $casts = [
         'grand_total' => 'decimal:2',
+        'transaction_date' => 'date',
     ];
 
     protected static function booted()

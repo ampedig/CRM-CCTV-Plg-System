@@ -81,6 +81,7 @@ class TransactionController extends Controller
     {
         $validated = $request->validate([
             'customer_id' => 'required|exists:customers,id',
+            'transaction_date' => 'required|date',
             'payment_status' => 'required|in:pending,paid,canceled',
             'product_id' => 'required|array|min:1',
             'product_id.*' => 'required|exists:products,id',
@@ -91,6 +92,7 @@ class TransactionController extends Controller
         DB::transaction(function () use ($validated) {
             $transaction = Transaction::create([
                 'customer_id' => $validated['customer_id'],
+                'transaction_date' => $validated['transaction_date'],
                 'payment_status' => $validated['payment_status'],
                 'grand_total' => 0, // Temporary grand total
             ]);
@@ -146,6 +148,7 @@ class TransactionController extends Controller
     {
         $validated = $request->validate([
             'customer_id' => 'required|exists:customers,id',
+            'transaction_date' => 'required|date',
             'payment_status' => 'required|in:pending,paid,canceled',
             'product_id' => 'required|array|min:1',
             'product_id.*' => 'required|exists:products,id',
@@ -156,6 +159,7 @@ class TransactionController extends Controller
         DB::transaction(function () use ($validated, $transaction) {
             $transaction->update([
                 'customer_id' => $validated['customer_id'],
+                'transaction_date' => $validated['transaction_date'],
                 'payment_status' => $validated['payment_status'],
             ]);
 

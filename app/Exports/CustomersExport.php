@@ -32,7 +32,7 @@ class CustomersExport
                 'Jumlah_Chat'           => $customer->total_chats_received,
                 'Frekuensi_Konsultasi'  => $customer->consultation_frequency,
                 'Kunjungan_Website'     => $customer->web_visit_count,
-                'Nilai_Transaksi'       => $customer->total_transaction_value,
+                'Nilai_Transaksi'       => (int) $customer->total_transaction_value,
                 'Frekuensi_Pembelian'   => $customer->transaction_count,
                 'Produk_Diminati'       => $customer->last_product_interest ?? '-',
                 'Status_Pembayaran'     => $customer->payment_status,

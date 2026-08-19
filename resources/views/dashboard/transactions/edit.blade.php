@@ -39,7 +39,15 @@
                         <h3 class="text-lg font-semibold text-slate-800 mb-4 pb-3 border-b border-slate-100">
                             Edit Transaksi #{{ $transaction->id }}
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Transaksi
+                                    <span class="text-rose-500">*</span></label>
+                                <input type="date" name="transaction_date" class="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-brand-500 transition-colors" value="{{ old('transaction_date', $transaction->transaction_date ? \Carbon\Carbon::parse($transaction->transaction_date)->format('Y-m-d') : '') }}" required>
+                                @error('transaction_date')
+                                    <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Pelanggan
                                     <span class="text-rose-500">*</span></label>
