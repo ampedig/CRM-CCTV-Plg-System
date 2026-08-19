@@ -26,13 +26,13 @@ class CustomersExport
 
             return [
                 'ID_Pelanggan'          => $customer->id,
-                'Nama'                  => $customer->full_name,
+                'Tahun'                 => $customer->created_at ? $customer->created_at->format('Y') : '-',
                 'Umur'                  => $age,
                 'Pekerjaan'             => $customer->occupation ?? '-',
                 'Jumlah_Chat'           => $customer->total_chats_received,
                 'Frekuensi_Konsultasi'  => $customer->consultation_frequency,
                 'Kunjungan_Website'     => $customer->web_visit_count,
-                'Nilai_Transaksi'       => number_format($customer->total_transaction_value, 2, ',', '.'),
+                'Nilai_Transaksi'       => $customer->total_transaction_value,
                 'Frekuensi_Pembelian'   => $customer->transaction_count,
                 'Produk_Diminati'       => $customer->last_product_interest ?? '-',
                 'Status_Pembayaran'     => $customer->payment_status,
