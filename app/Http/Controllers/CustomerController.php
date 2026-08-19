@@ -41,7 +41,7 @@ class CustomerController extends Controller
                 $query->where('full_name', 'like', "%{$search}%")
                     ->orWhere('whatsapp_number', 'like', "%{$search}%");
             })
-            ->latest()
+            ->orderBy('id', 'asc')
             ->get();
 
         $export   = new \App\Exports\CustomersExport($customers);
@@ -112,9 +112,16 @@ class CustomerController extends Controller
             'last_product_interest' => 'nullable|string|max:255',
             'lead_score_status' => 'required|string|in:Cold,Warm,Hot,cold,warm,hot',
             'payment_status' => 'required|string|in:Belum,Lunas',
+            'created_at' => 'nullable|date',
         ]);
 
+        if (!empty($validated['created_at'])) {
+            $customer->created_at = $validated['created_at'];
+            unset($validated['created_at']);
+        }
+
         $customer->update($validated);
+        $customer->save(); // Ensure created_at is saved
 
         return redirect()->route('customers.index')->with('success', 'Data pelanggan berhasil diperbarui.');
     }

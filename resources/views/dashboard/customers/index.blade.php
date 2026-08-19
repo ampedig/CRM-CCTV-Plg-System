@@ -64,7 +64,7 @@
                             <tr>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                    ID</th>
+                                    #</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Nama</th>
@@ -140,19 +140,22 @@
                                         @if (strtolower($customer->lead_score_status) === 'hot')
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600">
-                                                <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background-color: #ef4444;"></span>
+                                                <span class="w-1.5 h-1.5 rounded-full animate-pulse"
+                                                    style="background-color: #ef4444;"></span>
                                                 Hot
                                             </span>
                                         @elseif (strtolower($customer->lead_score_status) === 'warm')
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600">
-                                                <span class="w-1.5 h-1.5 rounded-full" style="background-color: #f59e0b;"></span>
+                                                <span class="w-1.5 h-1.5 rounded-full"
+                                                    style="background-color: #f59e0b;"></span>
                                                 Warm
                                             </span>
                                         @else
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
-                                                <span class="w-1.5 h-1.5 rounded-full" style="background-color: #94a3b8;"></span>
+                                                <span class="w-1.5 h-1.5 rounded-full"
+                                                    style="background-color: #94a3b8;"></span>
                                                 Cold
                                             </span>
                                         @endif
@@ -269,17 +272,18 @@
                 if (!columnName || columnName === "#" || columnName === "Aksi") return;
 
                 const isHidden = hiddenColumns.includes(index);
-                
+
                 // Create checkbox item
                 const label = document.createElement("label");
                 label.className = "flex items-center gap-2 px-3 py-2 hover:bg-slate-50 rounded-lg cursor-pointer";
-                
+
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
-                checkbox.className = "column-checkbox w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500";
+                checkbox.className =
+                    "column-checkbox w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500";
                 checkbox.checked = !isHidden;
                 checkbox.dataset.column = index;
-                
+
                 checkbox.addEventListener("change", function() {
                     setColumnVisibility(table, index, this.checked);
                     saveColumnState(storageKey, index, !this.checked);
@@ -344,7 +348,7 @@
             }
 
             initDynamicColumns("pelangganTable", "columnListContainer");
-            
+
             // Initialize Select2 if exists
             if (typeof $ !== 'undefined' && $.fn.select2) {
                 $('.select2-show-entries').select2({

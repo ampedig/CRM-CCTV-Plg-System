@@ -109,6 +109,16 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Terdaftar (created_at) <span
+                                    class="text-rose-500">*</span></label>
+                            <input type="date" name="created_at"
+                                value="{{ old('created_at', $customer->created_at ? $customer->created_at->format('Y-m-d') : '') }}" required
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
+                            @error('created_at')
+                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Total Chat Diterima <span
                                     class="text-rose-500">*</span></label>
                             <input type="number" name="total_chats_received"
