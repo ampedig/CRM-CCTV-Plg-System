@@ -68,7 +68,7 @@ class TransactionController extends Controller
      */
     public function create(): View
     {
-        $customers = Customer::where('is_active', 1)->get();
+        $customers = Customer::where('is_active', 1)->orderBy('id', 'desc')->get();
         $products = Product::with('category')->where('is_active', 1)->get();
 
         return view('dashboard.transactions.create', compact('customers', 'products'));
@@ -112,7 +112,9 @@ class TransactionController extends Controller
                     'sub_total' => $subTotal,
                 ]);
 
-                $lastProductInterest = $product->category ? $product->category->name : $product->name;
+                if ($lastProductInterest === null) {
+                    $lastProductInterest = $product->category ? $product->category->name : $product->name;
+                }
             }
 
             $transaction->update([
@@ -144,7 +146,7 @@ class TransactionController extends Controller
     public function edit(Transaction $transaction): View
     {
         $transaction->load('details.product');
-        $customers = Customer::where('is_active', 1)->get();
+        $customers = Customer::where('is_active', 1)->orderBy('id', 'desc')->get();
         $products = Product::with('category')->where('is_active', 1)->get();
 
         return view('dashboard.transactions.edit', compact('transaction', 'customers', 'products'));
@@ -190,7 +192,9 @@ class TransactionController extends Controller
                     'sub_total' => $subTotal,
                 ]);
 
-                $lastProductInterest = $product->category ? $product->category->name : $product->name;
+                if ($lastProductInterest === null) {
+                    $lastProductInterest = $product->category ? $product->category->name : $product->name;
+                }
             }
 
             $transaction->update([
