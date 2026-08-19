@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransactionsExport;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Transaction;
@@ -9,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Rap2hpoutre\FastExcel\FastExcel;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class TransactionController extends Controller
 {
@@ -32,7 +35,7 @@ class TransactionController extends Controller
                         $q->where('full_name', 'like', "%{$search}%");
                     });
             })
-            ->latest()
+            ->orderBy('id', 'desc')
             ->paginate($perPage)
             ->withQueryString();
 
@@ -42,7 +45,7 @@ class TransactionController extends Controller
     /**
      * Export transactions to Excel (.xlsx format).
      */
-    public function export(Request $request): \Symfony\Component\HttpFoundation\StreamedResponse
+    public function export(Request $request): StreamedResponse
     {
         $search = $request->input('search');
 
@@ -54,13 +57,13 @@ class TransactionController extends Controller
                         $q->where('full_name', 'like', "%{$search}%");
                     });
             })
-            ->latest()
+            ->orderBy('id', 'desc')
             ->get();
 
-        $export   = new \App\Exports\TransactionsExport($transactions);
-        $filename = 'transaksi-' . now()->format('Y-m-d-His') . '.xlsx';
+        $export = new TransactionsExport($transactions);
+        $filename = 'transaksi-'.now()->format('Y-m-d-His').'.xlsx';
 
-        return (new \Rap2hpoutre\FastExcel\FastExcel($export->collection()))->download($filename);
+        return (new FastExcel($export->collection()))->download($filename);
     }
 
     /**
@@ -123,7 +126,7 @@ class TransactionController extends Controller
 
             if ($lastProductInterest) {
                 $transaction->customer->update([
-                    'last_product_interest' => $lastProductInterest
+                    'last_product_interest' => $lastProductInterest,
                 ]);
             }
         });
@@ -137,6 +140,7 @@ class TransactionController extends Controller
     public function show(Transaction $transaction): View
     {
         $transaction->load(['customer', 'details.product']);
+
         return view('dashboard.transactions.show', compact('transaction'));
     }
 
@@ -203,7 +207,7 @@ class TransactionController extends Controller
 
             if ($lastProductInterest) {
                 $transaction->customer->update([
-                    'last_product_interest' => $lastProductInterest
+                    'last_product_interest' => $lastProductInterest,
                 ]);
             }
         });
