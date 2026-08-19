@@ -185,7 +185,7 @@
                                 $productImage = $product->image ? asset('storage/' . $product->image) : 'https://placehold.co/100x100/e2e8f0/64748b?text=' . urlencode(substr($product->name, 0, 3));
                             @endphp
                             <div class="bg-white border border-slate-200 rounded-xl p-3 hover:border-brand-300 hover:shadow-md transition-all flex gap-3 items-center group cursor-pointer"
-                                onclick="selectProduct({{ $product->id }}, '{{ addslashes($product->name) }}', '{{ addslashes($product->merk ?? '-') }}', {{ $product->price }}, '{{ $productImage }}')">
+                                onclick="selectProduct({{ $product->id }}, '{{ addslashes($product->name) }}', '{{ addslashes($product->merk ?? '-') }}', '{{ addslashes($product->category->name ?? 'Tanpa Kategori') }}', {{ $product->price }}, '{{ $productImage }}')">
                                 <div class="w-16 h-16 rounded-lg bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-100">
                                     <img src="{{ $productImage }}" alt="{{ $product->name }}"
                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
@@ -193,8 +193,12 @@
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-sm font-semibold text-slate-800 group-hover:text-brand-600 transition-colors">
                                         {{ $product->name }}</h4>
-                                    <p class="text-[11px] font-medium text-slate-500 mb-1 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
-                                        {{ $product->merk ?? '-' }}</p>
+                                    <div class="flex flex-wrap gap-1 mb-1">
+                                        <p class="text-[11px] font-medium text-slate-500 inline-block bg-slate-100 px-1.5 py-0.5 rounded">
+                                            {{ $product->merk ?? '-' }}</p>
+                                        <p class="text-[11px] font-medium text-brand-600 inline-block bg-brand-50 px-1.5 py-0.5 rounded">
+                                            {{ $product->category->name ?? 'Tanpa Kategori' }}</p>
+                                    </div>
                                     <p class="text-sm font-semibold text-slate-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                                 </div>
                             </div>
@@ -247,8 +251,8 @@
                 const items = document.querySelectorAll('#modal-product-grid > div');
                 items.forEach(item => {
                     const title = item.querySelector('h4').textContent.toLowerCase();
-                    const brand = item.querySelector('p').textContent.toLowerCase();
-                    if (title.includes(term) || brand.includes(term)) {
+                    const details = item.querySelector('.flex.flex-wrap').textContent.toLowerCase();
+                    if (title.includes(term) || details.includes(term)) {
                         item.style.display = 'flex';
                     } else {
                         item.style.display = 'none';
@@ -287,7 +291,7 @@
         }
 
         // Logic Memilih Produk
-        function selectProduct(id, name, brand, price, image) {
+        function selectProduct(id, name, brand, category, price, image) {
             // Cek apakah produk sudah ada
             const existingProduct = selectedProducts.find(p => p.id === id);
 
@@ -300,6 +304,7 @@
                     id: id,
                     name: name,
                     brand: brand,
+                    category: category,
                     price: price,
                     image: image,
                     qty: 1
@@ -335,7 +340,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-sm font-semibold text-slate-800">${product.name}</h4>
-                                    <p class="text-xs text-slate-500">${product.brand}</p>
+                                    <p class="text-xs text-slate-500 mt-1">${product.brand} &bull; <span class="text-brand-600">${product.category}</span></p>
                                     <!-- Hidden inputs for form submission -->
                                     <input type="hidden" name="product_id[]" value="${product.id}">
                                 </div>

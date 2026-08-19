@@ -69,7 +69,7 @@ class TransactionController extends Controller
     public function create(): View
     {
         $customers = Customer::where('is_active', 1)->get();
-        $products = Product::where('is_active', 1)->get();
+        $products = Product::with('category')->where('is_active', 1)->get();
 
         return view('dashboard.transactions.create', compact('customers', 'products'));
     }
@@ -98,9 +98,10 @@ class TransactionController extends Controller
             ]);
 
             $grandTotal = 0;
+            $lastProductInterest = null;
 
             foreach ($validated['product_id'] as $index => $productId) {
-                $product = Product::findOrFail($productId);
+                $product = Product::with('category')->findOrFail($productId);
                 $qty = intval($validated['quantity'][$index]);
                 $subTotal = $product->price * $qty;
                 $grandTotal += $subTotal;
@@ -110,11 +111,19 @@ class TransactionController extends Controller
                     'quantity' => $qty,
                     'sub_total' => $subTotal,
                 ]);
+
+                $lastProductInterest = $product->category ? $product->category->name : $product->name;
             }
 
             $transaction->update([
                 'grand_total' => $grandTotal,
             ]);
+
+            if ($lastProductInterest) {
+                $transaction->customer->update([
+                    'last_product_interest' => $lastProductInterest
+                ]);
+            }
         });
 
         return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil disimpan.');
@@ -136,7 +145,7 @@ class TransactionController extends Controller
     {
         $transaction->load('details.product');
         $customers = Customer::where('is_active', 1)->get();
-        $products = Product::where('is_active', 1)->get();
+        $products = Product::with('category')->where('is_active', 1)->get();
 
         return view('dashboard.transactions.edit', compact('transaction', 'customers', 'products'));
     }
@@ -167,9 +176,10 @@ class TransactionController extends Controller
             $transaction->details()->delete();
 
             $grandTotal = 0;
+            $lastProductInterest = null;
 
             foreach ($validated['product_id'] as $index => $productId) {
-                $product = Product::findOrFail($productId);
+                $product = Product::with('category')->findOrFail($productId);
                 $qty = intval($validated['quantity'][$index]);
                 $subTotal = $product->price * $qty;
                 $grandTotal += $subTotal;
@@ -179,11 +189,19 @@ class TransactionController extends Controller
                     'quantity' => $qty,
                     'sub_total' => $subTotal,
                 ]);
+
+                $lastProductInterest = $product->category ? $product->category->name : $product->name;
             }
 
             $transaction->update([
                 'grand_total' => $grandTotal,
             ]);
+
+            if ($lastProductInterest) {
+                $transaction->customer->update([
+                    'last_product_interest' => $lastProductInterest
+                ]);
+            }
         });
 
         return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil diperbarui.');
