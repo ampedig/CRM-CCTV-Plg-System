@@ -22,7 +22,7 @@ class CustomerController extends Controller
                 $query->where('full_name', 'like', "%{$search}%")
                     ->orWhere('whatsapp_number', 'like', "%{$search}%");
             })
-            ->latest()
+            ->orderBy('id', 'desc')
             ->paginate($perPage)
             ->withQueryString();
 
