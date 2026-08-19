@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->date('transaction_date')->nullable()->after('transaction_code');
+            $table->date('transaction_date')->nullable();
         });
     }
 

@@ -64,7 +64,7 @@
                             <tr>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                    #</th>
+                                    ID</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Nama</th>
@@ -104,7 +104,7 @@
                             @forelse ($customers as $index => $customer)
                                 <tr class="hover:bg-slate-50 transition-colors">
                                     <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
-                                        {{ $customers->firstItem() + $index }}
+                                        {{ $customer->id }}
                                     </td>
                                     <td class="px-6 py-4 font-semibold text-slate-700 td-nowrap">
                                         {{ $customer->full_name }}
