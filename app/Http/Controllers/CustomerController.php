@@ -71,7 +71,8 @@ class CustomerController extends Controller
             'is_active' => 'required|boolean',
         ]);
 
-        Customer::create($validated);
+        $customer = Customer::create($validated);
+        $customer->updateLeadScore();
 
         return redirect()->route('customers.index')->with('success', 'Data pelanggan berhasil ditambahkan.');
     }
@@ -110,7 +111,6 @@ class CustomerController extends Controller
             'transaction_count' => 'required|integer|min:0',
             'total_transaction_value' => 'required|numeric|min:0',
             'last_product_interest' => 'nullable|string|max:255',
-            'lead_score_status' => 'required|string|in:Cold,Warm,Hot,cold,warm,hot',
             'payment_status' => 'required|string|in:Belum,Lunas',
             'created_at' => 'nullable|date',
         ]);
@@ -122,6 +122,7 @@ class CustomerController extends Controller
 
         $customer->update($validated);
         $customer->save(); // Ensure created_at is saved
+        $customer->updateLeadScore();
 
         return redirect()->route('customers.index')->with('success', 'Data pelanggan berhasil diperbarui.');
     }

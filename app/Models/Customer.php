@@ -48,5 +48,32 @@ class Customer extends Model
             'total_transaction_value' => $stats->total_value ?? 0,
             'payment_status' => $paymentStatus,
         ]);
+
+        $this->updateLeadScore();
+    }
+
+    /**
+     * Otomatis mengkalkulasi Lead Score berdasarkan Aktivitas & Nilai Transaksi
+     */
+    public function updateLeadScore(): void
+    {
+        $transaksi = $this->total_transaction_value ?? 0;
+        $chat = $this->total_chats_received ?? 0;
+        $web = $this->web_visit_count ?? 0;
+
+        $score = 'Cold'; // Default
+
+        // HOT: Transaksi super besar (>= 10 Juta) ATAU Transaksi lumayan besar (>= 5 Juta) + Aktif interaksi
+        if ($transaksi >= 10000000) {
+            $score = 'Hot';
+        } elseif ($transaksi >= 5000000 && ($chat >= 15 || $web >= 10)) {
+            $score = 'Hot';
+        } 
+        // WARM: Transaksi menengah (>= 2 Juta) ATAU sering tanya-tanya walau belum beli
+        elseif ($transaksi >= 2000000 || $chat >= 15 || $web >= 10) {
+            $score = 'Warm';
+        }
+
+        $this->update(['lead_score_status' => $score]);
     }
 }

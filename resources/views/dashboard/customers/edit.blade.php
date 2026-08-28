@@ -111,10 +111,11 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Terdaftar (created_at) <span
-                                    class="text-rose-500">*</span></label>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Terdaftar (created_at)
+                                <span class="text-rose-500">*</span></label>
                             <input type="date" name="created_at"
-                                value="{{ old('created_at', $customer->created_at ? $customer->created_at->format('Y-m-d') : '') }}" required
+                                value="{{ old('created_at', $customer->created_at ? $customer->created_at->format('Y-m-d') : '') }}"
+                                required
                                 class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
                             @error('created_at')
                                 <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
@@ -187,26 +188,6 @@
                                 placeholder="Contoh: Kamera CCTV, Aksesoris"
                                 class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-400 font-medium text-slate-700">
                             @error('last_product_interest')
-                                <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Status Skor Klien (Lead Score)
-                                <span class="text-rose-500">*</span></label>
-                            <select name="lead_score_status" required
-                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 transition-colors font-medium text-slate-700">
-                                <option value="Cold"
-                                    {{ old('lead_score_status', $customer->lead_score_status) === 'Cold' ? 'selected' : '' }}>
-                                    Cold</option>
-                                <option value="Warm"
-                                    {{ old('lead_score_status', $customer->lead_score_status) === 'Warm' ? 'selected' : '' }}>
-                                    Warm</option>
-                                <option value="Hot"
-                                    {{ old('lead_score_status', $customer->lead_score_status) === 'Hot' ? 'selected' : '' }}>
-                                    Hot</option>
-                            </select>
-                            @error('lead_score_status')
                                 <p class="text-sm text-rose-500 font-medium mt-1">{{ $message }}</p>
                             @enderror
                         </div>
