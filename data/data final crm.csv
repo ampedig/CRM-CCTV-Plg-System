@@ -1,0 +1,502 @@
+ID_Pelanggan,Tahun,Umur,Pekerjaan,Jumlah_Chat,Frekuensi_Konsultasi,Kunjungan_Website,Nilai_Transaksi,Frekuensi_Pembelian,Produk_Diminati,Status_Pembayaran
+1,2023,32,Teknisi,22,2,2,4336714,8,Paket CCTV,Belum
+2,2023,39,Wirausaha,27,2,5,2724460,3,Kamera CCTV,Belum
+3,2023,26,Teknisi,3,2,20,11318635,4,Kamera CCTV,Belum
+4,2023,26,Teknisi,22,1,13,8034721,6,Kamera CCTV,Lunas
+5,2023,39,Pegawai Swasta,19,3,17,5518326,6,CCTV Outdoor,Belum
+6,2023,33,Mahasiswa,3,4,18,2578560,6,Kamera CCTV,Belum
+7,2023,36,Teknisi,29,2,20,14363329,8,CCTV Outdoor,Lunas
+8,2023,38,Karyawan,9,2,4,1693991,4,Kamera CCTV,Belum
+9,2023,49,Pegawai Swasta,4,3,10,10193520,1,DVR,Lunas
+10,2023,37,Mahasiswa,26,2,15,796203,5,CCTV Outdoor,Belum
+11,2023,49,Teknisi,29,2,12,2779303,1,Kamera CCTV,Belum
+12,2023,39,Karyawan,18,8,6,4425270,8,Kamera CCTV,Lunas
+13,2023,30,Freelancer,6,7,20,12694983,7,Paket CCTV,Lunas
+14,2023,43,Freelancer,14,7,18,4818896,2,Kamera CCTV,Belum
+15,2023,25,Karyawan,29,4,9,2378722,2,CCTV Outdoor,Belum
+16,2023,37,Freelancer,18,2,7,3442364,6,CCTV Outdoor,Belum
+17,2023,41,Freelancer,25,8,13,14103883,1,DVR,Belum
+18,2023,30,Pegawai,6,2,7,3357792,7,CCTV Outdoor,Belum
+19,2023,25,Pegawai Swasta,3,1,14,11442999,6,Paket CCTV,Lunas
+20,2023,48,Kontraktor,15,6,13,11019784,8,CCTV Outdoor,Belum
+21,2023,22,Mahasiswa,14,8,17,8028949,3,DVR,Belum
+22,2023,41,Pegawai Swasta,12,7,9,2872024,4,Kamera CCTV,Belum
+23,2023,40,Kontraktor,15,6,7,7457344,8,CCTV Outdoor,Lunas
+24,2023,40,Freelancer,21,5,14,5474487,8,Paket CCTV,Lunas
+25,2023,43,Pegawai,19,5,4,1757496,3,Kamera CCTV,Belum
+26,2023,47,Freelancer,28,4,1,10926415,4,DVR,Belum
+27,2023,24,Pegawai Swasta,1,2,18,9234478,7,DVR,Lunas
+28,2023,39,Pegawai,4,2,12,9580037,6,CCTV Outdoor,Lunas
+29,2023,24,Mahasiswa,16,3,2,8622509,5,CCTV Indoor,Lunas
+30,2023,50,Pegawai Swasta,11,2,11,5858797,4,CCTV Outdoor,Belum
+31,2023,35,Pegawai Swasta,28,5,14,10384002,2,CCTV Outdoor,Lunas
+32,2023,48,Karyawan,29,6,16,14838535,6,CCTV Outdoor,Lunas
+33,2023,37,Pegawai,16,5,7,1282861,6,Kamera CCTV,Belum
+34,2023,43,Wirausaha,13,2,14,3244482,3,DVR,Lunas
+35,2023,47,Freelancer,2,8,19,8068307,8,CCTV Outdoor,Lunas
+36,2023,31,Teknisi,13,3,17,13308647,7,Paket CCTV,Lunas
+37,2023,27,Freelancer,9,4,2,3572749,6,CCTV Outdoor,Lunas
+38,2023,47,Teknisi,6,3,3,8498474,7,Paket CCTV,Belum
+39,2023,39,Karyawan,30,8,2,2237275,5,DVR,Lunas
+40,2023,28,Mahasiswa,25,8,5,14866691,2,Kamera CCTV,Belum
+41,2023,39,Freelancer,23,4,6,4715408,1,Paket CCTV,Lunas
+42,2023,30,Freelancer,28,6,13,1617183,7,Paket CCTV,Belum
+43,2023,31,Teknisi,30,6,15,7023219,7,CCTV Indoor,Belum
+44,2023,47,Pegawai,9,2,6,7270579,6,Kamera CCTV,Belum
+45,2023,23,Mahasiswa,8,6,9,7766211,5,CCTV Outdoor,Belum
+46,2023,45,Mahasiswa,16,2,4,3512326,7,Paket CCTV,Lunas
+47,2023,31,Kontraktor,10,8,17,10377272,6,DVR,Belum
+48,2023,33,Pegawai Swasta,10,8,15,4819556,6,CCTV Outdoor,Belum
+49,2023,43,Teknisi,24,8,18,9439973,7,Paket CCTV,Belum
+50,2023,46,Wirausaha,7,1,5,10631191,6,CCTV Outdoor,Lunas
+51,2023,24,Kontraktor,29,1,5,2742403,7,CCTV Outdoor,Belum
+52,2023,47,Mahasiswa,18,6,6,7040548,7,CCTV Indoor,Belum
+53,2023,39,Karyawan,21,3,7,3012280,4,Paket CCTV,Belum
+54,2023,49,Freelancer,26,6,12,13614536,3,CCTV Outdoor,Belum
+55,2023,27,Karyawan,22,2,20,7834221,6,Paket CCTV,Belum
+56,2023,35,Pegawai,8,7,10,11981777,3,Kamera CCTV,Belum
+57,2023,36,Freelancer,6,8,17,1753641,3,CCTV Outdoor,Lunas
+58,2023,31,Teknisi,4,2,16,6763857,5,Kamera CCTV,Belum
+59,2023,24,Freelancer,10,8,14,6546166,7,CCTV Indoor,Belum
+60,2023,45,Teknisi,22,4,6,13742827,7,CCTV Indoor,Belum
+61,2023,28,Mahasiswa,13,5,5,12684832,3,Kamera CCTV,Lunas
+62,2023,50,Pegawai,8,2,8,13800836,5,Kamera CCTV,Belum
+63,2023,28,Pegawai Swasta,16,4,15,9887085,1,Paket CCTV,Lunas
+64,2023,43,Pegawai Swasta,27,4,17,9393807,5,DVR,Lunas
+65,2023,34,Kontraktor,27,8,11,7767410,8,CCTV Indoor,Lunas
+66,2023,23,Kontraktor,29,3,11,3057201,4,Kamera CCTV,Lunas
+67,2023,40,Teknisi,25,7,18,11015760,1,CCTV Outdoor,Lunas
+68,2023,35,Wirausaha,9,2,18,5292335,3,Paket CCTV,Belum
+69,2023,42,Karyawan,18,8,20,2379391,3,Paket CCTV,Belum
+70,2023,22,Karyawan,23,5,13,6921020,7,Paket CCTV,Belum
+71,2023,23,Wirausaha,20,5,2,11055940,7,CCTV Outdoor,Lunas
+72,2023,29,Teknisi,17,8,14,6548677,8,Kamera CCTV,Belum
+73,2023,35,Karyawan,27,4,5,4031675,2,DVR,Lunas
+74,2023,42,Kontraktor,11,4,6,818993,7,CCTV Outdoor,Lunas
+75,2023,37,Wirausaha,3,5,2,12783316,1,DVR,Belum
+76,2023,50,Kontraktor,24,3,10,4972412,7,Paket CCTV,Belum
+77,2023,25,Kontraktor,28,1,20,745516,1,CCTV Indoor,Lunas
+78,2023,31,Pegawai Swasta,23,3,3,7867764,4,Paket CCTV,Belum
+79,2023,36,Karyawan,18,2,1,10915124,8,CCTV Indoor,Belum
+80,2023,27,Mahasiswa,27,1,5,7061327,1,Paket CCTV,Belum
+81,2023,37,Karyawan,17,7,7,5244313,5,CCTV Outdoor,Lunas
+82,2023,32,Pegawai Swasta,23,8,9,11125599,3,CCTV Indoor,Belum
+83,2023,47,Pegawai,27,8,3,1580728,1,DVR,Belum
+84,2023,24,Karyawan,10,2,6,2054820,5,Kamera CCTV,Belum
+85,2023,40,Wirausaha,8,7,7,4226266,8,CCTV Outdoor,Belum
+86,2023,32,Kontraktor,29,5,2,830360,1,Paket CCTV,Lunas
+87,2023,47,Pegawai Swasta,3,2,12,12307512,8,Kamera CCTV,Lunas
+88,2023,30,Teknisi,28,4,16,12467455,8,Paket CCTV,Lunas
+89,2023,33,Wirausaha,1,1,3,8077381,7,DVR,Lunas
+90,2023,28,Wirausaha,10,6,17,2391923,3,CCTV Outdoor,Lunas
+91,2023,46,Freelancer,17,2,13,12913837,1,DVR,Lunas
+92,2023,30,Teknisi,24,3,4,11569351,3,Kamera CCTV,Lunas
+93,2023,47,Freelancer,7,2,2,12601097,4,CCTV Indoor,Lunas
+94,2023,24,Teknisi,8,8,13,13057777,4,CCTV Outdoor,Belum
+95,2023,48,Freelancer,14,6,1,6144984,2,CCTV Outdoor,Belum
+96,2023,47,Kontraktor,3,1,13,10266760,4,CCTV Indoor,Lunas
+97,2023,28,Karyawan,21,1,9,11063489,8,CCTV Outdoor,Lunas
+98,2023,50,Kontraktor,21,8,15,9941412,4,CCTV Indoor,Belum
+99,2023,46,Wirausaha,24,4,10,4496399,2,Kamera CCTV,Lunas
+100,2023,43,Karyawan,4,8,2,8813908,4,CCTV Indoor,Belum
+101,2023,43,Pegawai Swasta,25,5,8,4181520,4,Kamera CCTV,Belum
+102,2023,30,Kontraktor,21,1,1,13857305,5,CCTV Indoor,Lunas
+103,2023,38,Pegawai Swasta,16,4,1,11873191,3,Paket CCTV,Belum
+104,2023,49,Pegawai Swasta,9,7,15,12881711,8,CCTV Outdoor,Belum
+105,2023,33,Wirausaha,22,4,12,11754569,5,CCTV Outdoor,Belum
+106,2023,44,Teknisi,14,2,1,5195713,1,Kamera CCTV,Lunas
+107,2023,50,Pegawai Swasta,22,8,16,10279107,8,DVR,Belum
+108,2023,45,Wirausaha,28,2,3,6604496,4,DVR,Belum
+109,2023,34,Karyawan,16,1,5,9343517,7,Paket CCTV,Lunas
+110,2023,28,Karyawan,20,3,9,4587252,8,Paket CCTV,Belum
+111,2023,32,Pegawai Swasta,30,1,4,11544347,4,CCTV Outdoor,Lunas
+112,2023,36,Pegawai Swasta,4,3,20,14573106,6,Paket CCTV,Lunas
+113,2023,24,Karyawan,3,6,3,13437849,8,DVR,Lunas
+114,2023,35,Teknisi,21,6,20,14156744,4,CCTV Indoor,Belum
+115,2023,42,Karyawan,21,7,5,6975851,3,Kamera CCTV,Belum
+116,2023,30,Karyawan,29,1,15,4496251,2,DVR,Lunas
+117,2023,22,Pegawai,30,6,18,8134221,7,Kamera CCTV,Belum
+118,2023,40,Pegawai,2,7,10,4559051,1,Paket CCTV,Belum
+119,2023,48,Pegawai Swasta,13,4,4,4211925,6,CCTV Outdoor,Lunas
+120,2023,26,Pegawai,21,2,17,11010835,8,Kamera CCTV,Lunas
+121,2023,36,Kontraktor,26,7,17,12513473,4,CCTV Outdoor,Lunas
+122,2023,30,Kontraktor,22,8,16,2197107,8,Kamera CCTV,Lunas
+123,2023,27,Wirausaha,1,8,12,7393537,4,Paket CCTV,Lunas
+124,2023,47,Wirausaha,26,6,5,2413496,4,CCTV Indoor,Belum
+125,2023,46,Wirausaha,3,3,6,10924217,1,DVR,Belum
+126,2023,44,Teknisi,4,2,9,2294355,6,Kamera CCTV,Lunas
+127,2023,41,Mahasiswa,9,6,11,4344381,2,CCTV Outdoor,Lunas
+128,2023,46,Pegawai Swasta,24,2,13,12286350,2,CCTV Indoor,Lunas
+129,2023,46,Mahasiswa,13,2,11,14873658,5,CCTV Indoor,Belum
+130,2023,34,Pegawai Swasta,5,6,18,8969524,6,CCTV Indoor,Belum
+131,2023,44,Pegawai Swasta,5,6,15,4232723,6,CCTV Indoor,Belum
+132,2023,49,Freelancer,16,2,10,9839718,6,Kamera CCTV,Lunas
+133,2023,30,Freelancer,6,7,12,2245187,5,CCTV Outdoor,Lunas
+134,2023,34,Pegawai,24,4,7,2401322,6,DVR,Lunas
+135,2023,42,Teknisi,9,3,17,5765670,3,Paket CCTV,Belum
+136,2023,22,Mahasiswa,16,5,13,6656616,3,CCTV Outdoor,Lunas
+137,2023,44,Karyawan,5,3,11,14491827,2,Kamera CCTV,Lunas
+138,2023,29,Pegawai,22,6,8,14150441,7,CCTV Indoor,Lunas
+139,2023,31,Kontraktor,18,3,7,12349309,8,DVR,Belum
+140,2023,31,Teknisi,23,7,1,13579664,7,CCTV Outdoor,Belum
+141,2023,30,Wirausaha,5,1,17,9709260,7,Paket CCTV,Belum
+142,2023,28,Mahasiswa,21,7,3,10410506,4,CCTV Indoor,Belum
+143,2023,22,Pegawai,4,2,2,12141110,7,Paket CCTV,Lunas
+144,2023,46,Freelancer,4,1,6,14819493,8,CCTV Outdoor,Belum
+145,2023,49,Kontraktor,18,8,15,2953249,1,CCTV Outdoor,Belum
+146,2023,43,Pegawai Swasta,8,4,15,11603609,8,Kamera CCTV,Belum
+147,2023,33,Wirausaha,15,1,11,6181562,7,Paket CCTV,Belum
+148,2023,29,Pegawai,10,3,4,3167251,8,Paket CCTV,Belum
+149,2023,39,Pegawai Swasta,30,1,1,2366726,3,CCTV Indoor,Belum
+150,2023,44,Wirausaha,5,4,4,9768472,7,Paket CCTV,Lunas
+151,2023,50,Karyawan,5,8,17,10099141,8,CCTV Outdoor,Lunas
+152,2023,29,Pegawai Swasta,5,4,13,7213232,4,DVR,Lunas
+153,2023,22,Freelancer,14,4,4,3118459,4,DVR,Belum
+154,2023,33,Freelancer,7,2,17,7468840,7,CCTV Outdoor,Lunas
+155,2023,46,Mahasiswa,16,3,9,2757681,3,DVR,Belum
+156,2023,44,Teknisi,16,6,2,12775151,8,CCTV Indoor,Lunas
+157,2023,37,Wirausaha,23,4,14,9174044,8,CCTV Indoor,Belum
+158,2023,22,Mahasiswa,16,4,16,4500905,6,CCTV Indoor,Belum
+159,2023,35,Teknisi,28,6,19,1536593,5,Kamera CCTV,Belum
+160,2023,43,Kontraktor,30,3,12,14862279,4,CCTV Outdoor,Lunas
+161,2023,37,Karyawan,18,5,13,14491745,7,DVR,Belum
+162,2023,42,Freelancer,28,8,6,12460331,1,CCTV Outdoor,Belum
+163,2023,37,Wirausaha,26,4,3,12252359,6,CCTV Outdoor,Lunas
+164,2023,40,Pegawai,18,2,12,10142650,7,CCTV Indoor,Lunas
+165,2023,39,Pegawai Swasta,27,6,3,6808097,1,CCTV Indoor,Belum
+166,2023,23,Wirausaha,26,1,16,13608226,2,DVR,Lunas
+167,2023,39,Freelancer,20,7,4,5434448,4,Paket CCTV,Lunas
+168,2024,49,Kontraktor,17,4,17,4926495,6,Kamera CCTV,Belum
+169,2024,46,Wirausaha,27,5,1,4779029,6,Kamera CCTV,Lunas
+170,2024,34,Wirausaha,19,4,2,13472176,3,CCTV Outdoor,Lunas
+171,2024,43,Wirausaha,13,2,11,2340051,6,Kamera CCTV,Belum
+172,2024,22,Pegawai Swasta,14,3,2,2544247,3,CCTV Indoor,Lunas
+173,2024,24,Wirausaha,13,7,8,9908830,5,CCTV Indoor,Lunas
+174,2024,44,Teknisi,5,2,15,10997604,5,CCTV Outdoor,Belum
+175,2024,30,Mahasiswa,14,5,19,2130133,4,Paket CCTV,Lunas
+176,2024,36,Mahasiswa,12,4,6,12306222,7,DVR,Lunas
+177,2024,50,Freelancer,5,5,8,6596090,3,CCTV Outdoor,Lunas
+178,2024,23,Pegawai,24,2,11,583942,3,Paket CCTV,Lunas
+179,2024,33,Freelancer,13,7,4,5290225,6,CCTV Outdoor,Belum
+180,2024,29,Mahasiswa,26,5,15,9767996,5,Kamera CCTV,Belum
+181,2024,34,Karyawan,23,1,18,9157760,5,CCTV Outdoor,Lunas
+182,2024,39,Pegawai,21,4,4,14424680,4,CCTV Indoor,Belum
+183,2024,37,Kontraktor,26,2,13,3245735,8,Kamera CCTV,Lunas
+184,2024,27,Freelancer,15,6,16,6075479,8,Kamera CCTV,Belum
+185,2024,39,Freelancer,11,8,15,13298595,3,CCTV Outdoor,Belum
+186,2024,27,Wirausaha,30,2,7,1597462,2,DVR,Lunas
+187,2024,50,Kontraktor,18,3,4,8699580,5,CCTV Outdoor,Lunas
+188,2024,45,Teknisi,28,8,7,3391147,5,DVR,Belum
+189,2024,31,Pegawai Swasta,20,5,7,6204626,1,CCTV Indoor,Belum
+190,2024,25,Wirausaha,11,2,15,3127655,1,CCTV Outdoor,Belum
+191,2024,31,Mahasiswa,3,8,1,8970598,8,Kamera CCTV,Lunas
+192,2024,32,Pegawai Swasta,9,5,17,8545351,2,CCTV Indoor,Lunas
+193,2024,25,Kontraktor,10,1,9,14582471,7,CCTV Outdoor,Lunas
+194,2024,24,Karyawan,15,6,5,1476716,1,Kamera CCTV,Belum
+195,2024,50,Karyawan,11,5,15,11376898,4,Kamera CCTV,Lunas
+196,2024,46,Karyawan,1,8,9,10591669,5,Paket CCTV,Lunas
+197,2024,43,Kontraktor,3,2,8,14815344,7,DVR,Lunas
+198,2024,41,Karyawan,12,2,11,3427723,1,CCTV Indoor,Lunas
+199,2024,47,Teknisi,26,3,8,2804632,5,DVR,Lunas
+200,2024,33,Pegawai,4,7,18,1962946,8,CCTV Indoor,Belum
+201,2024,48,Wirausaha,3,7,13,13340682,2,Paket CCTV,Belum
+202,2024,22,Mahasiswa,18,1,18,10942548,3,CCTV Indoor,Lunas
+203,2024,28,Karyawan,5,8,15,6078367,2,Kamera CCTV,Lunas
+204,2024,35,Mahasiswa,6,3,3,6443643,7,DVR,Belum
+205,2024,32,Teknisi,27,7,11,3272111,7,CCTV Indoor,Belum
+206,2024,33,Karyawan,30,5,2,7102280,3,Kamera CCTV,Belum
+207,2024,34,Kontraktor,24,3,4,7359945,7,Paket CCTV,Lunas
+208,2024,41,Mahasiswa,12,3,19,9428855,1,CCTV Outdoor,Lunas
+209,2024,22,Mahasiswa,3,2,8,9170656,4,Paket CCTV,Belum
+210,2024,40,Pegawai Swasta,20,3,1,5795545,8,DVR,Lunas
+211,2024,45,Freelancer,1,3,20,3459947,2,Paket CCTV,Belum
+212,2024,35,Karyawan,16,7,19,6764789,6,DVR,Lunas
+213,2024,35,Karyawan,25,7,20,8049993,5,CCTV Indoor,Lunas
+214,2024,31,Mahasiswa,4,4,18,9373690,6,CCTV Indoor,Lunas
+215,2024,45,Teknisi,8,5,4,4413357,2,Kamera CCTV,Lunas
+216,2024,29,Mahasiswa,11,7,15,10884572,8,Kamera CCTV,Belum
+217,2024,23,Karyawan,12,3,2,10225950,8,Kamera CCTV,Lunas
+218,2024,22,Freelancer,3,8,13,11304593,6,DVR,Belum
+219,2024,33,Pegawai,17,2,2,11369533,2,DVR,Belum
+220,2024,38,Teknisi,27,4,8,8583773,3,Paket CCTV,Belum
+221,2024,30,Wirausaha,16,5,9,3905784,6,CCTV Outdoor,Belum
+222,2024,29,Pegawai,16,1,19,3207512,1,CCTV Outdoor,Belum
+223,2024,22,Teknisi,6,7,12,7546940,2,DVR,Belum
+224,2024,39,Teknisi,17,5,14,947766,4,CCTV Indoor,Lunas
+225,2024,23,Wirausaha,10,6,11,5411719,2,Kamera CCTV,Belum
+226,2024,30,Mahasiswa,23,5,20,4727776,1,CCTV Indoor,Lunas
+227,2024,38,Kontraktor,13,6,18,4342572,6,CCTV Outdoor,Lunas
+228,2024,26,Wirausaha,30,8,9,2082548,8,CCTV Indoor,Lunas
+229,2024,26,Wirausaha,21,6,19,10552160,6,Kamera CCTV,Lunas
+230,2024,25,Freelancer,13,1,5,9539580,7,Paket CCTV,Lunas
+231,2024,26,Wirausaha,29,1,10,10214153,1,DVR,Belum
+232,2024,30,Mahasiswa,17,3,3,4582503,5,CCTV Indoor,Belum
+233,2024,33,Wirausaha,12,3,1,6456083,7,DVR,Belum
+234,2024,48,Mahasiswa,8,3,16,8431414,1,Kamera CCTV,Belum
+235,2024,39,Teknisi,15,2,7,5404887,4,CCTV Outdoor,Lunas
+236,2024,48,Pegawai,6,1,10,2535352,5,Kamera CCTV,Lunas
+237,2024,45,Karyawan,13,3,11,11301127,5,Kamera CCTV,Belum
+238,2024,27,Mahasiswa,9,7,4,8728438,2,DVR,Belum
+239,2024,49,Kontraktor,17,8,14,8444064,3,CCTV Indoor,Lunas
+240,2024,32,Teknisi,17,8,9,8986810,5,DVR,Belum
+241,2024,39,Kontraktor,20,2,15,5869016,7,Paket CCTV,Lunas
+242,2024,37,Teknisi,29,4,5,12416002,7,CCTV Outdoor,Lunas
+243,2024,24,Freelancer,8,3,11,12049982,1,DVR,Lunas
+244,2024,41,Karyawan,22,4,4,12145663,2,CCTV Outdoor,Belum
+245,2024,42,Pegawai,27,1,6,6557645,8,CCTV Outdoor,Belum
+246,2024,47,Wirausaha,8,6,7,13578546,1,Paket CCTV,Belum
+247,2024,27,Karyawan,23,6,14,9870950,8,CCTV Outdoor,Lunas
+248,2024,43,Freelancer,20,7,8,9394770,2,CCTV Outdoor,Belum
+249,2024,33,Wirausaha,27,2,17,2059455,6,DVR,Lunas
+250,2024,30,Pegawai,12,7,1,3657049,2,Paket CCTV,Belum
+251,2024,48,Mahasiswa,18,3,5,2257218,2,Paket CCTV,Belum
+252,2024,23,Pegawai Swasta,19,8,14,5990466,7,CCTV Indoor,Lunas
+253,2024,41,Freelancer,12,2,11,14332656,7,CCTV Indoor,Belum
+254,2024,46,Pegawai,29,3,10,3332598,7,CCTV Indoor,Lunas
+255,2024,42,Pegawai Swasta,19,6,18,5321739,1,DVR,Belum
+256,2024,43,Freelancer,7,3,8,6750869,1,Kamera CCTV,Lunas
+257,2024,25,Mahasiswa,29,6,8,2006541,4,CCTV Indoor,Belum
+258,2024,22,Karyawan,17,4,2,14242332,7,CCTV Outdoor,Lunas
+259,2024,23,Teknisi,8,8,6,12615822,4,CCTV Outdoor,Belum
+260,2024,38,Pegawai,4,1,12,14113282,5,Kamera CCTV,Lunas
+261,2024,47,Pegawai,15,8,17,1851738,7,CCTV Indoor,Belum
+262,2024,29,Karyawan,29,8,9,4120637,8,CCTV Indoor,Belum
+263,2024,22,Mahasiswa,10,7,19,6333055,5,Kamera CCTV,Lunas
+264,2024,42,Pegawai Swasta,15,5,14,13136673,4,CCTV Indoor,Belum
+265,2024,31,Pegawai,24,7,19,7488768,2,DVR,Belum
+266,2024,39,Freelancer,21,3,14,8542732,6,CCTV Indoor,Belum
+267,2024,24,Freelancer,5,1,7,13950977,7,Paket CCTV,Lunas
+268,2024,37,Pegawai,26,4,5,821836,5,Paket CCTV,Lunas
+269,2024,40,Kontraktor,23,2,16,13779485,8,CCTV Outdoor,Lunas
+270,2024,26,Pegawai Swasta,1,8,6,11766056,4,DVR,Belum
+271,2024,23,Pegawai Swasta,30,8,20,14276848,1,CCTV Indoor,Belum
+272,2024,40,Kontraktor,3,8,18,5775238,4,DVR,Lunas
+273,2024,35,Teknisi,25,8,10,2173768,7,DVR,Lunas
+274,2024,46,Kontraktor,27,6,2,10765203,8,CCTV Outdoor,Belum
+275,2024,44,Mahasiswa,5,7,7,3428211,6,CCTV Outdoor,Belum
+276,2024,47,Kontraktor,12,1,2,14919242,7,DVR,Belum
+277,2024,25,Kontraktor,30,5,20,10575100,7,Paket CCTV,Lunas
+278,2024,38,Teknisi,13,5,12,10311049,7,Paket CCTV,Belum
+279,2024,31,Karyawan,6,4,3,8702366,6,Kamera CCTV,Lunas
+280,2024,46,Teknisi,15,5,2,11142571,6,DVR,Lunas
+281,2024,41,Freelancer,22,2,7,9986522,5,CCTV Outdoor,Belum
+282,2024,30,Karyawan,18,2,10,5624122,3,CCTV Outdoor,Lunas
+283,2024,36,Pegawai,10,8,4,3449177,5,Paket CCTV,Belum
+284,2024,48,Pegawai,13,7,12,12591604,4,DVR,Belum
+285,2024,49,Teknisi,9,8,13,2939902,3,CCTV Outdoor,Belum
+286,2024,36,Pegawai Swasta,3,5,2,5487337,1,DVR,Belum
+287,2024,34,Pegawai,4,1,18,4167235,5,CCTV Outdoor,Belum
+288,2024,42,Mahasiswa,6,5,10,13761278,1,Kamera CCTV,Belum
+289,2024,22,Freelancer,17,5,9,1246710,7,Paket CCTV,Belum
+290,2024,25,Freelancer,24,4,10,12937527,2,CCTV Indoor,Lunas
+291,2024,26,Karyawan,22,7,4,8109446,4,Kamera CCTV,Lunas
+292,2024,43,Wirausaha,2,1,3,663872,6,DVR,Lunas
+293,2024,25,Kontraktor,11,6,15,2269350,4,DVR,Belum
+294,2024,28,Teknisi,7,3,5,12153704,2,CCTV Outdoor,Lunas
+295,2024,48,Teknisi,8,3,10,1418130,1,CCTV Outdoor,Belum
+296,2024,23,Wirausaha,18,2,17,2978219,6,CCTV Outdoor,Lunas
+297,2024,41,Teknisi,13,7,19,4801719,3,Paket CCTV,Belum
+298,2024,47,Karyawan,21,2,19,4229015,2,Kamera CCTV,Belum
+299,2024,26,Pegawai Swasta,23,5,2,11288816,6,Paket CCTV,Belum
+300,2024,46,Mahasiswa,2,7,7,1289416,1,CCTV Indoor,Belum
+301,2024,24,Freelancer,23,6,19,9946031,2,DVR,Belum
+302,2024,38,Teknisi,20,5,12,5620283,4,Kamera CCTV,Belum
+303,2024,27,Wirausaha,29,7,4,2008663,5,Kamera CCTV,Lunas
+304,2024,29,Pegawai Swasta,24,7,6,14598568,3,Kamera CCTV,Belum
+305,2024,38,Kontraktor,6,8,13,10440339,1,Paket CCTV,Lunas
+306,2024,23,Pegawai Swasta,9,5,11,1227944,3,Paket CCTV,Belum
+307,2024,35,Kontraktor,28,7,20,6699536,2,Paket CCTV,Lunas
+308,2024,24,Kontraktor,24,7,20,3322164,7,DVR,Lunas
+309,2024,32,Freelancer,23,8,13,3008328,8,Kamera CCTV,Belum
+310,2024,41,Kontraktor,16,1,14,2315354,2,CCTV Indoor,Belum
+311,2024,43,Freelancer,10,2,8,13191131,8,CCTV Outdoor,Lunas
+312,2024,42,Kontraktor,16,2,7,8733618,3,Paket CCTV,Lunas
+313,2024,25,Wirausaha,19,6,14,5026622,7,Paket CCTV,Belum
+314,2024,33,Wirausaha,6,1,17,11791053,8,Kamera CCTV,Lunas
+315,2024,36,Kontraktor,4,4,8,12866530,4,DVR,Belum
+316,2024,32,Pegawai Swasta,21,8,20,5019056,8,Paket CCTV,Lunas
+317,2024,48,Karyawan,6,4,12,7842718,1,Paket CCTV,Lunas
+318,2024,31,Pegawai Swasta,21,6,11,13614613,1,CCTV Indoor,Lunas
+319,2024,33,Pegawai,19,2,2,3573491,5,CCTV Indoor,Lunas
+320,2024,26,Wirausaha,11,6,16,564285,3,Kamera CCTV,Belum
+321,2024,43,Pegawai,8,6,2,5483963,6,CCTV Indoor,Lunas
+322,2024,50,Freelancer,2,3,1,4309973,8,Kamera CCTV,Lunas
+323,2024,40,Pegawai,19,5,4,12680741,4,CCTV Outdoor,Lunas
+324,2024,46,Wirausaha,10,6,20,8207591,3,CCTV Indoor,Lunas
+325,2024,40,Kontraktor,25,4,18,8215718,6,Kamera CCTV,Lunas
+326,2024,44,Freelancer,22,4,1,5234813,3,Kamera CCTV,Belum
+327,2024,37,Wirausaha,9,5,7,6454582,2,DVR,Belum
+328,2024,33,Karyawan,24,1,17,8692862,7,Kamera CCTV,Belum
+329,2024,30,Pegawai,11,3,4,10756773,5,CCTV Indoor,Lunas
+330,2024,23,Pegawai Swasta,7,5,15,5898762,4,DVR,Belum
+331,2024,25,Wirausaha,29,1,17,11293287,3,DVR,Belum
+332,2024,40,Teknisi,6,6,8,2929718,6,Paket CCTV,Belum
+333,2024,50,Freelancer,6,1,19,10104543,5,Kamera CCTV,Belum
+334,2024,28,Karyawan,26,3,4,13705404,8,DVR,Belum
+335,2025,38,Karyawan,26,3,13,14524978,2,Kamera CCTV,Belum
+336,2025,30,Teknisi,8,4,14,2304826,4,DVR,Belum
+337,2025,25,Teknisi,11,6,19,9260585,7,DVR,Lunas
+338,2025,43,Kontraktor,6,3,14,5783290,6,CCTV Outdoor,Lunas
+339,2025,35,Karyawan,20,2,19,14770791,6,DVR,Lunas
+340,2025,43,Mahasiswa,25,5,13,2692683,3,DVR,Lunas
+341,2025,25,Pegawai,5,7,15,7865946,5,Paket CCTV,Lunas
+342,2025,26,Wirausaha,1,8,8,1035344,6,CCTV Outdoor,Lunas
+343,2025,40,Pegawai,28,2,3,6145555,3,DVR,Lunas
+344,2025,50,Kontraktor,30,1,4,2487791,6,DVR,Belum
+345,2025,37,Mahasiswa,9,4,5,9782125,4,DVR,Belum
+346,2025,47,Mahasiswa,1,7,8,7963838,6,Paket CCTV,Belum
+347,2025,31,Pegawai Swasta,19,1,6,10747719,8,Paket CCTV,Belum
+348,2025,50,Freelancer,2,5,20,5764047,2,CCTV Outdoor,Lunas
+349,2025,40,Kontraktor,24,8,8,8641140,8,Kamera CCTV,Lunas
+350,2025,26,Teknisi,13,3,8,2180920,8,Paket CCTV,Belum
+351,2025,49,Karyawan,16,6,1,3069407,2,CCTV Indoor,Lunas
+352,2025,25,Wirausaha,3,8,3,11122797,8,CCTV Outdoor,Belum
+353,2025,24,Kontraktor,30,8,20,5367029,3,CCTV Indoor,Belum
+354,2025,24,Freelancer,13,6,12,11567864,1,Kamera CCTV,Belum
+355,2025,27,Kontraktor,29,4,14,13230650,6,CCTV Indoor,Lunas
+356,2025,33,Pegawai Swasta,1,6,11,11658949,2,CCTV Outdoor,Lunas
+357,2025,44,Mahasiswa,2,8,4,4094477,4,CCTV Outdoor,Lunas
+358,2025,34,Karyawan,16,8,10,13805928,3,CCTV Indoor,Lunas
+359,2025,30,Freelancer,12,6,2,3314317,3,CCTV Indoor,Belum
+360,2025,27,Freelancer,1,5,20,14323578,4,Paket CCTV,Lunas
+361,2025,24,Wirausaha,9,1,8,5862869,6,Kamera CCTV,Belum
+362,2025,47,Mahasiswa,6,7,16,2387064,8,DVR,Lunas
+363,2025,41,Mahasiswa,6,7,11,2006437,5,CCTV Outdoor,Belum
+364,2025,23,Kontraktor,1,8,4,4141477,2,CCTV Indoor,Belum
+365,2025,35,Wirausaha,23,2,15,10009767,8,DVR,Lunas
+366,2025,50,Karyawan,18,5,13,9817889,1,Kamera CCTV,Lunas
+367,2025,31,Freelancer,26,2,1,11060476,6,Kamera CCTV,Lunas
+368,2025,30,Karyawan,8,7,14,5124763,5,Paket CCTV,Belum
+369,2025,22,Mahasiswa,1,4,20,4509773,7,DVR,Lunas
+370,2025,32,Wirausaha,8,6,10,14857869,8,DVR,Belum
+371,2025,29,Pegawai Swasta,17,5,11,1235189,5,CCTV Indoor,Lunas
+372,2025,32,Teknisi,27,4,19,1183354,5,Kamera CCTV,Lunas
+373,2025,27,Karyawan,12,1,4,6320396,1,DVR,Lunas
+374,2025,28,Freelancer,23,4,20,14976872,5,DVR,Belum
+375,2025,22,Pegawai Swasta,20,2,19,14274782,3,Kamera CCTV,Belum
+376,2025,22,Freelancer,3,5,4,6173339,5,DVR,Belum
+377,2025,36,Mahasiswa,16,2,19,5211652,7,Kamera CCTV,Belum
+378,2025,23,Freelancer,17,6,7,5272118,6,DVR,Lunas
+379,2025,25,Karyawan,16,8,13,6021856,7,Kamera CCTV,Belum
+380,2025,34,Kontraktor,16,5,13,13905965,4,CCTV Outdoor,Belum
+381,2025,22,Mahasiswa,9,1,9,10372128,8,Paket CCTV,Lunas
+382,2025,38,Teknisi,20,1,2,1728353,8,CCTV Outdoor,Lunas
+383,2025,22,Teknisi,16,7,18,8134059,2,CCTV Outdoor,Lunas
+384,2025,32,Teknisi,20,7,12,6620413,4,CCTV Indoor,Lunas
+385,2025,44,Wirausaha,7,1,17,1674785,8,Kamera CCTV,Lunas
+386,2025,47,Pegawai,7,3,16,8065318,4,CCTV Indoor,Lunas
+387,2025,38,Kontraktor,11,1,3,899418,4,Paket CCTV,Lunas
+388,2025,22,Mahasiswa,13,8,3,8152325,3,CCTV Indoor,Belum
+389,2025,36,Pegawai Swasta,5,7,1,12615403,6,CCTV Indoor,Lunas
+390,2025,39,Pegawai,14,6,13,2151998,1,CCTV Outdoor,Belum
+391,2025,35,Wirausaha,24,8,18,2378154,3,Kamera CCTV,Lunas
+392,2025,50,Kontraktor,6,5,14,765359,6,Kamera CCTV,Lunas
+393,2025,25,Wirausaha,4,6,6,13731288,5,Paket CCTV,Belum
+394,2025,22,Pegawai Swasta,11,3,11,12970710,2,CCTV Outdoor,Belum
+395,2025,46,Karyawan,16,6,9,10721495,2,Kamera CCTV,Lunas
+396,2025,27,Freelancer,14,1,15,1755646,4,CCTV Indoor,Lunas
+397,2025,36,Wirausaha,22,3,12,3097766,4,CCTV Outdoor,Belum
+398,2025,49,Kontraktor,24,3,15,5710926,2,Paket CCTV,Belum
+399,2025,46,Wirausaha,24,2,18,7816000,6,Kamera CCTV,Belum
+400,2025,39,Pegawai Swasta,30,8,16,3965534,4,Paket CCTV,Lunas
+401,2025,30,Kontraktor,2,7,15,11342853,3,Kamera CCTV,Lunas
+402,2025,31,Pegawai Swasta,25,8,4,14430064,5,Kamera CCTV,Belum
+403,2025,34,Teknisi,7,3,13,1464142,1,CCTV Outdoor,Lunas
+404,2025,47,Karyawan,15,5,1,11447016,8,CCTV Outdoor,Belum
+405,2025,48,Freelancer,11,1,20,10371844,8,CCTV Outdoor,Belum
+406,2025,44,Wirausaha,24,6,12,10328976,8,CCTV Outdoor,Belum
+407,2025,49,Wirausaha,27,4,13,3361417,7,Kamera CCTV,Belum
+408,2025,27,Pegawai Swasta,21,8,18,5256938,4,CCTV Outdoor,Belum
+409,2025,32,Wirausaha,1,4,3,11809144,7,Paket CCTV,Lunas
+410,2025,42,Teknisi,16,6,4,2495230,8,Kamera CCTV,Lunas
+411,2025,29,Karyawan,26,7,14,3726610,4,Paket CCTV,Belum
+412,2025,47,Pegawai,10,6,8,12399488,8,Kamera CCTV,Lunas
+413,2025,48,Freelancer,26,5,8,14495441,3,Kamera CCTV,Belum
+414,2025,30,Karyawan,26,5,19,11710264,3,Kamera CCTV,Lunas
+415,2025,31,Pegawai Swasta,24,4,20,4479926,6,Kamera CCTV,Belum
+416,2025,27,Teknisi,27,5,5,11075589,8,CCTV Outdoor,Belum
+417,2025,39,Pegawai Swasta,15,3,3,1118985,3,CCTV Indoor,Belum
+418,2025,46,Wirausaha,25,2,8,2525406,8,CCTV Indoor,Belum
+419,2025,27,Karyawan,8,3,20,13170840,8,CCTV Indoor,Lunas
+420,2025,45,Karyawan,3,4,8,4022429,5,CCTV Indoor,Lunas
+421,2025,28,Pegawai Swasta,6,3,18,11757603,2,Kamera CCTV,Lunas
+422,2025,29,Teknisi,25,5,3,4357271,4,Paket CCTV,Belum
+423,2025,40,Freelancer,20,1,18,14351828,7,DVR,Lunas
+424,2025,23,Mahasiswa,28,1,4,13610254,2,DVR,Lunas
+425,2025,22,Freelancer,15,7,13,11945206,8,CCTV Outdoor,Lunas
+426,2025,30,Mahasiswa,25,7,17,10071332,2,DVR,Belum
+427,2025,35,Pegawai Swasta,28,3,16,12411656,5,Paket CCTV,Belum
+428,2025,46,Freelancer,27,6,15,6264031,8,Paket CCTV,Belum
+429,2025,27,Kontraktor,2,1,4,9500977,8,DVR,Lunas
+430,2025,50,Wirausaha,27,5,6,6726801,8,CCTV Outdoor,Belum
+431,2025,48,Wirausaha,24,2,17,7558576,7,Kamera CCTV,Lunas
+432,2025,50,Freelancer,2,2,16,3136507,4,Paket CCTV,Belum
+433,2025,45,Wirausaha,1,7,12,6354970,3,Kamera CCTV,Lunas
+434,2025,44,Pegawai,11,3,18,5984661,1,CCTV Indoor,Belum
+435,2025,32,Pegawai Swasta,15,2,15,8551079,8,CCTV Outdoor,Belum
+436,2025,33,Karyawan,7,7,5,8548744,5,Paket CCTV,Belum
+437,2025,39,Karyawan,12,2,8,14182027,7,CCTV Outdoor,Belum
+438,2025,37,Pegawai,4,8,10,5617316,6,CCTV Indoor,Belum
+439,2025,35,Teknisi,21,3,19,13823206,1,Paket CCTV,Lunas
+440,2025,32,Karyawan,26,2,15,5341273,3,DVR,Belum
+441,2025,43,Freelancer,1,8,10,11637085,4,Kamera CCTV,Belum
+442,2025,46,Pegawai Swasta,23,4,15,8828410,6,CCTV Indoor,Lunas
+443,2025,25,Freelancer,3,5,2,12443618,6,DVR,Belum
+444,2025,46,Pegawai,22,4,5,3364352,3,CCTV Indoor,Lunas
+445,2025,36,Mahasiswa,22,5,1,12071035,5,CCTV Indoor,Belum
+446,2025,26,Pegawai Swasta,18,4,14,2124454,3,Paket CCTV,Belum
+447,2025,50,Kontraktor,10,1,11,5500104,6,CCTV Outdoor,Lunas
+448,2025,47,Teknisi,25,3,5,6227196,7,Paket CCTV,Lunas
+449,2025,43,Freelancer,16,3,4,1196745,2,Kamera CCTV,Belum
+450,2025,27,Kontraktor,18,5,17,13005959,6,Paket CCTV,Lunas
+451,2025,27,Karyawan,28,7,9,9178965,3,DVR,Lunas
+452,2025,36,Freelancer,5,5,14,6361962,7,DVR,Lunas
+453,2025,47,Wirausaha,15,5,1,2038776,2,Kamera CCTV,Belum
+454,2025,41,Wirausaha,19,8,7,5129279,1,CCTV Indoor,Belum
+455,2025,40,Karyawan,4,8,3,13488694,1,CCTV Indoor,Lunas
+456,2025,39,Kontraktor,2,6,11,14141420,7,Paket CCTV,Belum
+457,2025,33,Mahasiswa,14,6,13,2994538,1,Kamera CCTV,Lunas
+458,2025,22,Karyawan,6,3,9,12976687,2,DVR,Belum
+459,2025,39,Wirausaha,12,5,7,11043217,8,DVR,Lunas
+460,2025,49,Karyawan,19,4,16,792172,1,DVR,Lunas
+461,2025,40,Pegawai,24,5,15,1433000,1,Kamera CCTV,Belum
+462,2025,48,Wirausaha,8,1,4,9882967,7,Paket CCTV,Belum
+463,2025,41,Karyawan,13,3,2,10043683,7,CCTV Outdoor,Lunas
+464,2025,48,Pegawai,22,1,6,2961307,7,Paket CCTV,Belum
+465,2025,30,Pegawai Swasta,29,2,2,4322283,6,DVR,Lunas
+466,2025,25,Teknisi,22,4,2,13291759,1,CCTV Outdoor,Belum
+467,2025,44,Kontraktor,19,2,16,8820852,1,Paket CCTV,Lunas
+468,2025,30,Mahasiswa,5,2,19,521138,2,Paket CCTV,Belum
+469,2025,29,Mahasiswa,28,6,18,11001481,5,CCTV Indoor,Lunas
+470,2025,44,Wirausaha,27,5,4,10031118,2,CCTV Outdoor,Belum
+471,2025,46,Mahasiswa,16,7,20,5216010,1,DVR,Belum
+472,2025,29,Kontraktor,29,8,7,4447530,8,DVR,Belum
+473,2025,28,Wirausaha,6,2,5,1613462,6,Kamera CCTV,Belum
+474,2025,28,Karyawan,17,3,14,4498608,2,DVR,Belum
+475,2025,42,Mahasiswa,21,7,8,2957596,5,Paket CCTV,Belum
+476,2025,37,Pegawai,25,5,16,13518330,2,DVR,Lunas
+477,2025,27,Teknisi,5,2,9,11392483,6,Kamera CCTV,Belum
+478,2025,40,Kontraktor,20,4,1,14132108,4,CCTV Outdoor,Belum
+479,2025,25,Teknisi,24,4,13,2062572,6,CCTV Indoor,Lunas
+480,2025,23,Teknisi,17,6,4,6486953,5,DVR,Lunas
+481,2025,37,Wirausaha,9,3,13,8932403,7,Kamera CCTV,Lunas
+482,2025,42,Freelancer,15,7,14,9397092,3,DVR,Lunas
+483,2025,33,Pegawai Swasta,12,7,5,5054860,4,CCTV Outdoor,Lunas
+484,2025,30,Kontraktor,13,6,19,4108342,8,Paket CCTV,Lunas
+485,2025,22,Pegawai Swasta,5,2,15,13934188,4,Kamera CCTV,Belum
+486,2025,23,Teknisi,8,8,3,4199305,5,DVR,Lunas
+487,2025,36,Mahasiswa,19,8,9,3649705,1,Kamera CCTV,Belum
+488,2025,38,Pegawai Swasta,15,2,3,12250747,2,DVR,Lunas
+489,2025,29,Teknisi,24,5,11,3510928,5,DVR,Lunas
+490,2025,35,Kontraktor,20,1,9,11703132,2,CCTV Outdoor,Belum
+491,2025,37,Wirausaha,27,8,6,12727358,1,DVR,Belum
+492,2025,29,Freelancer,28,5,10,2814436,1,CCTV Indoor,Belum
+493,2025,36,Mahasiswa,23,4,16,10641497,6,Kamera CCTV,Belum
+494,2025,44,Karyawan,9,6,19,4883466,3,CCTV Outdoor,Lunas
+495,2025,42,Freelancer,26,3,13,4248308,1,CCTV Indoor,Belum
+496,2025,46,Pegawai,13,7,18,4402642,4,Paket CCTV,Belum
+497,2025,34,Kontraktor,9,7,12,1077738,1,Kamera CCTV,Lunas
+498,2025,46,Pegawai,12,1,11,5799181,5,DVR,Lunas
+499,2025,27,Freelancer,3,7,15,6218662,7,Paket CCTV,Lunas
+500,2025,29,Freelancer,10,4,5,11298380,4,CCTV Outdoor,Belum
+501,2026,-,Guru,0,0,0,850000,1,CCTV,Lunas

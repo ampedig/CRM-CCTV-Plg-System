@@ -1,0 +1,201 @@
+ID_Pelanggan,Nama,Tahun,Umur,Pekerjaan,Jumlah_Chat,Frekuensi_Konsultasi,Kunjungan_Website,Nilai_Transaksi,Frekuensi_Pembelian,Produk_Diminati,Status_Pembayaran
+503,"Halim",2026,24,Teknisi,7,4,17,6172716,1,DVR,Belum
+504,Redo,2026,32,"Pegawai Swasta",9,2,23,8691213,7,DVR,Belum
+505,"Kusuma Wardana",2025,38,Freelancer,15,2,20,14878679,4,"Paket CCTV",Belum
+506,"Norma",2026,54,Pegawai,32,6,22,3236422,3,"IP Camera",Lunas
+507,Anastasya,2026,48,Kontraktor,17,4,15,9736035,1,"Paket CCTV",Lunas
+508,"Ega Wahyudi",2025,46,Freelancer,33,2,10,8303177,9,"IP Camera",Belum
+509,"Erika",2026,35,Karyawan,16,0,6,5033325,1,"IP Camera",Belum
+510,"Nasution",2026,23,Wirausaha,34,6,4,10802379,10,"CCTV Outdoor",Belum
+511,"Riko",2025,38,Pegawai,5,4,5,2580227,2,"CCTV Outdoor",Lunas
+512,Yanto,2026,55,Wirausaha,7,10,20,6593850,6,"CCTV Outdoor",Lunas
+513,"Suhendra",2025,23,Mahasiswa,26,4,11,11567549,10,"CCTV Outdoor",Belum
+514,"Rianto",2026,39,Teknisi,17,2,4,2065448,10,"Smart Home CCTV",Lunas
+515,"Ardi Birawinata",2026,41,Karyawan,17,10,1,14780599,5,"CCTV Outdoor",Lunas
+516,"Hasballah",2025,49,Karyawan,4,3,14,3962407,10,"Paket CCTV",Belum
+517,Sakti,2026,23,"Pegawai Swasta",19,10,6,9764444,6,"IP Camera",Lunas
+518,Nasroni,2026,35,Freelancer,21,7,20,14846588,1,"Paket CCTV",Lunas
+519,"Barsiyem",2025,26,Mahasiswa,28,1,17,10432386,3,"IP Camera",Belum
+520,"Silvia",2026,28,Mahasiswa,20,7,13,10996292,7,"Kamera CCTV",Belum
+521,"Galang",2025,22,Mahasiswa,15,8,25,9080573,10,"Paket CCTV",Belum
+522,"Tari",2026,42,Kontraktor,12,8,22,7365404,8,"Paket CCTV",Lunas
+523,"Nugroho",2026,30,Teknisi,13,3,10,5101336,7,"Kamera CCTV",Belum
+524,Wirda,2025,33,"Pegawai Swasta",3,6,1,14197612,4,DVR,Belum
+525,Lalita,2025,23,Freelancer,21,1,23,7027809,2,"CCTV Outdoor",Lunas
+526,Gasti,2026,29,Wirausaha,24,9,3,0,0,"Smart Home CCTV",Belum
+527,Widya,2026,39,"Pegawai Swasta",23,7,12,10338219,4,"Paket CCTV",Belum
+528,Ilsa,2025,52,Kontraktor,24,1,20,1612145,2,DVR,Lunas
+529,Mujur,2025,40,"Pegawai Swasta",20,10,8,5203279,1,DVR,Belum
+530,Lidya,2025,29,Mahasiswa,27,4,18,14915543,2,"IP Camera",Lunas
+531,"Hasna Marpaung",2025,40,Freelancer,15,9,20,3201542,5,"CCTV Outdoor",Lunas
+532,"Najwa Palastri",2025,53,Kontraktor,31,0,1,7128167,3,DVR,Lunas
+533,Silvia,2025,41,"Pegawai Swasta",18,3,19,12075201,1,"CCTV Outdoor",Lunas
+534,Mala,2026,45,Kontraktor,34,9,17,9914952,9,"IP Camera",Belum
+535,"Eka Riyanti",2025,21,Kontraktor,16,4,6,13145045,2,DVR,Belum
+536,Latika,2025,26,Teknisi,33,7,3,7006952,1,"CCTV Outdoor",Belum
+537,Radit,2026,37,Pegawai,27,5,11,4971125,7,"Paket CCTV",Lunas
+538,Umi,2025,46,Kontraktor,24,8,21,9284868,1,"IP Camera",Belum
+539,Cahyadi,2025,21,Wirausaha,9,9,7,14454122,6,"Kamera CCTV",Lunas
+540,Harjaya,2026,36,Freelancer,13,6,7,0,0,DVR,Belum
+541,"Nyoman",2025,31,Kontraktor,21,10,7,7424078,4,"IP Camera",Lunas
+542,"Cinthia Prastuti",2025,23,Karyawan,24,0,12,4209761,8,"Kamera CCTV",Lunas
+543,Almira,2026,52,Karyawan,20,4,24,14397356,6,"Paket CCTV",Belum
+544,Amelia,2026,48,Freelancer,24,1,7,13548060,3,DVR,Lunas
+545,Nardi,2025,29,Karyawan,10,8,9,6611141,7,"IP Camera",Belum
+546,"Putri Utama",2026,55,Wirausaha,10,4,24,11387252,4,"IP Camera",Lunas
+547,Uda,2025,55,Wirausaha,23,6,25,13731007,2,DVR,Lunas
+548,Lala,2025,30,Teknisi,15,1,24,4637366,7,"Smart Home CCTV",Belum
+549,Dewi,2026,29,Karyawan,26,9,1,2846070,7,"IP Camera",Lunas
+550,Tari,2026,34,Freelancer,33,8,15,14086414,7,"Kamera CCTV",Lunas
+551,Harsaya,2026,20,Mahasiswa,15,4,23,4807739,6,"Kamera CCTV",Lunas
+552,"Hamzah",2026,37,Mahasiswa,16,2,20,7541477,3,"IP Camera",Belum
+553,"Talia",2025,24,Pegawai,14,1,15,8197629,4,"Paket CCTV",Lunas
+554,"Eka Pradana",2025,49,Kontraktor,30,0,11,6029261,3,"IP Camera",Belum
+555,"Aisyah Maulana",2025,23,"Pegawai Swasta",28,8,25,8720929,2,"Smart Home CCTV",Lunas
+556,Irma,2025,40,Wirausaha,13,3,12,11644473,10,"Smart Home CCTV",Lunas
+557,"Dewi",2026,28,Teknisi,18,1,1,3688959,7,"Kamera CCTV",Belum
+558,Mila,2025,26,Mahasiswa,15,5,25,6790559,9,"CCTV Outdoor",Belum
+559,"Narpati",2026,45,Karyawan,23,10,10,6323289,5,"Kamera CCTV",Lunas
+560,"Santoso",2026,21,Wirausaha,20,3,20,9902477,1,"Kamera CCTV",Belum
+561,"Nanang",2026,21,Pegawai,34,1,5,11711497,10,DVR,Belum
+562,Kezia,2026,33,Teknisi,19,6,6,11980711,8,"Paket CCTV",Belum
+563,Erik,2026,45,Mahasiswa,29,0,8,2341128,9,DVR,Lunas
+564,"Sitompul",2025,41,Teknisi,31,4,24,2751065,1,"Smart Home CCTV",Lunas
+565,"Rudi Hamzah",2026,42,Kontraktor,13,8,20,7825963,9,"Smart Home CCTV",Lunas
+566,"Ihsan",2025,43,Karyawan,35,6,9,9499248,8,"Kamera CCTV",Lunas
+567,Wahyuni,2025,30,Mahasiswa,2,0,10,12243097,2,"CCTV Outdoor",Belum
+568,Hasan,2026,28,Mahasiswa,23,10,1,3326557,7,"Kamera CCTV",Belum
+569,"Mustofa",2026,31,Teknisi,32,9,2,14304887,6,"IP Camera",Belum
+570,Hasta,2026,28,Kontraktor,16,7,4,8735532,2,"Kamera CCTV",Belum
+571,"Purnomo",2025,41,Freelancer,5,4,21,8096702,4,"Paket CCTV",Lunas
+572,Warsito,2025,50,Freelancer,24,9,22,14766608,2,"CCTV Outdoor",Belum
+573,"Harjo",2026,35,Freelancer,4,6,21,9247833,5,"CCTV Outdoor",Lunas
+574,Damar,2025,40,Wirausaha,26,7,7,13834084,2,DVR,Belum
+575,Asnawi,2026,45,Mahasiswa,26,7,7,3830090,8,"Paket CCTV",Lunas
+576,Herlambang,2025,23,Mahasiswa,33,4,16,0,0,DVR,Belum
+577,"Edward",2026,31,Freelancer,35,10,11,0,0,"IP Camera",Belum
+578,Kayla,2026,50,Wirausaha,20,10,1,3446563,9,"Paket CCTV",Belum
+579,"Vicky",2025,49,Wirausaha,17,8,16,10054219,4,"Paket CCTV",Belum
+580,Nabila,2026,23,Freelancer,16,9,14,9327670,4,"CCTV Outdoor",Belum
+581,"Maria",2026,48,Teknisi,30,8,22,5115380,7,"Paket CCTV",Lunas
+582,Shania,2026,36,"Pegawai Swasta",26,4,19,7272388,8,DVR,Lunas
+583,"Sihombing",2025,27,Kontraktor,20,2,8,12691556,1,"IP Camera",Lunas
+584,Kayla,2025,40,"Pegawai Swasta",33,8,7,2391495,8,"Paket CCTV",Lunas
+585,"Arta",2026,51,Mahasiswa,18,7,19,13148851,9,"Smart Home CCTV",Belum
+586,"Damanik",2026,35,Mahasiswa,2,3,1,5751154,1,"Smart Home CCTV",Lunas
+587,Hesti,2025,55,Kontraktor,14,9,2,4999397,9,"Smart Home CCTV",Belum
+588,Sugianto,2025,55,Pegawai,0,10,11,13035316,2,"IP Camera",Lunas
+589,Mareta,2025,46,Karyawan,1,3,24,12122087,3,"CCTV Outdoor",Belum
+590,Vino,2025,52,Wirausaha,7,1,23,6859137,2,"Smart Home CCTV",Belum
+591,Desta,2025,41,Pegawai,2,4,9,14008385,7,"CCTV Outdoor",Belum
+592,Reta,2025,55,Karyawan,7,2,20,9798884,8,"CCTV Outdoor",Lunas
+593,Vega,2025,49,Wirausaha,17,9,19,14085520,3,"Kamera CCTV",Lunas
+594,"Martani",2026,21,Kontraktor,11,8,1,12644982,4,DVR,Lunas
+595,"Hilda",2026,39,Karyawan,20,1,13,10363865,10,"Smart Home CCTV",Lunas
+596,Kartika,2026,32,Wirausaha,3,7,16,3038503,1,DVR,Lunas
+597,Kamaria,2025,55,Kontraktor,32,8,13,10910609,7,"Kamera CCTV",Lunas
+598,Kamal,2026,27,Karyawan,20,6,10,3203854,8,"CCTV Outdoor",Belum
+599,Jasmin,2025,54,Mahasiswa,2,8,5,2720983,5,"Smart Home CCTV",Belum
+600,Seto,2025,24,"Pegawai Swasta",14,5,17,1664498,6,"Paket CCTV",Belum
+601,Cindy,2026,31,Mahasiswa,1,10,4,0,0,"Smart Home CCTV",Belum
+602,Kerin,2026,24,"Pegawai Swasta",9,9,22,14323939,10,"Smart Home CCTV",Belum
+603,Ega,2026,39,Mahasiswa,33,10,13,10124049,5,"CCTV Outdoor",Belum
+604,"Budi",2025,41,Mahasiswa,8,2,20,7377787,1,"Kamera CCTV",Belum
+605,"Titik",2026,52,Wirausaha,0,10,14,13343386,6,"Kamera CCTV",Belum
+606,Janet,2025,45,Teknisi,22,9,8,5577280,4,"IP Camera",Lunas
+607,Indah,2026,52,Mahasiswa,16,6,18,5413177,5,"Smart Home CCTV",Belum
+608,"Tina",2026,34,Mahasiswa,22,3,13,2637143,8,"IP Camera",Belum
+609,"Habibi",2026,26,Wirausaha,11,1,5,7042963,4,"Paket CCTV",Belum
+610,"Olivia",2025,37,Mahasiswa,24,10,4,14720546,2,"IP Camera",Belum
+611,Erlangga,2026,20,Kontraktor,33,1,8,7700703,8,"CCTV Outdoor",Lunas
+612,"Harjaya",2025,24,Mahasiswa,8,6,19,3631912,8,DVR,Lunas
+613,"Nabila",2025,24,Teknisi,35,0,13,6464475,10,"Smart Home CCTV",Belum
+614,Setya,2025,33,Mahasiswa,23,6,9,4986906,3,"Paket CCTV",Lunas
+615,Iriana,2025,41,"Pegawai Swasta",23,0,6,9444837,4,"Smart Home CCTV",Lunas
+616,Umi,2025,34,Karyawan,10,7,2,5052288,9,"Kamera CCTV",Belum
+617,"Riyanti",2025,23,Teknisi,31,8,1,5952735,3,"Smart Home CCTV",Belum
+618,Yuni,2025,26,Pegawai,33,7,25,12471710,6,"Kamera CCTV",Lunas
+619,"Rendy",2026,39,"Pegawai Swasta",31,6,15,0,0,"Paket CCTV",Belum
+620,Sidik,2026,33,Freelancer,25,0,22,11146655,6,DVR,Belum
+621,Jessica,2026,42,Wirausaha,3,3,16,3267908,4,"Paket CCTV",Lunas
+622,"Aris",2025,46,Mahasiswa,23,6,6,8013501,6,"Kamera CCTV",Lunas
+623,"Diana",2026,47,Kontraktor,6,2,24,0,0,"Kamera CCTV",Belum
+624,Fira,2025,43,Freelancer,12,6,3,11778842,1,DVR,Lunas
+625,Aliya,2025,22,Mahasiswa,21,2,17,5783474,4,"Paket CCTV",Belum
+626,Rahmi,2026,49,Kontraktor,20,4,21,2845624,4,"Kamera CCTV",Lunas
+627,Natalia,2026,20,Mahasiswa,21,2,15,12860467,5,"IP Camera",Belum
+628,"Dinda",2025,35,Pegawai,17,3,12,2084656,1,DVR,Lunas
+629,Cantika,2025,25,Pegawai,16,3,13,4210055,9,"Smart Home CCTV",Belum
+630,"Sinthia",2025,52,Karyawan,4,0,22,0,0,"Smart Home CCTV",Belum
+631,"Wibowo",2026,49,Wirausaha,25,0,12,11097451,8,DVR,Lunas
+632,"Budiman",2026,51,Freelancer,4,10,22,0,0,"Kamera CCTV",Belum
+633,Dasa,2026,22,Kontraktor,32,5,4,8458109,1,DVR,Belum
+634,"Haryanti",2025,34,Karyawan,23,7,6,9065267,4,"Smart Home CCTV",Lunas
+635,"Suci",2026,45,Mahasiswa,2,1,15,3883175,8,"Smart Home CCTV",Belum
+636,"Winarto",2026,32,Wirausaha,10,6,13,13555757,9,"Smart Home CCTV",Lunas
+637,"Anggara",2025,35,Wirausaha,32,1,17,11006514,2,"Smart Home CCTV",Lunas
+638,Jaswadi,2026,21,Freelancer,20,2,11,8674829,8,"Kamera CCTV",Belum
+639,Marsudi,2025,37,"Pegawai Swasta",24,8,1,4520317,8,"Kamera CCTV",Belum
+640,"Bagas",2026,47,Teknisi,8,1,2,10190261,9,"Smart Home CCTV",Belum
+641,"Mansur",2025,49,Kontraktor,14,1,4,11939894,4,DVR,Lunas
+642,"Latif",2026,39,Freelancer,23,2,4,14676219,5,"IP Camera",Belum
+643,"Cahya",2025,32,Kontraktor,25,4,9,9940567,6,"Kamera CCTV",Lunas
+644,"Saputra",2026,30,Pegawai,33,3,1,8942168,10,"Kamera CCTV",Lunas
+645,Sabrina,2025,37,Karyawan,4,10,24,5237449,8,"Smart Home CCTV",Belum
+646,Teguh,2026,42,Freelancer,31,0,13,12355846,4,"Kamera CCTV",Lunas
+647,Asmadi,2025,35,Mahasiswa,32,3,11,13753505,5,"Paket CCTV",Belum
+648,"Maria",2025,42,Pegawai,15,6,20,0,0,"IP Camera",Belum
+649,"Puspasari",2025,32,Mahasiswa,35,10,19,4632774,8,"Smart Home CCTV",Belum
+650,"Bambang Herlangga",2026,37,Pegawai,17,6,22,4232484,1,"IP Camera",Lunas
+651,Kasiran,2025,40,Pegawai,1,10,12,12062218,3,"Smart Home CCTV",Lunas
+652,Adi,2026,53,Freelancer,19,10,11,0,0,DVR,Belum
+653,"Erik",2026,31,Karyawan,14,7,3,9781659,7,"Paket CCTV",Belum
+654,Alek,2025,46,Mahasiswa,34,5,6,0,0,"Paket CCTV",Belum
+655,"Ade",2025,55,Kontraktor,11,8,6,7666327,9,"Kamera CCTV",Belum
+656,"Rina",2025,37,Wirausaha,28,1,2,4764922,7,"Paket CCTV",Belum
+657,"Rudi",2026,37,Pegawai,20,7,2,13017072,2,"Smart Home CCTV",Lunas
+658,"Wahab",2026,39,Freelancer,17,0,21,3553035,4,"IP Camera",Lunas
+659,Mardio,2025,41,Teknisi,23,7,7,10209326,5,"Kamera CCTV",Lunas
+660,"Anggi",2025,38,Teknisi,12,1,9,10664827,9,DVR,Belum
+661,Suyanto,2026,41,Kontraktor,11,6,17,2010606,5,"Kamera CCTV",Belum
+662,"Wirda",2026,54,Freelancer,10,2,18,6063423,1,"IP Camera",Belum
+663,Qori,2026,54,Pegawai,2,7,16,1954743,10,"IP Camera",Belum
+664,Purwa,2025,47,Pegawai,2,5,18,3837774,1,"IP Camera",Lunas
+665,Gabriella,2026,20,Kontraktor,12,3,22,0,0,"Paket CCTV",Belum
+666,Sugondo,2025,24,Kontraktor,29,2,24,8519982,2,"CCTV Outdoor",Belum
+667,"Putra",2026,25,Wirausaha,31,6,5,8345336,4,DVR,Lunas
+668,"Wahyu",2025,35,Teknisi,29,4,9,9516141,10,"CCTV Outdoor",Lunas
+669,"Sodikin",2025,37,Mahasiswa,31,6,8,7525795,3,"Paket CCTV",Lunas
+670,Rangga,2026,39,Kontraktor,0,8,22,3402530,5,DVR,Belum
+671,"Sintia",2026,23,Karyawan,14,8,18,6195088,1,"Paket CCTV",Lunas
+672,Alen,2026,30,"Pegawai Swasta",9,7,12,2258741,9,"Smart Home CCTV",Lunas
+673,Rahmi,2026,20,"Pegawai Swasta",20,2,11,6082225,8,DVR,Belum
+674,"Rina",2025,47,Freelancer,28,1,18,10548790,5,"IP Camera",Belum
+675,"Tina",2025,47,Teknisi,20,2,8,7283686,2,DVR,Belum
+676,Raisa,2026,47,"Pegawai Swasta",9,8,1,11743837,1,"Kamera CCTV",Lunas
+677,Syahrini,2025,33,Pegawai,7,0,8,7558819,10,"IP Camera",Lunas
+678,Uli,2025,30,Kontraktor,30,7,10,2437432,3,"IP Camera",Belum
+679,"Titi",2026,38,Pegawai,13,2,6,1725160,3,DVR,Lunas
+680,"Rahmat",2026,54,"Pegawai Swasta",24,1,19,6919069,10,"Smart Home CCTV",Belum
+681,"Enggar",2025,33,Kontraktor,17,6,3,7705823,4,"Paket CCTV",Lunas
+682,"Widia",2026,32,Pegawai,30,6,20,11923742,8,"Paket CCTV",Lunas
+683,"Zulfa",2025,34,Kontraktor,27,7,12,4163949,7,"IP Camera",Lunas
+684,"Yuni",2025,48,Freelancer,25,4,24,2563720,7,"Kamera CCTV",Lunas
+685,Titi,2025,25,Wirausaha,26,3,13,1534395,3,DVR,Lunas
+686,Ratna,2026,37,Mahasiswa,19,7,15,12576259,7,"Kamera CCTV",Belum
+687,"Eko",2025,32,Kontraktor,7,6,19,12559037,2,"Kamera CCTV",Lunas
+688,Edi,2025,21,Pegawai,22,7,17,6882735,1,"IP Camera",Belum
+689,"Agung",2025,41,Kontraktor,14,0,11,3749686,10,"Smart Home CCTV",Belum
+690,Kezia,2025,34,Teknisi,30,0,10,13074181,6,"CCTV Outdoor",Belum
+691,Malika,2025,43,Wirausaha,16,6,12,8672198,5,"IP Camera",Belum
+692,"Koko",2025,44,Mahasiswa,4,10,8,4528339,4,"Kamera CCTV",Belum
+693,"Raja",2026,21,Teknisi,2,0,24,6160286,1,"IP Camera",Belum
+694,"Cahya",2026,24,Karyawan,29,10,6,14579527,4,"Kamera CCTV",Belum
+695,"Gina",2026,44,Karyawan,22,7,24,13441950,1,"Smart Home CCTV",Lunas
+696,"Suhaela",2025,50,"Pegawai Swasta",21,0,10,12383525,6,"CCTV Outdoor",Lunas
+697,Satimin,2026,33,Mahasiswa,31,0,18,12539469,6,"IP Camera",Lunas
+698,"Zahra",2025,55,Teknisi,5,6,17,0,0,"IP Camera",Belum
+699,"Dirga",2026,44,Kontraktor,4,2,16,10479568,1,DVR,Belum
+700,Fathonah,2026,52,Kontraktor,21,2,6,12867626,3,DVR,Lunas
+701,"Bayu",2026,26,Wirausaha,18,3,2,6654749,3,"IP Camera",Belum
+702,Erdi,2025,20,"Pegawai Swasta",7,6,25,10335350,6,"CCTV Outdoor",Lunas
