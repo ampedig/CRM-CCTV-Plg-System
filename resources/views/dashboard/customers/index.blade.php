@@ -91,9 +91,6 @@
                                     Nominal TRX</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
-                                    Lead Score</th>
-                                <th
-                                    class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
                                     Status</th>
                                 <th
                                     class="px-6 py-4 border-b border-slate-100 text-center t-title-data font-semibold text-slate-800 uppercase tracking-wider td-nowrap">
@@ -135,30 +132,6 @@
                                     </td>
                                     <td class="px-6 py-4 text-right font-semibold text-slate-700 td-nowrap">
                                         Rp {{ number_format($customer->total_transaction_value, 0, ',', '.') }}
-                                    </td>
-                                    <td class="px-6 py-4 text-center td-nowrap">
-                                        @if (strtolower($customer->lead_score_status) === 'hot')
-                                            <span
-                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600">
-                                                <span class="w-1.5 h-1.5 rounded-full animate-pulse"
-                                                    style="background-color: #ef4444;"></span>
-                                                Hot
-                                            </span>
-                                        @elseif (strtolower($customer->lead_score_status) === 'warm')
-                                            <span
-                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600">
-                                                <span class="w-1.5 h-1.5 rounded-full"
-                                                    style="background-color: #f59e0b;"></span>
-                                                Warm
-                                            </span>
-                                        @else
-                                            <span
-                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
-                                                <span class="w-1.5 h-1.5 rounded-full"
-                                                    style="background-color: #94a3b8;"></span>
-                                                Cold
-                                            </span>
-                                        @endif
                                     </td>
                                     <td class="px-6 py-4 text-center td-nowrap">
                                         @if ($customer->is_active)

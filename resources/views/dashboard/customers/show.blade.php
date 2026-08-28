@@ -70,19 +70,7 @@
                                         Lunas</span>
                                 @endif
                             </div>
-                            <div class="flex justify-between items-center pb-3.5 border-b border-slate-50">
-                                <span class="text-slate-400 font-medium">Skor Calon Pembeli</span>
-                                @if (strtolower($customer->lead_score_status) === 'hot')
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 border border-rose-100">Hot</span>
-                                @elseif (strtolower($customer->lead_score_status) === 'warm')
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 border border-amber-100">Warm</span>
-                                @else
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">Cold</span>
-                                @endif
-                            </div>
+
                             <div class="flex justify-between items-center pb-3.5 border-b border-slate-50">
                                 <span class="text-slate-400 font-medium">Frekuensi Konsultasi</span>
                                 <span class="text-slate-700 font-semibold">{{ $customer->consultation_frequency }}

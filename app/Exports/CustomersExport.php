@@ -37,7 +37,6 @@ class CustomersExport
                 'Frekuensi_Pembelian'   => $customer->transaction_count,
                 'Produk_Diminati'       => $customer->last_product_interest ?? '-',
                 'Status_Pembayaran'     => $customer->payment_status,
-                'Lead_Scoring'          => ucfirst($customer->lead_score_status ?? 'Cold'),
             ];
         });
     }
