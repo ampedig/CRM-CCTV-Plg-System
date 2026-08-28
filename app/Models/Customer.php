@@ -53,27 +53,68 @@ class Customer extends Model
     }
 
     /**
-     * Otomatis mengkalkulasi Lead Score berdasarkan Aktivitas & Nilai Transaksi
+     * Otomatis mengkalkulasi Lead Score berdasarkan sistem pembobotan Poin
      */
     public function updateLeadScore(): void
     {
-        $transaksi = $this->total_transaction_value ?? 0;
-        $chat = $this->total_chats_received ?? 0;
-        $web = $this->web_visit_count ?? 0;
-
-        $score = 'Cold'; // Default
-
-        // HOT: Transaksi super besar (>= 10 Juta) ATAU Transaksi lumayan besar (>= 5 Juta) + Aktif interaksi
-        if ($transaksi >= 10000000) {
-            $score = 'Hot';
-        } elseif ($transaksi >= 5000000 && ($chat >= 15 || $web >= 10)) {
-            $score = 'Hot';
-        } 
-        // WARM: Transaksi menengah (>= 2 Juta) ATAU sering tanya-tanya walau belum beli
-        elseif ($transaksi >= 2000000 || $chat >= 15 || $web >= 10) {
-            $score = 'Warm';
+        // LOCK: Jangan ubah skor untuk 500 data pertama (Data Laporan Skripsi)
+        if ($this->id <= 500) {
+            return;
         }
 
-        $this->update(['lead_score_status' => $score]);
+        $chat = $this->total_chats_received ?? 0;
+        $konsultasi = $this->consultation_frequency ?? 0;
+        $transaksiCount = $this->transaction_count ?? 0;
+        $webVisit = $this->web_visit_count ?? 0;
+
+        $score = 0;
+
+        // 1. Jumlah Chat (Max 30)
+        if ($chat >= 12) {
+            $score += 30;
+        } elseif ($chat >= 8) {
+            $score += 25;
+        } elseif ($chat >= 4) {
+            $score += 15;
+        } else {
+            $score += 5;
+        }
+
+        // 2. Frekuensi Konsultasi (Max 30)
+        if ($konsultasi >= 6) {
+            $score += 30;
+        } elseif ($konsultasi >= 4) {
+            $score += 25;
+        } elseif ($konsultasi >= 2) {
+            $score += 15;
+        } else {
+            $score += 5;
+        }
+
+        // 3. Riwayat Pembelian (Max 25)
+        if ($transaksiCount > 0) {
+            $score += 25;
+        } else {
+            $score += 0;
+        }
+
+        // 4. Respons / Kunjungan Website (Max 15)
+        if ($webVisit >= 16) {
+            $score += 15;
+        } elseif ($webVisit >= 6) {
+            $score += 10;
+        } else {
+            $score += 5;
+        }
+
+        // Penentuan Kategori berdasarkan Total Skor (Max 100)
+        $status = 'Cold'; // Default: 0-40
+        if ($score >= 71) {
+            $status = 'Hot';
+        } elseif ($score >= 41) {
+            $status = 'Warm';
+        }
+
+        $this->update(['lead_score_status' => $status]);
     }
 }
